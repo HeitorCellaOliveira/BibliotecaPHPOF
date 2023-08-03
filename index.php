@@ -43,7 +43,12 @@ $result = $conexao->query($sql);
         text-transform: none;
     }
 
-
+    .logo{
+      left:1%;
+      position: absolute;
+      width:7%;
+      top:-5px;
+    }
     .navbar {
         text-align: center;
         background-color: rgb(0, 0, 0);
@@ -139,12 +144,16 @@ $result = $conexao->query($sql);
 
 
     footer {
-        background-color: rgb(0, 0, 0);
-        position:relative;
+      background-color: rgb(0, 0, 0);
         background-color: #000000;
         color: #fff;
         padding: 25px;
         text-align: center;
+        top:827px;
+        width: 100%;
+        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
+        bottom: 0; /* Posiciona o footer na parte inferior da página */
+        left: 0; 
     }
 
 
@@ -169,6 +178,7 @@ $result = $conexao->query($sql);
 </head>
 <body>
     <nav class="navbar">
+        <img src="images/logo.png" class="logo">
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
@@ -176,10 +186,11 @@ $result = $conexao->query($sql);
         <a href="statusAluno.php">Status do Aluno</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu" id="icon-menu">
-            <i class="fas fa-bars fa-2xl"></i>
+        <i class="fas fa-bars fa-2xl"></i>
         </div>
         <div class="dropdown-menu" id="dropdown-menu">
-            <a href="cadastroTurmas.php">Turmas</a>
+            <a href="cadastroTurmas.php">Lista de Turmas</a>
+            <a href="cadastroTurmas.php">Cadastro de Turmas</a>
             <a href="cadastroAlunos.php">Cadastro de Alunos</a>
             <a href="buscarAluno.php">Lista de Alunos</a>
             <a href="buscarAluno.php">Lista de Multas</a>
@@ -189,12 +200,11 @@ $result = $conexao->query($sql);
         </div>
     </nav>
 
-    <img src="images/banner.png" class="banner">
+  <img src="images/baner.png" class="banner">
+  
 
-
-    <p class="welcome"> Bem vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
-
-
+    <p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
+    
     <footer>
         <p>&copy; 2023 - Todos os direitos reservados</p>
         <br>
