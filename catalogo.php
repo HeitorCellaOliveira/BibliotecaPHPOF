@@ -16,7 +16,7 @@
     session_start();
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -57,16 +57,10 @@
                         <img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
                     </td>
                     <td>
-                        Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano: " . $row['ano'] . "<br>ISBN: " . $row['isbn'] . "<br>CDD: " . $row['cdd'] . "<br>CDU: " . $row['cdu'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade disponível: " . $row['quantidadeDisponivel'] . '<br>Quantidade emprestada: ' . $row['quantidadeEmprestada'] . '
+                        Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano de Publicação: " . $row['anoPublicado'] . "<br>ISBN: " . $row['isbn'] . "<br>CDD: " . $row['cdd'] . "<br>CDU: " . $row['cdu'] . "<br>Gênero: " . $row['genero'] .'
                     </td>
                 </tr>
             </table>';
-            #Form para a função de editar informações de livros.
-            echo "<form method='post' action='livroAtualiza.php'>
-                            <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
-                            <input type='submit' value='Editar'>
-                            </form><br>";
-            #Form para a função de editar informações de livros.
             #Form para a função de emprestar livros.
             echo "<form method='post' action='emprestarLivro.php'>
                     <input type='hidden' value='" . $row['nome'] . "' id='nome' name='nome'>

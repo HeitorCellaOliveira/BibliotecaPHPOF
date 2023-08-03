@@ -4,7 +4,7 @@
 session_start();
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = 'root';
+$password = '';
 $database = 'biblioteca';
 $conexao = new mysqli($hostname, $user, $password, $database);
 if ($conexao->connect_errno) {
@@ -17,7 +17,7 @@ if ($conexao->connect_errno) {
     $autor = $conexao->real_escape_string($_POST['autor']);
     $editora = $conexao->real_escape_string($_POST['editora']);
     $anoPublicado = $conexao->real_escape_string($_POST['anoPublicado']);
-    $npags = $conexao->real_escape_string($_POST['npags']);
+    $nPags = $conexao->real_escape_string($_POST['nPags']);
     $isbn = $conexao->real_escape_string($_POST['isbn']);
     $cdd = $conexao->real_escape_string($_POST['cdd']);
     $cdu = $conexao->real_escape_string($_POST['cdu']);
@@ -31,12 +31,12 @@ if ($conexao->connect_errno) {
         move_uploaded_file($_FILES['capaLivro']['tmp_name'], $diretorio . $arquivo);
     }
     #Salvar capaLivro do livro na pasta "Imagens" e no banco de dados.
-    $cadastrarLivro = 'INSERT INTO `biblioteca`.`livros`(`nome`, `autor`, `editora`, `anoPublicado`, `npags`, `isbn`, `cdd`, `cdu`, `genero`, `imagem`)
-            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $npags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $qtdLivros . '", "0","'.$arquivo.'");';
+    $cadastrarLivro = 'INSERT INTO `biblioteca`.`acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `cdd`, `cdu`, `genero`, `qtdLivros`, `capaLivro`)
+            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $nPags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $qtdLivros . '", "0","'.$arquivo.'");';
     $resultado = $conexao->query($cadastrarLivro);
     $conexao->close();
-    //header('Location: catalogo.php', true, 301);
-    var_dump($sql);
+    header('Location: catalogo.php', true, 301);
+    
     #Cadastro das informações na tabela livros.
 }
 ?>
