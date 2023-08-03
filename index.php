@@ -205,6 +205,8 @@ $result = $conexao->query($sql);
 
     <p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
     
+
+
     <footer>
         <p>&copy; 2023 - Todos os direitos reservados</p>
         <br>
