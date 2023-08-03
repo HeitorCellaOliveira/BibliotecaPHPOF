@@ -26,6 +26,8 @@
             $qtdLivros = $conexao->real_escape_string($_POST['qtdLivros']);
             $dataEntrada = $conexao->real_escape_string($_POST['dataEntrada']);
 
+            
+
             $sql = "INSERT INTO `biblioteca` . `acervo` 
                     (`nome`, `genero`, `autor`, `anoPublicado`, `sinopse`, `qtdLivros`, `dataEntrada`, `capaLivro`)
                 VALUES
