@@ -13,7 +13,7 @@ if ($conexao->connect_errno) {
     #Conexão com o banco de dados.
 } else {
     #Cadastro das informações na tabela livros.
-    $titulo = $conexao->real_escape_string($_POST['titulo']);
+    $nome = $conexao->real_escape_string($_POST['nome']);
     $autor = $conexao->real_escape_string($_POST['autor']);
     $editora = $conexao->real_escape_string($_POST['editora']);
     $anoPublicado = $conexao->real_escape_string($_POST['anoPublicado']);
@@ -22,7 +22,7 @@ if ($conexao->connect_errno) {
     $cdd = $conexao->real_escape_string($_POST['cdd']);
     $cdu = $conexao->real_escape_string($_POST['cdu']);
     $genero = $conexao->real_escape_string($_POST['genero']);
-    $quantidade = $conexao->real_escape_string($_POST['quantidade']);
+    $qtdLivros = $conexao->real_escape_string($_POST['qtdLivros']);
     #Salvar capaLivro do livro na pasta "Imagens" e no banco de dados.
     if (isset($_FILES['capaLivro'])) {
         $extensao = strtolower(substr($_FILES['capaLivro']['name'], -4));
@@ -31,8 +31,8 @@ if ($conexao->connect_errno) {
         move_uploaded_file($_FILES['capaLivro']['tmp_name'], $diretorio . $arquivo);
     }
     #Salvar capaLivro do livro na pasta "Imagens" e no banco de dados.
-    $cadastrarLivro = 'INSERT INTO `biblioteca`.`livros`(`titulo`, `autor`, `editora`, `ano`, `npags`, `isbn`, `cdd`, `cdu`, `genero`, `quantidadeDisponivel`, `quantidadeEmprestada`, `imagem`)
-            VALUES ("' . $titulo . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $npags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $quantidade . '", "0","'.$arquivo.'");';
+    $cadastrarLivro = 'INSERT INTO `biblioteca`.`livros`(`nome`, `autor`, `editora`, `anoPublicado`, `npags`, `isbn`, `cdd`, `cdu`, `genero`, `imagem`)
+            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $npags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $qtdLivros . '", "0","'.$arquivo.'");';
     $resultado = $conexao->query($cadastrarLivro);
     $conexao->close();
     //header('Location: catalogo.php', true, 301);
