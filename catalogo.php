@@ -1,48 +1,49 @@
-<?php 
-include('protect.php');
-?>
+<?php include('protect.php'); ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Acervo | Mascarenhas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Catálogo | Mascarenhas</title>
 </head>
 <body>
-    <h1>Lista de Livros</h1>
+    <h1>Livros</h1>
     <?php
-        $conn = new mysqli('localhost', 'root', 'root', 'biblioteca');
+    session_start();
+    $hostname = '127.0.0.1';
+    $user = 'root';
+    $password = 'root';
+    $database = 'biblioteca';
 
-        // Verifica se ocorreu algum erro na conexão
-        if ($conn->connect_error) {
-            die("Falha na conexão: " . $conn->connect_error);
-        }
+    $conexao = new mysqli($hostname, $user, $password, $database);
 
-        // Consulta ao banco de dados para obter os livros
-        $sql = "SELECT * FROM acervo";
-        $result = $conn->query($sql);
+    if ($conexao->connect_errno) {
+        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+        exit();
+    } else {
+        $printLivros = 'SELECT * FROM `acervo`';
+        $resultado = $coneoxa->query($printLivros);
 
-        // Verifica se existem registros na tabela
-        if ($result->num_rows > 0) {
-            // Exibe os livros em uma lista
-            echo '<ul>';
-            while ($row = $result->fetch_assoc()) {
-                echo '<li>';
-                echo '<strong>Título:</strong> ' . $row['nome'] . '<br>';
-                echo '<strong>Autor:</strong> ' . $row['autor'] . '<br>';
-                echo '<strong>Ano de Publicação:</strong> ' . $row['anoPublicado'] . '<br>';
-                echo '<strong>Quantidade de Livros: </strong>'. $row['qtdLivros'];
-                echo '<br><img src="' . $row['capaLivro'] . '"><br>';
-                echo '<a href="livro.php?id=' . $row['id'] . '">Mais Detalhes</a>';
-                echo '</li>';
-                echo '<a href="index.php">Voltar</a>';
+        echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise um livro específico'>
+        <span id='txtHint'></span>
+        <script>
+        function showHint(str) {
+            if (srt.length == 0) {
+                document.getElementById('txtHint').innerHTML = '';
+                return;
             }
-            echo '</ul>';
-        } else {
-            echo 'Nenhum livro encontrado no banco de dados.';
+            const xhttp = new XMLHRequest();
+            xhttp.orneadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('txtHint').innerHTML = this.responseText;
+                }
+            };
+            xhttp.open('GET', 'livroPesquisar.php?tituloPesquisado='+str, true);
+            xhttp.send();
         }
-
-        // Fecha a conexão com o banco de dados
-        $conn->close();
-    ?>
+        </script>";
+    }
 </body>
 </html>
