@@ -24,7 +24,7 @@
         exit();
     } else {
         $printLivros = 'SELECT * FROM `acervo`';
-        $resultado = $coneoxa->query($printLivros);
+        $resultado = $conexao->query($printLivros);
 
         echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise um livro específico'>
         <span id='txtHint'></span>
@@ -40,7 +40,7 @@
                     document.getElementById('txtHint').innerHTML = this.responseText;
                 }
             };
-            xhttp.open('GET', 'livroPesquisar.php?tituloPesquisado='+str, true);
+            xhttp.open('GET', 'livroPesquisar.php?nomePesquisado='+str, true);
             xhttp.send();
         }
         </script>";
