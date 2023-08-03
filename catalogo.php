@@ -24,7 +24,7 @@
         exit();
     } else {
         $printLivros = 'SELECT * FROM `acervo`';
-        $resultado = $coneoxa->query($printLivros);
+        $resultado = $conexao->query($printLivros);
 
         echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise um livro específico'>
         <span id='txtHint'></span>
