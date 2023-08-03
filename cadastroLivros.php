@@ -58,13 +58,9 @@
 
             <tr><td><input type="text" class="" name="cdu" id="cdu" placeholder="Digite o cdu do livro." required></td></tr>
             
-            <tr><td><br><label class="">Data de Entrada:</label></td></tr>
-
-            <tr><td><input type="date" name="dataEntrada" id="dataEntrada" class="" required></td></tr>
-
             <tr>
                 <form method="POST" enctype="multipart/form-data">
-                    <td><br><label for="conteudo" class="">Capa do Livro: </label></td>
+                    <td><br><label for="conteudo" class="">Capa do Livro: </label></form></td>
             </tr>
 
             <tr><td><input type="file" name="capaLivro" id="capaLivro" accept="image/*" class=""></td></tr>

@@ -23,7 +23,6 @@
             $anoPublicado = $conexao->real_escape_string($_POST['anoPublicado']);
             $sinopse = $conexao->real_escape_string($_POST['sinopse']);
             $qtdLivros = $conexao->real_escape_string($_POST['qtdLivros']);
-            $dataEntrada = $conexao->real_escape_string($_POST['dataEntrada']);
             $editora = $conexao->real_escape_string($_POST['editora']);
             $nPags = $conexao->real_escape_string($_POST['nPags']);
             $isbn = $coneoxa->real_escape_string($_POST['isbn']);
@@ -38,9 +37,9 @@
             }
 
             $sql = "INSERT INTO `biblioteca` . `acervo` 
-                    (`nome`, `genero`, `autor`, `anoPublicado`, `sinopse`, `qtdLivros`, `dataEntrada`, `editora`, `nPags`, `isbn`, `cdd`, `cdu`)
+                    (`nome`, `genero`, `autor`, `anoPublicado`, `sinopse`, `qtdLivros`, `editora`, `nPags`, `isbn`, `cdd`, `cdu`)
                 VALUES
-                    ('$nome', '$genero', '$autor', '$anoPublicado', '$sinopse', '$qtdLivros', '$dataEntrada', '$editora', '$nPags', '$isbn', '$cdd', '$cdu')";
+                    ('$nome', '$genero', '$autor', '$anoPublicado', '$sinopse', '$qtdLivros', '$editora', '$nPags', '$isbn', '$cdd', '$cdu')";
 
             $resultado = $conexao->query($sql);
 

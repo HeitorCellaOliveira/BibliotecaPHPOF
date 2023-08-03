@@ -39,7 +39,6 @@
             echo '<br>';
             echo 'Quantidade de Livros:'. $row["qtdLivros"];
             echo '<br>';
-            echo 'Data de Entrada:' . $row["dataEntrada"];
             echo '<form action="livroApagar.php" method="POST">';
             echo '<input type="hidden" value="'.$row["id"].'" name="deletar"  />';
             echo '<br>';
