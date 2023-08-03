@@ -48,15 +48,15 @@
 
             <tr><td><br><label class="">ISBN</label></td></tr>
 
-            <tr><td><input type="text" class="" name="isbn" id="isbn" placeholder="Digite o isbn do livro."></td></tr>
+            <tr><td><input type="text" class="" name="isbn" id="isbn" placeholder="Digite o isbn do livro." required></td></tr>
             
             <tr><td><br><label class="">CDD</label></td></tr>
 
-            <tr><td><input type="text" class="" name="cdd" id="cdd" placeholder="Digite o CDD do livro."></td></tr>
+            <tr><td><input type="text" class="" name="cdd" id="cdd" placeholder="Digite o CDD do livro." required></td></tr>
             
             <tr><td><label class="">CDU</label></td></tr>
 
-            <tr><td><input type="text" class="" name="cdu" id="cdu" placeholder="Digite o cdu do livro."></td></tr>
+            <tr><td><input type="text" class="" name="cdu" id="cdu" placeholder="Digite o cdu do livro." required></td></tr>
             
             <tr><td><br><label class="">Data de Entrada:</label></td></tr>
 

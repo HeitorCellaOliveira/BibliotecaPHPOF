@@ -22,16 +22,25 @@
             $autor = $conexao->real_escape_string($_POST['autor']);
             $anoPublicado = $conexao->real_escape_string($_POST['anoPublicado']);
             $sinopse = $conexao->real_escape_string($_POST['sinopse']);
-            $capaLivro = $conexao->real_escape_string($_POST['capaLivro']);
             $qtdLivros = $conexao->real_escape_string($_POST['qtdLivros']);
             $dataEntrada = $conexao->real_escape_string($_POST['dataEntrada']);
-
+            $editora = $conexao->real_escape_string($_POST['editora']);
+            $nPags = $conexao->real_escape_string($_POST['nPags']);
+            $isbn = $coneoxa->real_escape_string($_POST['isbn']);
+            $cdd = $conexao->real_escape_string($_POST['cdd']);
+            $cdu = $conexao->real_escape_string($_POST['cdu']);
             
+            if (isset($_FILES['capaLivro'])) {
+                $extensao = strtolower(substr($_FILES['capaLivro']['name'], -4));
+                $arquivo = date("Y.m.d-H.i.s") . $extensao;
+                $dir = './Imagens/';
+                move_uploaded_file($_FILES['capaLivro']['tmp_name'], $dir . $arquivo);
+            }
 
             $sql = "INSERT INTO `biblioteca` . `acervo` 
-                    (`nome`, `genero`, `autor`, `anoPublicado`, `sinopse`, `qtdLivros`, `dataEntrada`, `capaLivro`)
+                    (`nome`, `genero`, `autor`, `anoPublicado`, `sinopse`, `qtdLivros`, `dataEntrada`, `editora`, `nPags`, `isbn`, `cdd`, `cdu`)
                 VALUES
-                    ('$nome', '$genero', '$autor', '$anoPublicado', '$sinopse', '$qtdLivros', '$dataEntrada', '$capaLivro')";
+                    ('$nome', '$genero', '$autor', '$anoPublicado', '$sinopse', '$qtdLivros', '$dataEntrada', '$editora', '$nPags', '$isbn', '$cdd', '$cdu')";
 
             $resultado = $conexao->query($sql);
 
@@ -42,14 +51,6 @@
             }
 
             $conexao->close();
-        }
-
-        if (isset($_FILES['capaLivro'])) {
-            $ext = strtolower(substr($_FILES['capaLivro']['name'], -4)); //Pegando extensão do arquivo
-            $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
-            $dir = './Downloads/'; //Diretório para uploads 
-            move_uploaded_file($_FILES['capaLivro']['tmp_name'], $dir . $new_name); //Fazer upload do arquivo
-            echo("Imagem enviada com sucesso!");
         }
 
         header('Location: cadastroLivros.php', true, 301);
