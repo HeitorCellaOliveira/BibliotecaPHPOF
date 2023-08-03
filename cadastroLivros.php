@@ -1,74 +1,65 @@
+ <!--Página de cadastro de livro-->
+ <!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="pt-BR">
+<html>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="">
-    <title>Lista Livros | Mascarenhas</title>
+    <title>LivroTeca</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <center>
-    <form action="cadastroLivrosBD.php" method="POST" id="formlogin" name="formlogin">
-        <table>
-            <tr><td><h1 class="">Cadastro de Livros</h1></td></tr>
-
-            <tr><td><label class="">Nome:</label></td></tr>
-
-            <tr><td><input type="text" name="nome" id="nome" class="" placeholder="Digite o nome do livro" required></td></tr>
-    
-            <tr><td><br><label class="">Gênero:</label></td></tr>
-            
-            <tr><td><input class ="" type="text" name="genero" id="genero" placeholder="Digite o gênero do livro" required></td></tr>
-    
-            <tr><td><br><label class="">Autor:</label></td></tr>
-            
-            <tr><td><input class ="" type="text" name="autor" id="autor"  placeholder="Digite o Autor do livro" required></td></tr>
-    
-            <tr><td><br><label class="">Editora</label></tr></td>
-
-            <tr><td><input type="text" class="" name="editora" id="editora" placeholder="Digite a editora do livro."></td></tr>
-            
-            <tr><td><br><label class="">Ano de Publicação:</label></td></tr>
-            
-            <tr><td><input class ="" type="text" name="anoPublicado" id="anoPublicado" placeholder="Digite o ano publicado" required></td></tr>
-
-            <tr><td><br><label class="">Sinopse:</label></td></tr>
-            
-            <tr><td><textarea name="sinopse" placeholder="Digite a sinopse do livro" style="font-family:Arial, Helvetica, sans-serif;" required></textarea></td></tr>
-
-            <tr><td><br><label class="">Quantidade de Livros:</label></td></tr>
-            
-            <tr><td><input type="text" name="qtdLivros" id="qtdLivros" class="" placeholder="Digite a quantidade de livros" required></td></tr>
-
-            <tr><td><br><label class="">Nº de Páginas:</label></td></tr>
-
-            <tr><td><input type="text" class="" name="nPags" id="nPags" placeholder="Digite o número de págs" required></td></tr>
-
-            <tr><td><br><label class="">ISBN</label></td></tr>
-
-            <tr><td><input type="text" class="" name="isbn" id="isbn" placeholder="Digite o isbn do livro." required></td></tr>
-            
-            <tr><td><br><label class="">CDD</label></td></tr>
-
-            <tr><td><input type="text" class="" name="cdd" id="cdd" placeholder="Digite o CDD do livro." required></td></tr>
-            
-            <tr><td><br><label class="">CDU</label></td></tr>
-
-            <tr><td><input type="text" class="" name="cdu" id="cdu" placeholder="Digite o cdu do livro." required></td></tr>
-            
-            <tr>
-                <form method="POST" enctype="multipart/form-data">
-                    <td><br><label for="conteudo" class="">Capa do Livro: </label></form></td>
-            </tr>
-
-            <tr><td><input type="file" name="capaLivro" id="capaLivro" accept="image/*" class=""></td></tr>
-
-            <tr><td><br><input type = "submit" value = "Cadastrar" class = "botao"><a class="voltar" href="index.php">Voltar</a></form></td></tr>
-
-        </table>
+    <!--Forms para cadastro-->
+    <h1>Cadastro de livro</h1>
+    <form method="post" action="cadastroLivrosBD.php" id="cadastro" name="cadastro" enctype="multipart/form-data">
+        <label class="">Título </label><small>e subtítulo:</small>
+        <br><input type="text" id="titulo" name="titulo" required>
+        <br><br><label class="">Autor:</label>
+        <br><input type="text" id="autor" name="autor" required>
+        <br><br><label class="">Editora:</label>
+        <br><input type="text" id="editora" name="editora" required>
+        <br><br><label class="">Ano Publicado:</label>
+        <br><input type="text" id="anoPublicado" name="anoPublicado" required>
+        <br><br><label class="">N° de páginas:</label>
+        <br><input type="text" id="npags" name="npags" required>
+        <br><br><label class="">ISBN:</label>
+        <br><input type="text" id="isbn" name="isbn" required>
+        <br><br><label class="">CDD:</label>
+        <br><input type="text" id="cdd" name="cdd" required>
+        <br><br><label class="">CDU:</label>
+        <br><input type="text" id="cdu" name="cdu" required>
+        <br><br><label class="">Gênero:</label>
+        <!--Todas as opções de gênero literário-->
+        <br><select id="genero" name="genero">
+            <option value="Fantasia">Fantasia</option>
+            <option value="Ficção científica">Ficção científica</option>
+            <option value="Ação e aventura">Ação e aventura</option>
+            <option value="Ficção policial">Ficção policial</option>
+            <option value="Horror">Horror</option>
+            <option value="Suspense">Suspense</option>
+            <option value="Romance">Romance</option>
+            <option value="Conto">Conto</option>
+            <option value="Autobiografia">Autobiografia</option>
+            <option value="Biografia">Biografia</option>
+            <option value="História">História</option>
+            <option value="Crimes reais">Crimes reais</option>
+            <option value="Infantil">Infantil</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Poesia">Poesia</option>
+            <option value="Educação">Educação</option>
+        </select>
+        <!--Todas as opções de gênero literário-->
+        <br><br><label class="">Quantidade:</label>
+        <br><input type="text" id="quantidade" name="quantidade" required>
+        <br><br><label class="">Capa do Livro:</label>
+        <br><input type="file" name="capaLivro" accept="image/*">
+        <br><br><input type="submit" value="Cadastrar">
     </form>
-    </center>
+    <!--Forms para cadastro-->
+    <!--Retornar a página anterior-->
+    <br><a href='catalogo.php'>Voltar</a>
+    <!--Retornar a página anterior-->
 </body>
+
 </html>
