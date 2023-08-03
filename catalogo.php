@@ -40,7 +40,7 @@
                     document.getElementById('txtHint').innerHTML = this.responseText;
                 }
             };
-            xhttp.open('GET', 'livroPesquisar.php?tituloPesquisado='+str, true);
+            xhttp.open('GET', 'livroPesquisar.php?nomePesquisado='+str, true);
             xhttp.send();
         }
         </script>";
