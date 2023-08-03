@@ -54,7 +54,7 @@
 
             <tr><td><input type="text" class="" name="cdd" id="cdd" placeholder="Digite o CDD do livro." required></td></tr>
             
-            <tr><td><label class="">CDU</label></td></tr>
+            <tr><td><br><label class="">CDU</label></td></tr>
 
             <tr><td><input type="text" class="" name="cdu" id="cdu" placeholder="Digite o cdu do livro." required></td></tr>
             
