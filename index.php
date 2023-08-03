@@ -189,9 +189,10 @@ $result = $conexao->query($sql);
         </div>
     </nav>
 
+    <img src="images/banner.png" class="banner">
+
 
     <p class="welcome"> Bem vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
-    <img src="images/banner.png" class="banner">
 
 
     <footer>
