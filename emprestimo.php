@@ -1,16 +1,16 @@
-<!--Página de visualização de livros-->
+<!--Página de visualização de empréstimos-->
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html lang="pt-BR">
 <html>
 
 <head>
-    <title>Catálogo | Mascarenhas</title>
-    <link rel="stylesheet" href="">
+    <title>Empréstimos | Mascarenhas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Livros</h1>
+    <h1>Empréstimos</h1>
     <?php
     #Conexão com o banco de dados.
     session_start();
@@ -24,11 +24,11 @@
         exit();
         #Conexão com o banco de dados.
     } else {
-        #Lista com todos os livros.
-        $mostrarLivros = 'SELECT * FROM `acervo`';
-        $resultado = $conexao->query($mostrarLivros);
-        #Campo para busca de livro.
-        echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título'>
+        #Lista com todos os empréstimos.
+        $mostrarEmprestimos = 'SELECT * FROM `emprestimos`';
+        $resultado = $conexao->query($mostrarEmprestimos);
+        #Campo para busca de empréstimos.
+        echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título ou aluno'>
         <span id='txtHint'></span>
         <script>
         function showHint(str) {
@@ -42,30 +42,30 @@
                     document.getElementById('txtHint').innerHTML = this.responseText;
                 }
             };
-            xhttp.open('GET', 'livroPesquisar.php?nomePesquisado='+str, true);
+            xhttp.open('GET', 'emprestimoPesquisar.php?emprestimoPesquisado='+str, true);
             xhttp.send();
           }
         </script><br>";
-        #Campo para busca de livro.
+        #Campo para busca de empréstimo.
         while ($row = mysqli_fetch_array($resultado)) {
             echo "<br><table style='width: 20%;'>
                 <tr>
-                    <td style='width: 40%;'>
+                    <td style='width: 30%;'>
                         <img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
                     </td>
                     <td>
-                        Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano de Publicação: " . $row['anoPublicado'] . "<br>ISBN: " . $row['isbn'] . "<br>CDD: " . $row['cdd'] . "<br>CDU: " . $row['cdu'] . "<br>Gênero: " . $row['genero'] .'
+                        Aluno: " . $row['aluno'] . "<br>Livro: " . $row['livro'] . "<br>Data emprestado: " . date('d-m-Y', strtotime($row['dataEmprestimo'])) . "<br>Data de entrega: " . date('d-m-Y', strtotime($row['dataDevolucao']))."
                     </td>
-                </tr>
-            </table>';
-            #Form para a função de emprestar livros.
-            echo "<form method='post' action='livroEmprestar.php'>
-                    <input type='hidden' value='" . $row['nome'] . "' id='nome' name='nome'>
-                    <input type='submit' value='Emprestar'>
+                    </tr>
+                </table>";
+            #Form para a função de editar informações de livros.
+            echo "<form method='post' action='livroDevolucaoBD.php'>
+                    <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
+                    <input type='submit' value='Devolvido'>
                     </form>";
-            #Form para a função de emprestar livros.
+            #Form para a função de editar informações de livros.
         }
-        #Lista com todos os livros.
+        #Lista com todos os empréstimos.
     }
     ?>
     <!--Retornar a página anterior-->
