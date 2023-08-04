@@ -6,7 +6,7 @@
 
 <head>
     <title>Catálogo | Mascarenhas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
 </head>
 
 <body>
@@ -47,9 +47,6 @@
           }
         </script><br>";
         #Campo para busca de livro.
-        #Hyperlink para cadastro de livro.
-        echo "<br><a href='cadastroLivros.php' class=''>Cadastrar livro</a><br>";
-        #Hyperlink para cadastro de livro.
         while ($row = mysqli_fetch_array($resultado)) {
             echo "<br><table style='width: 20%;'>
                 <tr>
@@ -62,7 +59,7 @@
                 </tr>
             </table>';
             #Form para a função de emprestar livros.
-            echo "<form method='post' action='emprestarLivro.php'>
+            echo "<form method='post' action='livroEmprestar.php'>
                     <input type='hidden' value='" . $row['nome'] . "' id='nome' name='nome'>
                     <input type='submit' value='Emprestar'>
                     </form>";
