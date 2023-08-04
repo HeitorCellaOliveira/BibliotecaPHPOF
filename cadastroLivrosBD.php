@@ -32,7 +32,7 @@ if ($conexao->connect_errno) {
     }
     #Salvar capaLivro do livro na pasta "Imagens" e no banco de dados.
     $cadastrarLivro = 'INSERT INTO `biblioteca`.`acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `cdd`, `cdu`, `genero`, `qtdLivros`, `capaLivro`)
-            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $nPags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $qtdLivros . '", "0","'.$arquivo.'");';
+            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $nPags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $qtdLivros . '", "'.$arquivo.'");';
     $resultado = $conexao->query($cadastrarLivro);
     $conexao->close();
     header('Location: catalogo.php', true, 301);

@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>LivroTeca</title>
+    <title>Cadastro Livros | Mascarenhas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,7 +14,7 @@
     <h1>Cadastro de livro</h1>
     <form method="post" action="cadastroLivrosBD.php" id="cadastro" name="cadastro" enctype="multipart/form-data">
         <label class="">Título </label><small>e subtítulo:</small>
-        <br><input type="text" id="titulo" name="titulo" required>
+        <br><input type="text" id="nome" name="nome" required>
         <br><br><label class="">Autor:</label>
         <br><input type="text" id="autor" name="autor" required>
         <br><br><label class="">Editora:</label>
@@ -53,7 +53,7 @@
         <br><br><label class="">Quantidade:</label>
         <br><input type="text" id="quantidade" name="quantidade" required>
         <br><br><label class="">Capa do Livro:</label>
-        <br><input type="file" name="capaLivro" accept="image/*">
+        <br><input type="file" name="capaLivro" id="capaLivro" accept="image/*">
         <br><br><input type="submit" value="Cadastrar">
     </form>
     <!--Forms para cadastro-->
