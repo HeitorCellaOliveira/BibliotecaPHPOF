@@ -189,13 +189,11 @@ $result = $conexao->query($sql);
         <i class="fas fa-bars fa-2xl"></i>
         </div>
         <div class="dropdown-menu" id="dropdown-menu">
-            <a href="cadastroTurmas.php">Lista de Turmas</a>
-            <a href="cadastroTurmas.php">Cadastro de Turmas</a>
-            <a href="cadastroAlunos.php">Cadastro de Alunos</a>
-            <a href="buscarAluno.php">Lista de Alunos</a>
-            <a href="buscarAluno.php">Lista de Multas</a>
-            <a href="cadastroLivros.php">Cadastrar Livros</a>
-            <a href="buscarLivro.php">Lista de Livros</a>
+            <a href="emprestimo.php">Empréstimos</a>
+            <a href="livroCadastrar.php">Livros Novos</a>
+            <a href="livros.php">Livros</a>
+            <a href="estudantes.php">Estudantes</a>
+            <a href="turmas.php">Turmas</a>
             <a href="logout.php">Sair da Conta</a>
         </div>
     </nav>
