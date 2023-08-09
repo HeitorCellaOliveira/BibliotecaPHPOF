@@ -275,9 +275,10 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     color:#000000;
     position:absolute;
     font-family: 'Bebas Neue', sans-serif;
-    top:330px;
+    top:560px;
     font-size:13px;
-    left:65%;
+    left:85%;
+
   }
  
 </style>
@@ -332,7 +333,9 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
             <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone"></td></tr>
             <i class="fa-solid fa-phone"id="user3"></i>
 
-            <tr><td><br><input class="button" type="submit" value="Cadastrar" style="cursor: pointer";><a href="loginPage.php">Voltar</a></td></tr></td></tr>
+            <tr><td><br><input class="button" type="submit" value="Cadastrar" style="cursor: pointer";>
+            
+            <a href="loginPage.php" class="naopossui">Voltar</a></td></tr></td></tr>
             
         </table>
     </form>
