@@ -42,13 +42,13 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
         
     }
     body {
-            background-color: #5C5C5C; /* Light gray background color */
+            background-color: #DAD8D8; /*ght gray background color */
             margin: 0;
             padding: 0;
         }
         
     .logo{
-      left:1%;
+      left:46%;
       position: absolute;
       width:7%;
       top:-5px;
