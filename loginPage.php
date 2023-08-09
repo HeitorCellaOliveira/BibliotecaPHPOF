@@ -227,7 +227,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 
     #nomeUsuario{
     position: absolute;
-	width:400px;
+	width:360px;
 	height:40px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -247,7 +247,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     }
     #senha{
     position: absolute;
-	width:400px;
+	width:360px;
 	height:40px;
     top:280px;
     left:20px;
