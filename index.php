@@ -30,7 +30,7 @@ $result = $conexao->query($sql);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title>Início | Mascarenhas</title>
+    <title> Início | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -204,9 +204,8 @@ $result = $conexao->query($sql);
     <p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
     
 
-
     <footer>
-        <p>&copy; 2023 - Todos os direitos reservados</p>
+        <p>&copy; 2023 - Todos os direitos reservados </p>
         <br>
         <nav>
             <ul>
