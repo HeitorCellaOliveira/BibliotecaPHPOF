@@ -66,7 +66,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         
     }
     body {
-            background-color: #5C5C5C; /* Light gray background color */
+            background-color: #FFFFFF; /* Light gray background color */
             margin: 0;
             padding: 0;
         }
@@ -159,6 +159,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         left:14%;
         top: 87.3px;
         border-radius: 10px;
+        box-shadow: 10px 0 gray; /* deslocamento de 10px à direita. */
         
     }
     .ret{
@@ -171,40 +172,6 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         
         border-radius: 0px 10px 10px 0px;
 
-    }
-
-
-
-    footer {
-      background-color: rgb(0, 0, 0);
-        background-color: #000000;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-        top:827px;
-        width: 100%;
-        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
-        bottom: 0; /* Posiciona o footer na parte inferior da página */
-        left: 0; 
-    }
-
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-
-    a {
-        color: #fff;
-        text-decoration: none;
     }
 
     .tittle{
