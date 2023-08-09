@@ -182,7 +182,6 @@ $result = $conexao->query($sql);
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="encontreLivro.php">Encontre seu Livro</a>
         <a href="statusAluno.php">Status do Aluno</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu" id="icon-menu">
