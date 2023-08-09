@@ -66,13 +66,13 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         
     }
     body {
-            background-color: #FFFFFF; /* Light gray background color */
+            background-color: #DAD8D8; /* Light gray background color */
             margin: 0;
             padding: 0;
         }
         
     .logo{
-      left:1%;
+      left:46%;
       position: absolute;
       width:7%;
       top:-5px;
@@ -159,7 +159,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         left:14%;
         top: 87.3px;
         border-radius: 10px;
-        box-shadow: 10px 0 gray; /* deslocamento de 10px à direita. */
+
         
     }
     .ret{
