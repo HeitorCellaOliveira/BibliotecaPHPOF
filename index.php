@@ -178,7 +178,7 @@ $result = $conexao->query($sql);
 </head>
 <body>
     <nav class="navbar">
-        <img src="images/logo.png" class="logo">
+        <img src="Imagens/logo.png" class="logo">
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
@@ -198,7 +198,7 @@ $result = $conexao->query($sql);
         </div>
     </nav>
 
-  <img src="images/baner.png" class="banner">
+  <img src="Imagens/baner.png" class="banner">
   
 
     <p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
