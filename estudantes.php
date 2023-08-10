@@ -100,7 +100,6 @@
         margin-bottom: 0;
     }
     </style>
-    <title> Catálogo | Mascarenhas</title>
 
 </head>
 
