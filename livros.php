@@ -1,8 +1,14 @@
 <?php include('protect.php'); ?>
+
+<!--Página de visualização de livros-->
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+<html lang="pt-BR">
+<html>
+
 <head>
-    <meta charset="UTF-8">
+    <title>Livros | Mascarenhas</title>
+    <link rel="stylesheet" href="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
     <title> Início | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
 
@@ -101,8 +109,6 @@
         margin-bottom: 0;
     }
     </style>
-    <title> Catálogo | Mascarenhas</title>
-
 </head>
 
 <body>
@@ -148,24 +154,6 @@
     });
     </script>
 
-</body>
-
-</html>
-
-
-
-<!--Página de visualização de livros-->
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html lang="pt-BR">
-<html>
-
-<head>
-    <title>Livros | Mascarenhas</title>
-    <link rel="stylesheet" href="">
-</head>
-
-<body>
     <h1>Livros</h1>
     <?php
     #Conexão com o banco de dados.
