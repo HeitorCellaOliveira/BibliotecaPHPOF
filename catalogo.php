@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -99,6 +100,38 @@
         border-bottom: none;
         margin-bottom: 0;
     }
+    
+    footer {
+      background-color: rgb(0, 0, 0);
+        background-color: #000000;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+        top:827px;
+        width: 100%;
+        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
+        bottom: 0; /* Posiciona o footer na parte inferior da página */
+        left: 0; 
+    }
+
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
     </style>
     <title> Catálogo | Mascarenhas</title>
 
@@ -146,15 +179,24 @@
         dropdownMenu.style.display = 'none';
     });
     </script>
-
-</body>
-
-</html>
-
+    
+    <footer>
+        <p>&copy; 2023 - Todos os direitos reservados </p>
+        <br>
+        <nav>
+            <ul>
+                <li><a href="#">Termos de uso</a></li>
+                <li><a href="#">Política de privacidade</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
     <h1>Livros</h1>
     <?php
     #Conexão com o banco de dados.
-    session_start();
+   
     $hostname = '127.0.0.1';
     $user = 'root';
     $password = 'root';
@@ -212,3 +254,7 @@
     <!--Retornar a página anterior-->
     <br><a href='index.php'>Voltar</a>
     <!--Retornar a página anterior-->
+
+</body>
+
+</html>

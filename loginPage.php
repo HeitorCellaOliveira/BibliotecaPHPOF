@@ -259,6 +259,9 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 <body>
     <nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
+            <a href="loginPageDark.php" style="color: #ffffff;">
+            <i class="fas fa-moon"></i>
+            </a>
             </div>
     </nav>
     <center>

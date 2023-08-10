@@ -280,6 +280,7 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     left:85%;
 
   }
+  
  
 </style>
 
