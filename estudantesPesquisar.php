@@ -24,7 +24,7 @@ if ($conexao->connect_errno) {
   #Informações de usuário que são exibidas.
   if ($resultado->num_rows != 0) {
     $row = $resultado->fetch_array();
-    echo "<br><br>" . $row['nome'] . "<br> Endereço: " . $row['endereco'] . "<br>Turma: " . $row['turma'] . "<br>Telefone: (+55) " . $row['telefone'];
+    echo "<br><br>" . $row['nome'] . "<br> Endereço: " . $row['endereco'] . "<br>Turma: " . $row['turma'] . "<br>Telefone: (+55) " . $row['telefone']. "<br>Nº da Matrícula: ". $row['nMatricula'];
     echo "<form method='post' action='alunoAtualizar.php'>
                     <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
                     <input type='submit' value='Editar'>

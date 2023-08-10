@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rua = $conexao->real_escape_string($_POST['rua']);
     $estante = $conexao->real_escape_string($_POST['estante']);
     $prateleira = $conexao->real_escape_string($_POST['prateleira']);
+    $qtdEmprestimo = $conexao->real_escape_string($_POS['qtdEmprestimo']);
     $genero = $conexao->real_escape_string($_POST['genero']);
     $qtdLivros = intval($_POST['qtdLivros']); // Ensure integer value
 
@@ -43,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert data into the database
-    $cadastrarLivro = 'INSERT INTO `acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `rua`, `estante`, `prateleira`, `genero`, `qtdLivros`, `capaLivro`)
-            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", ' . $anoPublicado . ', ' . $nPags . ', "' . $isbn . '", "' . $rua . '", "' . $estante . '", "' . $prateleira . '", "' . $genero . '", ' . $qtdLivros . ', "' . $arquivo . '");';
+    $cadastrarLivro = 'INSERT INTO `acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `rua`, `estante`, `prateleira`, `genero`, `qtdLivros`, `qtdEmprestimo`, `capaLivro`)
+            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", ' . $anoPublicado . ', ' . $nPags . ', "' . $isbn . '", "' . $rua . '", "' . $estante . '", "' . $prateleira . '", "' . $genero . '", "' . $qtdLivros . '", "0", "' . $arquivo . '");';
     
     if ($conexao->query($cadastrarLivro)) {
         // Successful insertion

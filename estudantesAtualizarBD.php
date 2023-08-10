@@ -18,13 +18,15 @@ if ($conexao->connect_errno) {
     $endereco = $conexao->real_escape_string($_POST['endereco']);
     $turma = $conexao->real_escape_string($_POST['turma']);
     $telefone = $conexao->real_escape_string($_POST['telefone']);
+    $nMatricula = $conexao->real_escape_string($_POST['nMatricula']);
     $selecionarUsuario = 'SELECT * FROM `cadastroalunos` WHERE `id` = "' . $id . '";';
     $resultado = $conexao->query($selecionarUsuario);
     $salvarEdicoes = 'UPDATE `biblioteca`.`cadastroalunos`
                 SET `nome` = "' . $nome . '",
                 `endereco` = "' . $endereco . '",
                 `turma` = "' . $turma . '",
-                `telefone` = "' . $telefone . '"
+                `telefone` = "' . $telefone . '",
+                `nMatricula` = "' . $nMatricula . '"
                 WHERE `id`="' . $id . '";';
     $resultado = $conexao->query($salvarEdicoes);
     $conexao->close();

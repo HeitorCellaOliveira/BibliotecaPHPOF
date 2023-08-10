@@ -41,6 +41,8 @@
                             <br><input type="text" id="turma" name="turma" value="' . $row['turma'] . '" required>
                             <br><br><label class="">Telefone:</label>
                             <br><input type="text" id="telefone" name="telefone" value="' . $row['telefone'] . '" required>
+                            <br><br><label class="">Nº da Matrícula:</label>
+                            <br><input type="text" id="nMatricula" name="nMatricula" value="' . $row['nMatricula'] . '" required>
                             <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
                             <br><br><input type="submit" value="Salvar">
                         </form>

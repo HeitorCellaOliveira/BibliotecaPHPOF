@@ -45,10 +45,12 @@
             <br><input type="text" id="nPags" name="nPags" value="' . $row['nPags'] . '" required>
             <br><br><label class="">ISBN:</label>
             <br><input type="text" id="isbn" name="isbn" value="' . $row['isbn'] . '" required>
-            <br><br><label class="">CDD:</label>
-            <br><input type="text" id="cdd" name="cdd" value="' . $row['cdd'] . '" required>
-            <br><br><label class="">CDU:</label>
-            <br><input type="text" id="cdu" name="cdu" value="' . $row['cdu'] . '" required>
+            <br><br><label class="">Rua:</label>
+            <br><input type="text" id="rua" name="rua" value="' . $row['rua'] . '" required>
+            <br><br><label class="">Estante:</label>
+            <br><input type="text" id="estante" name="estante" value="' . $row['estante'] . '" required>
+            <br><br><label class="">Prateleira:</label>
+            <br><input type="text" id="prateleira" name="prateleira" value="' .$row['prateleira'].'" required>
             <br><br><label class="">Gênero:</label>
             <!--Todas as opções de gênero literário-->
             <br><select id="genero" name="genero">

@@ -17,8 +17,9 @@ if ($conexao->connect_errno) {
     $endereco = $conexao->real_escape_string($_POST['endereco']);
     $telefone = $conexao->real_escape_string($_POST['telefone']);
     $turma = $conexao->real_escape_string($_POST['turma']);
-    $cadastrarAluno = 'INSERT INTO `biblioteca`.`cadastroalunos`(`nome`, `endereco`, `telefone`, `turma`)
-            VALUES ("' . $nome . '", "' . $endereco . '", "' . $telefone . '", "' . $turma . '");';
+    $nMatricula = $conexao->real_escape_string($_POST['nMatricula']);
+    $cadastrarAluno = 'INSERT INTO `biblioteca`.`cadastroalunos`(`nome`, `endereco`, `telefone`, `turma`, `nMatricula`)
+            VALUES ("' . $nome . '", "' . $endereco . '", "' . $telefone . '", "' . $turma . '", "'. $nMatricula . '");';
     $resultado = $conexao->query($cadastrarAluno);
     $conexao->close();
     header('Location: estudantes.php', true, 301);

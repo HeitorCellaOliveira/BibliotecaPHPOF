@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Início | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -148,6 +147,8 @@
     });
     </script>
 
+
+
 </body>
 
 </html>
@@ -199,8 +200,8 @@
         #Conexão com o banco de dados.
     } else {
         #Lista com todos os usuários.
-        $mostrarestudantess = 'SELECT * FROM `cadastroalunos`';
-        $resultado = $conexao->query($mostrarestudantess);
+        $mostrarestudantes = 'SELECT * FROM `cadastroalunos`';
+        $resultado = $conexao->query($mostrarestudantes);
         #Campo para busca de usuário.
         echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>
         <span id='txtHint'></span>
@@ -222,7 +223,7 @@
         </script>";
         #Campo para busca de usuário.
         #Hyperlink para cadastro de estudantes.
-        echo "<br><br><a href='estudantesCadastrar.php' class='texto1'>Cadastrar estudantes</a><br>";
+        echo "<br><br><a href='estudantesCadastrar.php' class=''>Cadastrar estudantes</a><br>";
         #Hyperlink para cadastro de estudantes.
         while ($row = mysqli_fetch_array($resultado)) {
             echo "<br>" . $row['nome'] . "<br>Endereço: " . $row['endereco'] ."<br>Telefone: (+55) " . $row['telefone'];
