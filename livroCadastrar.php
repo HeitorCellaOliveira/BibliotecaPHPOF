@@ -1,7 +1,14 @@
 <?php include('protect.php'); ?>
-<!DOCTYPE html>
-<html lang="en">
+
+ <!--Página de cadastro de livro-->
+ <!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="pt-BR">
+<html>
+
 <head>
+    <title>Cadastro Livros | Mascarenhas</title>
+    <link rel="stylesheet" href="">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -100,41 +107,7 @@
         border-bottom: none;
         margin-bottom: 0;
     }
-    
-    footer {
-      background-color: rgb(0, 0, 0);
-        background-color: #000000;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-        top:827px;
-        width: 100%;
-        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
-        bottom: 0; /* Posiciona o footer na parte inferior da página */
-        left: 0; 
-    }
-
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
     </style>
-    <title> Catálogo | Mascarenhas</title>
-
 </head>
 
 <body>
@@ -179,40 +152,7 @@
         dropdownMenu.style.display = 'none';
     });
     </script>
-        <footer>
-        <p>&copy; 2023 - Todos os direitos reservados </p>
-        <br>
-        <nav>
-            <ul>
-                <li><a href="#">Termos de uso</a></li>
-                <li><a href="#">Política de privacidade</a></li>
-                <li><a href="#">Sobre nós</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-    </footer>
 
-
-
-</body>
-
-</html>
- 
- 
- 
- 
- <!--Página de cadastro de livro-->
- <!DOCTYPE html>
-<meta charset="utf-8">
-<html lang="pt-BR">
-<html>
-
-<head>
-    <title>LivroTeca</title>
-    <link rel="stylesheet" href="">
-</head>
-
-<body>
     <!--Forms para cadastro-->
     <h1>Cadastro de livro</h1>
     <form method="post" action="livroCadastrarBD.php" id="cadastro" name="cadastro" enctype="multipart/form-data">
@@ -231,9 +171,9 @@
         <br><br><label class="">Rua:</label>
         <br><input type="text" id="rua" name="rua" required>
         <br><br><label class="">Estante:</label>
-        <br><input type="text" name="estante" id="estante" required>
+        <br><input type="text" id="estante" name="estante" required>
         <br><br><label class="">Prateleira:</label>
-        <br><input type="text" name="prateleira" id="prateleira" required>
+        <br><input type="text" id="prateleira" name="prateleira" required>
         <br><br><label class="">Gênero:</label>
         <!--Todas as opções de gênero literário-->
         <br><select id="genero" name="genero">

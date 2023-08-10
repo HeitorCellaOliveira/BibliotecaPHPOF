@@ -280,16 +280,6 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     left:85%;
 
   }
-  #icon{
-
-    position: absolute;
-    left: 1150px; /* Ajuste o valor conforme necessário */
-    color: #ffffff;
-    font-size: 24px;
-    top:3px; /* Defina o tamanho do ícone */
-        
-    }
-  
  
 </style>
 
@@ -317,9 +307,6 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
 <body>
 <nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
-            <a href="cadastrarPageDark.php" style="color: #ffffff;">
-            <i class="fas fa-moon" id="icon"></i>
-            </a>
             </div>
     </nav>
     <center>
