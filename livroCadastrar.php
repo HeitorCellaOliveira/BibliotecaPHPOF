@@ -228,10 +228,12 @@
         <br><input type="text" id="nPags" name="nPags" required>
         <br><br><label class="">ISBN:</label>
         <br><input type="text" id="isbn" name="isbn" required>
-        <br><br><label class="">CDD:</label>
-        <br><input type="text" id="cdd" name="cdd" required>
-        <br><br><label class="">CDU:</label>
-        <br><input type="text" id="cdu" name="cdu" required>
+        <br><br><label class="">Rua:</label>
+        <br><input type="text" id="rua" name="rua" required>
+        <br><br><label class="">Estante:</label>
+        <br><input type="text" name="estante" id="estante" required>
+        <br><br><label class="">Prateleira:</label>
+        <br><input type="text" name="prateleira" id="prateleira" required>
         <br><br><label class="">Gênero:</label>
         <!--Todas as opções de gênero literário-->
         <br><select id="genero" name="genero">

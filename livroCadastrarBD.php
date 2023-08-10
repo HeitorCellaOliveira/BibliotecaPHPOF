@@ -19,8 +19,9 @@ if ($conexao->connect_errno) {
     $anoPublicado = $conexao->real_escape_string($_POST['anoPublicado']);
     $nPags = $conexao->real_escape_string($_POST['nPags']);
     $isbn = $conexao->real_escape_string($_POST['isbn']);
-    $cdd = $conexao->real_escape_string($_POST['cdd']);
-    $cdu = $conexao->real_escape_string($_POST['cdu']);
+    $rua = $conexao->real_escape_string($_POST['rua']);
+    $estante = $conexao->real_escape_string($_POST['estante']);
+    $prateleira = $conexao->real_escape_string($_POST['prateleira']);
     $genero = $conexao->real_escape_string($_POST['genero']);
     $qtdLivros = $conexao->real_escape_string($_POST['qtdLivros']);
     #Salvar capaLivro do livro na pasta "Imagens" e no banco de dados.
@@ -31,8 +32,8 @@ if ($conexao->connect_errno) {
         move_uploaded_file($_FILES['capaLivro']['tmp_name'], $diretorio . $arquivo);
     }
     #Salvar capaLivro do livro na pasta "Imagens" e no banco de dados.
-    $cadastrarLivro = 'INSERT INTO `biblioteca`.`acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `cdd`, `cdu`, `genero`, `qtdLivros`, `capaLivro`)
-            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $nPags . '", "' . $isbn . '", "' . $cdd . '", "' . $cdu . '", "' . $genero . '", "' . $qtdLivros . '", "'.$arquivo.'");';
+    $cadastrarLivro = 'INSERT INTO `biblioteca`.`acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `rua`, `estante`, `prateleira`, `genero`, `qtdLivros`, `capaLivro`)
+            VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", "' . $anoPublicado . '", "' . $nPags . '", "' . $isbn . '", "' . $rua . '", "' . $estante . '", "'. $prateleira .'", "' . $genero . '", "' . $qtdLivros . '", "'.$arquivo.'");';
     $resultado = $conexao->query($cadastrarLivro);
     $conexao->close();
     header('Location: catalogo.php', true, 301);
