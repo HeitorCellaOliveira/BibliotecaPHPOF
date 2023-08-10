@@ -314,12 +314,12 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
             <i class="fa-solid fa-user" id="user"></i>
             
             <tr>
-                <td><input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o usuário"></td>
+                <td><input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o usuário" required></td>
             </tr>
 
             <i class="fa-solid fa-lock" id="user2"></i>
             <tr> 
-                <td><input type="password" name="senha" id="senha" placeholder="Digite a senha"></td>
+                <td><input type="password" name="senha" id="senha" placeholder="Digite a senha" required></td>
             </tr>
 
             <tr>

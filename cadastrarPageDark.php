@@ -338,13 +338,15 @@ top:3px; /* Defina o tamanho do ícone */
             <tr><td><p class="tittle">Cadastro ADM </p></td></tr>
 
 
-            <tr><td><input  class="" type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o seu nome de usuário"></td></tr>
+            <tr><td><input  class="" type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o seu nome de usuário" required></td></tr>
             <i class="fa-solid fa-user" id="user"></i>
 
-            <tr><td><input class="" type="password" name="senha" id="senha" placeholder="Digite sua senha"></td></tr>
+            <tr><td><input class="" type="password" name="senha" id="senha" placeholder="Digite sua senha" required></td></tr>
             <i class="fa-solid fa-lock" id="user2"></i>
 
-            <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone"></td></tr>
+            <tr><td><input class="" type="password" name="resenha" id="resenha" placeholder="Digite a senha novamente" required></td></tr>
+
+            <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone" required></td></tr>
             <i class="fa-solid fa-phone"id="user3"></i>
 
             <tr><td><br><input class="button" type="submit" value="Cadastrar" style="cursor: pointer";>

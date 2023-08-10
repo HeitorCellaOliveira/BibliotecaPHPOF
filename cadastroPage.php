@@ -11,6 +11,8 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
         echo "<script> alert('Preencha os campos!')</script>";
     }
 }
+
+include_once('funcoesJS.php');
 ?>
 
 <!DOCTYPE html>
@@ -230,10 +232,20 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     margin-bottom: 20px;
     padding-left: 45px;
     }
+    #resenha {
+    position: absolute;
+	width:350px;
+	height:40px;
+    top:330px;
+    left:20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding-left: 45px;
+    }
 
     #user3{
     position: absolute;
-    top: 340px; 
+    top: 404px; 
     left: 35px; 
     font-size: 24px;
     z-index: 1;
@@ -243,7 +255,7 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     position: absolute;
 	width:350px;
 	height:40px;
-    top:330px;
+    top:395px;
     left:20px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -324,16 +336,18 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
             <tr><td><p class="tittle">Cadastro ADM </p></td></tr>
 
 
-            <tr><td><input  class="" type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o seu nome de usuário"></td></tr>
+            <tr><td><input  class="" type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o seu nome de usuário" required></td></tr>
             <i class="fa-solid fa-user" id="user"></i>
 
-            <tr><td><input class="" type="password" name="senha" id="senha" placeholder="Digite sua senha"></td></tr>
+            <tr><td><input class="" type="password" name="senha" id="senha" placeholder="Digite sua senha" required></td></tr>
             <i class="fa-solid fa-lock" id="user2"></i>
 
-            <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone"></td></tr>
+            <tr><td><input class="" type="password" name="resenha" id="resenha" placeholder="Digite a senha novamente" required></td></tr>
+
+            <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone" required></td></tr>
             <i class="fa-solid fa-phone"id="user3"></i>
 
-            <tr><td><br><input class="button" type="submit" value="Cadastrar" style="cursor: pointer";>
+            <tr><td><br><input class="button" onClick="validaSenha()" type="submit" value="Cadastrar" style="cursor: pointer";>
             
             <a href="loginPage.php" class="naopossui">Voltar</a></td></tr></td></tr>
             
