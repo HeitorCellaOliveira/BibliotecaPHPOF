@@ -252,6 +252,15 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     font-size:13px;
     left:65%;
   }
+  #icon{
+
+    position: absolute;
+    left: 1150px; /* Ajuste o valor conforme necessário */
+    color: #ffffff;
+    font-size: 24px;
+    top:3px; /* Defina o tamanho do ícone */
+        
+    }
  
 
     </style>
@@ -260,7 +269,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     <nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
             <a href="loginPageDark.php" style="color: #ffffff;">
-            <i class="fas fa-moon"></i>
+            <i class="fas fa-moon" id="icon"></i>
             </a>
             </div>
     </nav>

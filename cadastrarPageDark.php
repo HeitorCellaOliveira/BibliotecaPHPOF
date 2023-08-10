@@ -1,38 +1,14 @@
 <?php
-session_start();
 
-$hostname = "127.0.0.1";
-$user = "root";
-$password = "root";
-$database = "biblioteca";
-
-$mysqli = mysqli_connect($hostname, $user, $password, $database);
-
-if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
-    if (strlen($_POST['nomeUsuario']) == 0) {
-        echo "<script> alert('Preencha seu nome de usuário!')</script>";
+if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone'])) {
+    if(strlen($_POST['nome']) == 0) {
+        echo "<script> alert('Insira o nome de usuário')</script>";
     } else if (strlen($_POST['senha']) == 0) {
-        echo "<script> alert('Preencha sua senha!')</script>";
-    } else {
-        $nomeUsuario = $mysqli->real_escape_string($_POST['nomeUsuario']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
-
-        $sql_code = "SELECT * FROM loginadm WHERE nomeUsuario = '$nomeUsuario' AND senha = '$senha'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-        $quantidade = $sql_query->num_rows;
-
-        if ($quantidade == 1) {
-            $usuario = $sql_query->fetch_assoc();
-
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nomeUsuario'] = $usuario['nomeUsuario'];
-
-            header("Location: index.php");
-            exit();
-        } else {
-            echo "<script> alert('Falha ao logar! E-mail ou senha incorretos')</script>";
-        }
+        echo "<script> alert('Insira a senha!')</script>";
+    } else if (strlen($_POST['telefone']) == 0) {
+        echo "<script> alert('Insira o telefone!')</script>";
+    } else if (strlen($_POST['nome' && 'senha' && 'telefone']) == 0) {
+        echo "<script> alert('Preencha os campos!')</script>";
     }
 }
 ?>
@@ -42,9 +18,9 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet">
-    <title>Login | Mascarenhas</title>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="">
+    <title> Cadastro | Mascarenhas </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.4.0/css/all.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -70,6 +46,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
             margin: 0;
             padding: 0;
         }
+    
         
     .logo{
       left:46%;
@@ -159,7 +136,6 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         left:14%;
         top: 87.3px;
         border-radius: 10px;
-
         
     }
     .ret{
@@ -174,13 +150,46 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 
     }
 
+
+    footer {
+      background-color: rgb(0, 0, 0);
+        background-color: #000000;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+        top:827px;
+        width: 100%;
+        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
+        bottom: 0; /* Posiciona o footer na parte inferior da página */
+        left: 0; 
+    }
+
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+
     .tittle{
         color:#000000;
         font-size:50px;
         font-family: 'Playfair Display', serif;
         position: absolute;
         top:75px;
-        left:75px;
+        left:60px;
     }
     #user{
         position: absolute;
@@ -194,7 +203,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 
     #nomeUsuario{
     position: absolute;
-	width:360px;
+	width:350px;
 	height:40px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -205,7 +214,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     }
     #user2{
     position: absolute;
-    top: 290px; 
+    top: 275px; 
     left: 35px; 
     font-size: 24px;
     color:;
@@ -214,9 +223,28 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     }
     #senha{
     position: absolute;
-	width:360px;
+	width:350px;
 	height:40px;
-    top:280px;
+    top:265px;
+    left:20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding-left: 45px;
+    }
+
+    #user3{
+    position: absolute;
+    top: 340px; 
+    left: 35px; 
+    font-size: 24px;
+    z-index: 1;
+    }
+
+    #telefone{
+    position: absolute;
+	width:350px;
+	height:40px;
+    top:330px;
     left:20px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -248,70 +276,83 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     color:#000000;
     position:absolute;
     font-family: 'Bebas Neue', sans-serif;
-    top:330px;
+    top:560px;
     font-size:13px;
-    left:65%;
+    left:85%;
+
   }
-  
   #icon{
 
-    position: absolute;
-    left: 1150px; /* Ajuste o valor conforme necessário */
-    color: #ffffff;
-    font-size: 24px;
-    top:3px; /* Defina o tamanho do ícone */
-        
-  }
+position: absolute;
+left: 1150px; /* Ajuste o valor conforme necessário */
+color: #ffffff;
+font-size: 24px;
+top:3px; /* Defina o tamanho do ícone */
+    
+}
   
+ 
+</style>
 
-    </style>
+    <script>
+    function formatarTelefone() {
+    var telefone = document.getElementById('telefone');
+    var valor = telefone.value;
+
+    // Remove todos os caracteres não numéricos
+    valor = valor.replace(/\D/g, '');
+
+    // Verifica se o número possui 11 dígitos (com DDD)
+    if (valor.length === 11) {
+        valor = valor.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
+    }
+    // Verifica se o número possui 10 dígitos (sem DDD)
+    else if (valor.length === 10) {
+        valor = valor.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
+    }
+
+    telefone.value = valor;
+    }
+    </script>
 </head>
 <body>
-    <nav class="navbar">
+<nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
-            <a href="loginPage.php">
-            <i class="fa-solid fa-sun" style="color: " id="icon"> </i>
+            <a href="cadastroPage.php" style="color: #ffffff;">
+            <i class="fa-solid fa-sun" id="icon"></i>
             </a>
+            </div>
     </nav>
     <center>
  
 
     <div class="ret2">
         <img src="Imagens/black.png" class="ret2">
-        
     </div>
     <div class="ret">
     
 
-
-    
-        <center>
-        <form method="post" action="">
+    <center>
+    <form action="cadastroAdmBD.php" method="post" id="formlogin" name="formlogin">
         <table style="margin-top: 20em;">
-            <tr>
-                <td><p class="tittle">Login</p></td>
-            </tr>
+            <tr><td><p class="tittle">Cadastro ADM </p></td></tr>
+
+
+            <tr><td><input  class="" type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o seu nome de usuário"></td></tr>
             <i class="fa-solid fa-user" id="user"></i>
-            
-            <tr>
-                <td><input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Digite o usuário"></td>
-            </tr>
 
+            <tr><td><input class="" type="password" name="senha" id="senha" placeholder="Digite sua senha"></td></tr>
             <i class="fa-solid fa-lock" id="user2"></i>
-            <tr> 
-                <td><input type="password" name="senha" id="senha" placeholder="Digite a senha"></td>
-            </tr>
 
-            <tr>
-                <td><br><input type="submit" value="Entrar" style="cursor: pointer;" class="button">
-                
-                <a href="cadastrarPageDark.php" class="naopossui">Não possui conta?</a></td>
-            </tr>
+            <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone"></td></tr>
+            <i class="fa-solid fa-phone"id="user3"></i>
+
+            <tr><td><br><input class="button" type="submit" value="Cadastrar" style="cursor: pointer";>
+            
+            <a href="loginPageDark.php" class="naopossui">Voltar</a></td></tr></td></tr>
             
         </table>
-        </form>
+    </form>
     </center>
-    </div>
-
 </body>
 </html>
