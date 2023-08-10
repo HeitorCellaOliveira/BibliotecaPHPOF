@@ -210,7 +210,7 @@
                         <img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
                     </td>
                     <td>
-                        Nome: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>ISBN: " . $row['isbn'] . "<br>CDD: " . $row['cdd'] . "<br>CDU: " . $row['cdu'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade disponível: " . $row['qtdLivros'] . '<br>Quantidade emprestada: ' . $row['qtdEmprestimo'] . '
+                        Nome: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>ISBN: " . $row['isbn'] . "<br>Rua: " . $row['rua'] . "<br>Estante: " . $row['estante'] . "<br>Prateleira: ". $row['prateleira'] ."<br>Gênero: " . $row['genero'] . "<br>Quantidade disponível: " . $row['qtdLivros'] . '<br>Quantidade emprestada: ' . $row['qtdEmprestimo'] . '
                     </td>
                 </tr>
             </table>';
