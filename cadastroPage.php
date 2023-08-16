@@ -11,8 +11,6 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
         echo "<script> alert('Preencha os campos!')</script>";
     }
 }
-
-include_once('funcoesJS.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,10 +41,11 @@ include_once('funcoesJS.php');
         
     }
     body {
-            background-color: #DAD8D8; /*ght gray background color */
+            background-color: #D8D8D8; /* Light gray background color */
             margin: 0;
             padding: 0;
         }
+    
         
     .logo{
       left:46%;
@@ -249,6 +248,14 @@ include_once('funcoesJS.php');
     font-size: 24px;
     z-index: 1;
     }
+    #user4{
+    position: absolute;
+    top: 338px; 
+    left: 35px; 
+    font-size: 24px;
+    z-index: 1;
+
+    }
 
     #telefone{
     position: absolute;
@@ -278,7 +285,7 @@ include_once('funcoesJS.php');
     font-size:12px;
     weight:bold;
     position: relative;
-    top:100px;
+    top:130px;
     left:0%;
     text-decoration:bold;
   }
@@ -291,6 +298,16 @@ include_once('funcoesJS.php');
     left:85%;
 
   }
+  #icon{
+
+    position: absolute;
+    left: 1150px; /* Ajuste o valor conforme necessário */
+    color: #ffffff;
+    font-size: 24px;
+    top:3px; /* Defina o tamanho do ícone */
+        
+}
+  
  
 </style>
 
@@ -318,6 +335,9 @@ include_once('funcoesJS.php');
 <body>
 <nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
+            <a href="cadastrarPageDark.php" style="color: #ffffff;">
+            <i class="fas fa-moon" id="icon"></i>
+            </a>
             </div>
     </nav>
     <center>
@@ -342,13 +362,14 @@ include_once('funcoesJS.php');
             <i class="fa-solid fa-lock" id="user2"></i>
 
             <tr><td><input class="" type="password" name="resenha" id="resenha" placeholder="Digite a senha novamente" required></td></tr>
+            <i class="fa-solid fa-lock" id="user4"></i>
 
             <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone" required></td></tr>
             <i class="fa-solid fa-phone"id="user3"></i>
 
-            <tr><td><br><input class="button" onClick="validaSenha()" type="submit" value="Cadastrar" style="cursor: pointer";>
+            <tr><td><br><input class="button" type="submit" value="Cadastrar" style="cursor: pointer";>
             
-            <a href="loginPage.php" class="naopossui">Voltar</a></td></tr></td></tr>
+            <a href="loginPageDark.php" class="naopossui">Voltar</a></td></tr></td></tr>
             
         </table>
     </form>

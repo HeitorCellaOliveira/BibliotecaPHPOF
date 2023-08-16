@@ -65,16 +65,16 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         
     }
     body {
-            background-color: #5C5C5C; /* Light gray background color */
+            background-color: #DBDBDB; /* Light gray background color */
             margin: 0;
             padding: 0;
         }
         
     .logo{
-      left:1%;
-      position: absolute;
-      width:7%;
-      top:-5px;
+            left:46%;
+            position: absolute;
+            width:7%;
+            top:-5px;
     }
     .navbar {
         text-align: center;
@@ -174,37 +174,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 
 
 
-    footer {
-      background-color: rgb(0, 0, 0);
-        background-color: #000000;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-        top:827px;
-        width: 100%;
-        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
-        bottom: 0; /* Posiciona o footer na parte inferior da página */
-        left: 0; 
-    }
-
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
+ 
 
     .tittle{
         color:#000000;
@@ -284,13 +254,29 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     font-size:13px;
     left:65%;
   }
- 
+
+    
+  #icon{
+
+    position: absolute;
+    left: 1150px; /* Ajuste o valor conforme necessário */
+    color: #ffffff;
+    font-size: 24px;
+    top:3px; /* Defina o tamanho do ícone */
+    
+}
+
+
 
     </style>
 </head>
 <body>
     <nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
+            <a href="loginPageDark.php">
+            <i class="fas fa-moon" id="icon"></i>
+            </a>
+
             </div>
     </nav>
     <center>

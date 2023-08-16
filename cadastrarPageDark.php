@@ -230,20 +230,38 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     margin-bottom: 20px;
     padding-left: 45px;
     }
+    #resenha {
+    position: absolute;
+	width:350px;
+	height:40px;
+    top:330px;
+    left:20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding-left: 45px;
+    }
 
     #user3{
     position: absolute;
-    top: 340px; 
+    top: 404px; 
     left: 35px; 
     font-size: 24px;
     z-index: 1;
+    }
+    #user4{
+    position: absolute;
+    top: 338px; 
+    left: 35px; 
+    font-size: 24px;
+    z-index: 1;
+
     }
 
     #telefone{
     position: absolute;
 	width:350px;
 	height:40px;
-    top:330px;
+    top:395px;
     left:20px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -267,7 +285,7 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     font-size:12px;
     weight:bold;
     position: relative;
-    top:100px;
+    top:130px;
     left:0%;
     text-decoration:bold;
   }
@@ -282,12 +300,12 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
   }
   #icon{
 
-position: absolute;
-left: 1150px; /* Ajuste o valor conforme necessário */
-color: #ffffff;
-font-size: 24px;
-top:3px; /* Defina o tamanho do ícone */
-    
+    position: absolute;
+    left: 1150px; /* Ajuste o valor conforme necessário */
+    color: #ffffff;
+    font-size: 24px;
+    top:3px; /* Defina o tamanho do ícone */
+        
 }
   
  
@@ -344,6 +362,7 @@ top:3px; /* Defina o tamanho do ícone */
             <i class="fa-solid fa-lock" id="user2"></i>
 
             <tr><td><input class="" type="password" name="resenha" id="resenha" placeholder="Digite a senha novamente" required></td></tr>
+            <i class="fa-solid fa-lock" id="user4"></i>
 
             <tr><td><input class="" type="text" name="telefone" id="telefone" onkeyup="formatarTelefone()" placeholder="Digite seu telefone" required></td></tr>
             <i class="fa-solid fa-phone"id="user3"></i>
