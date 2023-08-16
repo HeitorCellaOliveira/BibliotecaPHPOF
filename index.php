@@ -20,7 +20,6 @@ $sql = "SELECT * FROM `acervo`";
 $result = $conexao->query($sql);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,19 +42,21 @@ $result = $conexao->query($sql);
         text-transform: none;
     }
 
-    .logo{
-      left:1%;
-      position: absolute;
-      width:7%;
-      top:-5px;
+    .logo {
+        left:1%;
+        position: absolute;
+        width:7%;
+        top:-5px;
     }
+    
     .navbar {
         text-align: center;
         background-color: rgb(0, 0, 0);
         height: 70px;
         overflow-x: hidden;
+        position: relative;
+        overflow-y: hidden; 
     }
-
 
     .navbar a {
         justify-content: center;
@@ -69,63 +70,65 @@ $result = $conexao->query($sql);
         text-decoration: none;
     }
 
-
     .navbar .icon-menu {
-        position: relative;
-        left: 95%;
-        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
         color: #ffffff;
-        top: -5px;
         font-size: 2rem;
         z-index: 2;
     }
 
-
-    .navbar .dropdown-menu {
-        display: none;
-        position: absolute;
-        width: 20rem;
-        left: 90%;
-        transform: translateX(-50%);
-        background-color: #ffffff;
-        color: #fffefe;
-        padding: 10px;
-        border-radius: 5px;
-        top: 50px;
-        height: 400px;
-        z-index: 3;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow-x: hidden;
-    }
-
-
-    .navbar .dropdown-menu a {
-        justify-content: center;
-        align-items: center;
-        display: block;
-        padding: 10px 10px;
-        border-bottom: 1px solid black;
-        color: black;
-        margin: 10px;
-        width: 100%;
+    .sidebar {
+        position: fixed;
+        right: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #f0f0f0;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s;
+        z-index: 1000;
         text-align: center;
-        left: 0%;
-        top: -100;
     }
 
-
-    .navbar .dropdown-menu a:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
+    .sidebar.active {
+        right: 0;
     }
 
+    .sidebar a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s; /* Adicione a transição de cor aqui */
+}
+
+    .sidebar a:hover {
+    background-color: #ddd;
+    color: #666; /* Troque a cor para cinza quando o mouse estiver sobre */
+}
+
+
+
+    /* Estilos para o ícone de menu */
+    .icon-menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 2rem;
+        z-index: 1001;
+    }
+
+    .icon-menu.white {
+        color: #fff;
+    }
 
     .welcome {
-       
         font-family: 'Philosopher', sans-serif;
         position: absolute;
         top: 150px;
@@ -136,26 +139,22 @@ $result = $conexao->query($sql);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-
     .banner {
         position: relative;
-       
     }
 
-
     footer {
-      background-color: rgb(0, 0, 0);
+        background-color: rgb(0, 0, 0);
         background-color: #000000;
         color: #fff;
         padding: 25px;
         text-align: center;
-        top:827px;
+        top: 827px;
         width: 100%;
-        position: fixed; /* Adiciona posição fixa para garantir que o footer fique no rodapé da página */
-        bottom: 0; /* Posiciona o footer na parte inferior da página */
+        position: fixed; 
+        bottom: 0; 
         left: 0; 
     }
-
 
     ul {
         list-style: none;
@@ -163,12 +162,10 @@ $result = $conexao->query($sql);
         margin: 0;
     }
 
-
     li {
         display: inline-block;
         margin: 0 10px;
     }
-
 
     a {
         color: #fff;
@@ -177,27 +174,29 @@ $result = $conexao->query($sql);
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <img src="Imagens/logo.png" class="logo">
-        <a href="index.php">Início</a>
-        <a href="catalogo.php">Acervo</a>
-        <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="statusAluno.php">Status do Aluno</a>
-        <a href="rankingLivros.php">Ranking de livros</a>
-        <div class="icon-menu" id="icon-menu">
+<nav class="navbar">
+    <img src="Imagens/logo.png" class="logo">
+    <div class="icon-menu white" id="icon-menu">
         <i class="fas fa-bars fa-2xl"></i>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu">
-            <a href="emprestimo.php">Empréstimos</a>
-            <a href="livroCadastrar.php">Livros Novos</a>
-            <a href="livros.php">Livros</a>
-            <a href="estudantes.php">Estudantes</a>
-            <a href="turmas.php">Turmas</a>
-            <a href="logout.php">Sair da Conta</a>
-        </div>
-    </nav>
+    </div>
+    <a href="index.php">Início</a>
+    <a href="catalogo.php">Acervo</a>
+    <a href="clubeLivro.php">Clube do Livro</a>
+    <a href="statusAluno.php">Status do Aluno</a>
+    <a href="rankingLivros.php">Ranking de livros</a>
+</nav>
+
+<div class="sidebar" id="sidebar">
+    <a href="emprestimo.php">Empréstimos</a>
+    <a href="livroCadastrar.php">Livros Novos</a>
+    <a href="livros.php">Livros</a>
+    <a href="estudantes.php">Estudantes</a>
+    <a href="turmas.php">Turmas</a>
+    <a href="logout.php">Sair da Conta</a>
+</div>
 
   <img src="Imagens/baner.png" class="banner">
+  
   
 
     <p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
@@ -218,29 +217,19 @@ $result = $conexao->query($sql);
 
 
     <script>
-    // JavaScript code to toggle the dropdown menu
-    document.addEventListener('DOMContentLoaded', function () {
-        const iconMenu = document.querySelector('#icon-menu');
-        const dropdownMenu = document.querySelector('#dropdown-menu');
+        document.addEventListener('DOMContentLoaded', function () {
+            const iconMenu = document.querySelector('#icon-menu');
+            const sidebar = document.querySelector('#sidebar');
 
-
-        iconMenu.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevent triggering clicks on document when the menu is open
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-
-
-        // Close the dropdown menu when clicking outside of it
-        document.addEventListener('click', function (event) {
-            if (!dropdownMenu.contains(event.target) && !iconMenu.contains(event.target)) {
-                dropdownMenu.style.display = 'none';
+            iconMenu.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                if (sidebar.classList.contains('active')) {
+                iconMenu.style.right = '265px';
+            } else {
+                iconMenu.style.right = '20px';
             }
+            });
         });
-
-
-        // Hide the dropdown menu on page load
-        dropdownMenu.style.display = 'none';
-    });
     </script>
 </body>
 </html>
