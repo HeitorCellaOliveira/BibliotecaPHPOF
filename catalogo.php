@@ -19,19 +19,21 @@
         text-transform: none;
     }
 
-    .logo{
-      left:1%;
-      position: absolute;
-      width:7%;
-      top:-5px;
+    .logo {
+        left:1%;
+        position: absolute;
+        width:7%;
+        top:-5px;
     }
+    
     .navbar {
         text-align: center;
         background-color: rgb(0, 0, 0);
         height: 70px;
         overflow-x: hidden;
+        position: relative;
+        overflow-y: hidden; 
     }
-
 
     .navbar a {
         justify-content: center;
@@ -45,59 +47,63 @@
         text-decoration: none;
     }
 
-
     .navbar .icon-menu {
-        position: relative;
-        left: 95%;
-        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
         color: #ffffff;
-        top: -5px;
         font-size: 2rem;
         z-index: 2;
     }
 
 
-    .navbar .dropdown-menu {
-        display: none;
-        position: absolute;
-        width: 20rem;
-        left: 90%;
-        transform: translateX(-50%);
-        background-color: #ffffff;
-        color: #fffefe;
-        padding: 10px;
-        border-radius: 5px;
-        top: 50px;
-        height: 400px;
-        z-index: 3;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow-x: hidden;
-    }
 
-
-    .navbar .dropdown-menu a {
-        justify-content: center;
-        align-items: center;
-        display: block;
-        padding: 10px 10px;
-        border-bottom: 1px solid black;
-        color: black;
-        margin: 10px;
-        width: 100%;
+    .sidebar {
+        position: fixed;
+        right: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #f0f0f0;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s;
+        z-index: 1000;
         text-align: center;
-        left: 0%;
-        top: -100;
     }
 
-
-    .navbar .dropdown-menu a:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
+    .sidebar.active {
+        right: 0;
     }
+
+    .sidebar a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+    .sidebar a:hover {
+    background-color: #ddd;
+    color: #666; 
+}
+
+    .icon-menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 2rem;
+        z-index: 1001;
+    }
+
+    .icon-menu.white {
+        color: #fff;
+    }
+
     </style>
     <title>Empréstimos | Mascarenhas</title>
 
@@ -105,45 +111,41 @@
 
 <body>
 <nav class="navbar">
-        <img src="Imagens/logo.png" class="logo">
-        <a href="index.php">Início</a>
-        <a href="catalogo.php">Acervo</a>
-        <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="statusAluno.php">Status do Aluno</a>
-        <a href="rankingLivros.php">Ranking de livros</a>
-        <div class="icon-menu" id="icon-menu">
+    <img src="Imagens/logo.png" class="logo">
+    <div class="icon-menu white" id="icon-menu">
         <i class="fas fa-bars fa-2xl"></i>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu">
-            <a href="emprestimo.php">Empréstimos</a>
-            <a href="livroCadastrar.php">Livros Novos</a>
-            <a href="livros.php">Livros</a>
-            <a href="estudantes.php">Estudantes</a>
-            <a href="turmas.php">Turmas</a>
-            <a href="logout.php">Sair da Conta</a>
-        </div>
-    </nav>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const iconMenu = document.querySelector('#icon-menu');
-        const dropdownMenu = document.querySelector('#dropdown-menu');
+    </div>
+    <a href="index.php">Início</a>
+    <a href="catalogo.php">Acervo</a>
+    <a href="clubeLivro.php">Clube do Livro</a>
+    <a href="statusAluno.php">Status do Aluno</a>
+    <a href="rankingLivros.php">Ranking de livros</a>
+</nav>
 
+<div class="sidebar" id="sidebar">
+    <a href="emprestimo.php">Empréstimos</a>
+    <a href="livroCadastrar.php">Livros Novos</a>
+    <a href="livros.php">Livros</a>
+    <a href="estudantes.php">Estudantes</a>
+    <a href="turmas.php">Turmas</a>
+    <a href="logout.php">Sair da Conta</a>
+</div>
 
-        iconMenu.addEventListener('click', function (event) {
-            event.stopPropagation(); 
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
+   
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const iconMenu = document.querySelector('#icon-menu');
+            const sidebar = document.querySelector('#sidebar');
 
-
-        
-        document.addEventListener('click', function (event) {
-            if (!dropdownMenu.contains(event.target) && !iconMenu.contains(event.target)) {
-                dropdownMenu.style.display = 'none';
+            iconMenu.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                if (sidebar.classList.contains('active')) {
+                iconMenu.style.right = '265px';
+            } else {
+                iconMenu.style.right = '20px';
             }
+            });
         });
-
-        dropdownMenu.style.display = 'none';
-    });
     </script>
 
 </body>

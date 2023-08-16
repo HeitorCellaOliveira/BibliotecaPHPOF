@@ -103,17 +103,14 @@ $result = $conexao->query($sql);
     padding: 15px;
     text-decoration: none;
     color: #333;
-    transition: background-color 0.3s, color 0.3s; /* Adicione a transição de cor aqui */
+    transition: background-color 0.3s, color 0.3s; 
 }
 
     .sidebar a:hover {
     background-color: #ddd;
-    color: #666; /* Troque a cor para cinza quando o mouse estiver sobre */
+    color: #666; 
 }
 
-
-
-    /* Estilos para o ícone de menu */
     .icon-menu {
         position: fixed;
         top: 20px;
