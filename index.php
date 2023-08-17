@@ -1,20 +1,16 @@
 <?php
 include('protect.php');
 
-
 $servername = '127.0.0.1';
 $username = 'root';
 $senha = 'root';
 $dbname = 'biblioteca';
 
-
 $conexao = new mysqli($servername, $username, $senha, $dbname);
-
 
 if ($conexao->connect_error) {
     die ("Falha ao conectar com o MySQL: " . $conexao->connect_error);
 }
-
 
 $sql = "SELECT * FROM `acervo`";
 $result = $conexao->query($sql);
@@ -33,6 +29,7 @@ $result = $conexao->query($sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
 
 
     * {
@@ -42,22 +39,12 @@ $result = $conexao->query($sql);
         text-transform: none;
     }
 
-    .logo {
-        left:1%;
-        position: absolute;
-        width:7%;
-        top:-5px;
-    }
-    
     .navbar {
         text-align: center;
         background-color: rgb(0, 0, 0);
         height: 70px;
         overflow-x: hidden;
-        position: relative;
-        overflow-y: hidden; 
     }
-
     .navbar a {
         justify-content: center;
         align-items: center;
@@ -69,16 +56,17 @@ $result = $conexao->query($sql);
         color: #ffffff;
         text-decoration: none;
     }
-
     .navbar .icon-menu {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        color: #ffffff;
         font-size: 2rem;
-        z-index: 2;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .logoo {
+      left:1%;
+      position: absolute;
+      width:7%;
+      top:-5px;
     }
 
     .sidebar {
@@ -92,6 +80,9 @@ $result = $conexao->query($sql);
         transition: right 0.3s;
         z-index: 1000;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .sidebar.active {
@@ -99,17 +90,63 @@ $result = $conexao->query($sql);
     }
 
     .sidebar a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s; 
+        display: flex;
+        position: relative;
+        top:-18%;
+        align-items: center;
+        padding: 15px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s, color 0.3s; 
+        margin-bottom: -100px; /* Ajuste o valor conforme necessário */
+}
+    .sidebar-link2 {
+        top:-9rem;
+        align-items: center;
+        
+        text-decoration: none;
+        color: #333;
+        position: relative;
+        transition: background-color 0.3s, color 0.3s; 
+        margin-bottom: -80px; 
 }
 
+    .sidebar a i {
+        margin-right: 10px;
+    }
+
     .sidebar a:hover {
-    background-color: #ddd;
-    color: #666; 
+        background-color: #ddd;
+        color: #666; 
+    }
+
+
+    .logo-area {
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        background-color: #f0f0f0;
+        margin-bottom: 20px;
+        position: relative;
 }
+
+    .logo-area p {
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 1.6em;
+    }
+
+    .logo-area img {
+        width: 10px; /* Ajuste o tamanho da imagem conforme necessário */
+        height: 10px; /* Ajuste o tamanho da imagem conforme necessário */
+        margin-bottom: 10px;
+    }
+
+    .sidebar a i {
+        margin-right: 10px;
+    }
 
     .icon-menu {
         position: fixed;
@@ -168,65 +205,112 @@ $result = $conexao->query($sql);
         color: #fff;
         text-decoration: none;
     }
+
+    /* Estilo para a linha cinza claro dentro da sidebar */
+    .sidebar .separator {
+        height: 2px;
+        width: 100%;
+        background-color: #e0e0e0;
+        margin: 20px 0;
+    }
+    .sidebar .separator2{
+        height: 2px;
+        width: 100%;
+        background-color: #e0e0e0;
+        margin: 20px 0;
+        position:relative;
+        top:0rem;
+    }
+
+    /* Estilo para a aba Meu Perfil */
+    .sidebar .profile-link {
+        margin: auto; 
+        padding: 15px;
+        background-color: #f0f0f0; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+    }
     </style>
 </head>
 <body>
 <nav class="navbar">
-    <img src="Imagens/logo.png" class="logo">
-    <div class="icon-menu white" id="icon-menu">
-        <i class="fas fa-bars fa-2xl"></i>
-    </div>
-    <a href="index.php">Início</a>
-    <a href="catalogo.php">Acervo</a>
-    <a href="clubeLivro.php">Clube do Livro</a>
-    <a href="statusAluno.php">Status do Aluno</a>
-    <a href="rankingLivros.php">Ranking de livros</a>
-</nav>
+        <img src="Imagens/logo.png"class="logoo" >
+        <a href="index.php">Início</a>
+        <a href="catalogo.php">Acervo</a>
+        <a href="clubeLivro.php">Clube do Livro</a>
+        <a href="statusAluno.php">Status do Aluno</a>
+        <a href="rankingLivros.php">Ranking de livros</a>
+        <div class="icon-menu white" id="icon-menu">
+            <i class="fas fa-bars fa-2xl"></i>
+        </div>
+    </nav>
 
 <div class="sidebar" id="sidebar">
-    <a href="emprestimo.php">Empréstimos</a>
-    <a href="livroCadastrar.php">Livros Novos</a>
-    <a href="livros.php">Livros</a>
-    <a href="estudantes.php">Estudantes</a>
-    <a href="turmas.php">Turmas</a>
-    <a href="logout.php">Sair da Conta</a>
-</div>
-
-  <img src="Imagens/baner.png" class="banner">
+    <div class="logo-area">
+        <p>SHELF</p>
+        <div class="separator"></div> 
+    </div>
   
-  
-
-    <p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
+    <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
+    <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
+    <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
+    <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
+    <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
+    <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
+    <div class="separator2"></div>
     
 
-    <footer>
-        <p>&copy; 2023 - Todos os direitos reservados </p>
-        <br>
-        <nav>
-            <ul>
-                <li><a href="#">Termos de uso</a></li>
-                <li><a href="#">Política de privacidade</a></li>
-                <li><a href="#">Sobre nós</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-    </footer>
+    <div class="sidebar-link2">
+            <a href="#">
+                <i class="fas fa-user" style="margin-right: 5px;"></i>
+                ㅤMeu Perfil
+            </a>
+        </div>
+        
+        <div class="sidebar-link2">
+            <a href="logout.php">
+                <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>
+                ㅤSair da Conta
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const iconMenu = document.querySelector('#icon-menu');
-            const sidebar = document.querySelector('#sidebar');
+<img src="Imagens/baner.png" class="banner">
+  
+<p class="welcome"> Bem-vindo <br> <?php echo $_SESSION['nomeUsuario']; ?><p>
 
-            iconMenu.addEventListener('click', function () {
-                sidebar.classList.toggle('active');
-                if (sidebar.classList.contains('active')) {
-                iconMenu.style.right = '265px';
-            } else {
-                iconMenu.style.right = '20px';
-            }
-            });
-        });
-    </script>
+<footer>
+    <p>&copy; 2023 - Todos os direitos reservados </p>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const iconMenu = document.querySelector('#icon-menu');
+    const sidebar = document.querySelector('#sidebar');
+
+    iconMenu.addEventListener('click', function () {
+        sidebar.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
+        } else {
+            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
+        }
+    });
+});
+
+</script>
 </body>
 </html>
