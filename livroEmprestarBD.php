@@ -1,39 +1,53 @@
-<!--Processo de emprestar livro-->
 <?php
-#Conexão com o banco de dados.
-session_start();
-$hostname = '127.0.0.1';
-$user = 'root';
-$password = 'root';
-$database = 'biblioteca';
-$conexao = new mysqli($hostname, $user, $password, $database);
-if ($conexao->connect_errno) {
-    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-    #Conexão com o banco de dados.
-} else {
-    $livro = $conexao->real_escape_string($_POST['livro']);
-    $telefone = $conexao->real_escape_string($_POST['aluno']);
-    $dataEmprestimo = date('Y-m-d');
-    $dataDevolucao = date('Y-m-d', strtotime($dataDevolucao . '+7 days'));
-    $buscarUsuario = 'SELECT * FROM `cadastroalunos`
-            WHERE `telefone` = "' . $telefone . '"';
-    $resultado1 = $conexao->query($buscarUsuario);
-    $buscarCapa = 'SELECT * FROM `acervo`
-        WHERE `nome` = "'.$livro.'"';
-    $resultado2 = $conexao->query($buscarCapa);
-    if ($resultado1->num_rows != 0) {
-        $row1 = $resultado1->fetch_array();
-        if($resultado2->num_rows !=0){
-            $row2 = $resultado2->fetch_array();
-            $emprestar = 'INSERT INTO `biblioteca`.`emprestimos`(`aluno`, `livro`, `dataEmprestimo`, `dataDevolucao`, `capaLivro`)
-            VALUES ("' . $aluno . '", "' . $livro . '", "' . $dataEmprestimo . '", "' . $dataDevolucao . '", "'.$row6['capaLivro'].'");';
-            $resultado3 = $conexao->query($emprestar);
-        $conexao->close();
-        header('Location: emprestimo.php', true, 301);
-    }
+    $hostname = '127.0.0.1';
+    $user = 'root';
+    $password = 'root';
+    $database = 'biblioteca';
+    
+    date_default_timezone_set('America/Sao_Paulo');
+
+    $conexao = new mysqli($hostname, $user, $password, $database);
+    if ($conexao->connect_errno) {
+        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+        exit();
     } else {
-        $conexao->close();
-        header('Location: livros.php', true, 301);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $livro = $conexao->real_escape_string($_POST['livroID']);
+            $aluno = $conexao->real_escape_string($_POST['estudanteID']);
+            $dataEmprestimo = $_POST['dataEmprestimo'];
+
+            // Verifica a disponibilidade do livro
+            $sql_check_availability = "SELECT qtdLivros FROM acervo WHERE nome = '$livro'";
+            $result = $conexao->query($sql_check_availability);
+            $row = $result->fetch_assoc();
+
+            if ($row['qtdLivros'] > 0) {
+                // Calcula a data de devolução (7 dias após a data do empréstimo)
+                $dataDevolucao = date('Y-m-d', strtotime($dataEmprestimo . ' + 7 days'));
+                
+                // Insere o empréstimo na tabela de empréstimos
+                $sql_insert_emprestimo = "INSERT INTO emprestimos (livroID, estudanteID, dataEmprestimo, dataDevolucao) 
+                    VALUES ((SELECT id FROM acervo WHERE nome = '$livro'), (SELECT id FROM cadastroalunos WHERE nMatricula = '$aluno'), '$dataEmprestimo', '$dataDevolucao')";
+                if ($conexao->query($sql_insert_emprestimo) === TRUE) {
+                    // Atualiza a quantidade disponível de livros após o empréstimo
+                    $sql_update_quantity = "UPDATE acervo SET qtdLivros = qtdLivros - 1 WHERE nome = '$livro'";
+                    if ($conexao->query($sql_update_quantity) === TRUE) {
+                        echo "Livro emprestado com sucesso!";
+                        echo "<a href='catalogo.php>Voltar</a>'";
+
+                    } else {
+                        echo "Erro ao atualizar a quantidade disponível: " . $conexao->error;
+                        echo "<a href='catalogo.php>Voltar</a>'";
+                    }
+                } else {
+                    echo "Erro ao realizar o empréstimo: " . $conexao->error;
+                    echo "<a href='catalogo.php>Voltar</a>'";
+                }
+            } else {
+                echo "O livro não está disponível para empréstimo.";
+                echo "<a href='catalogo.php>Voltar</a>'";
+
+            }
+        }
     }
-}
 ?>
