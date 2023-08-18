@@ -4,7 +4,7 @@
 session_start();
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = 'root';
+$password = '';
 $database = 'biblioteca';
 $conexao = new mysqli($hostname, $user, $password, $database);
 if ($conexao->connect_errno) {
@@ -20,8 +20,6 @@ if ($conexao->connect_errno) {
     $anoPublicado = $conexao->real_escape_string($_POST['anoPublicado']);
     $nPags = $conexao->real_escape_string($_POST['nPags']);
     $isbn = $conexao->real_escape_string($_POST['isbn']);
-    $cdd = $conexao->real_escape_string($_POST['cdd']);
-    $cdu = $conexao->real_escape_string($_POST['cdu']);
     $genero = $conexao->real_escape_string($_POST['genero']);
     $qtdLivros = $conexao->real_escape_string($_POST['qtdLivros']);
     $salvarEdicoes = 'UPDATE `biblioteca`.`acervo`
@@ -31,8 +29,6 @@ if ($conexao->connect_errno) {
                 `anoPublicado` = "' . $anoPublicado . '",
                 `nPags` = "' . $nPags . '",
                 `isbn` = "' . $isbn . '",
-                `cdd` = "' . $cdd . '",
-                `cdu` = "' . $cdu . '",
                 `genero` = "' . $genero . '",
                 `qtdLivros` = "' . $qtdLivros . '"
                 WHERE `id`="' . $id . '";';

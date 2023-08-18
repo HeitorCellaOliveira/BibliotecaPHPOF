@@ -1,3 +1,5 @@
+<?php include('protect.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -296,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -305,7 +307,9 @@ document.addEventListener('DOMContentLoaded', function () {
         #Conexão com o banco de dados.
     } else {
         #Lista com todos os empréstimos.
-        $mostrarEmprestimos = 'SELECT * FROM `emprestimos`';
+        $mostrarEmprestimos = 'SELECT emprestimos.*, cadastroalunos.nome AS alunoNome, cadastroalunos.nMatricula AS alunoMatricula, acervo.nome AS livroNome, acervo.isbn AS livroISBN FROM `emprestimos`
+        JOIN cadastroalunos ON emprestimos.estudanteID = cadastroalunos.id
+        JOIN acervo ON emprestimos.livroID = acervo.id';
         $resultado = $conexao->query($mostrarEmprestimos);
         #Campo para busca de empréstimos.
         echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título ou aluno'>
@@ -329,21 +333,29 @@ document.addEventListener('DOMContentLoaded', function () {
         #Campo para busca de empréstimo.
         while ($row = mysqli_fetch_array($resultado)) {
             echo "<br><table style='width: 20%;'>
-                <tr>
-                    <td style='width: 30%;'>
-                        <img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
-                    </td>
-                    <td>
-                        Aluno: " . $row['aluno'] . "<br>Livro: " . $row['livro'] . "<br>Data emprestado: " . date('d-m-Y', strtotime($row['dataEmprestimo'])) . "<br>Data de entrega: " . date('d-m-Y', strtotime($row['dataDevolucao']))."
+                    <tr><td>
+                        Aluno: " . $row['alunoNome'] . " (Matrícula: " . $row['alunoMatricula'] . ")<br>
+                        Livro: " . $row['livroNome'] . " (ISBN: " . $row['livroISBN'] . ")<br>
+                        Data emprestado: " . date('d-m-Y', strtotime($row['dataEmprestimo'])) . "<br>
+                        Data de entrega: " . date('d-m-Y', strtotime($row['dataDevolucao'])) . "
                     </td>
                     </tr>
+                    <tr>
+                    <td>
+                        <form method='post' action='livroDevolucao.php'>
+                        <input type='hidden' value='". $row['id'] . "' id='id' name='id'>
+                        <input type='submit' value='Devolver'>
+                        </form>
+                    </td>
+                    </tr>
+                    <tr><td>
+                    <form method='post' action='emprestimoMarcar.php'>
+                    <input type='hidden' name='emprestimoID' value='" .$row['id']. "'>
+                    <input type='submit' value='Apagar Registro'>
+                </form>
+                        </td></tr>
                 </table>";
-            #Form para a função de editar informações de livros.
-            echo "<form method='post' action='livroDevolucaoBD.php'>
-                    <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
-                    <input type='submit' value='Devolvido'>
-                    </form>";
-            #Form para a função de editar informações de livros.
+            
         }
         #Lista com todos os empréstimos.
     }

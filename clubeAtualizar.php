@@ -1,13 +1,17 @@
+<!--Página de de editar as informações de alunos-->
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+<html lang="pt-BR">
+<html>
+
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Estudantes | Mascarenhas </title>
+    <title> Atualizar | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -214,7 +218,9 @@
         justify-content: center; 
     }
     </style>
+    
 </head>
+
 <body>
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
@@ -288,44 +294,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
-</body>
-</html>
 
-
-<!--Página de visualização de estudantess-->
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html lang="pt-BR">
-<html>
-
-<head>
-    <title>Estudantes | Mascarenhas</title>
-    <link rel="stylesheet" href="">
-
-    <script>
-    function formatarTelefone() {
-    var telefone = document.getElementById('telefone');
-    var valor = telefone.value;
-
-    // Remove todos os caracteres não numéricos
-    valor = valor.replace(/\D/g, '');
-
-    // Verifica se o número possui 11 dígitos (com DDD)
-    if (valor.length === 11) {
-        valor = valor.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
-    }
-    // Verifica se o número possui 10 dígitos (sem DDD)
-    else if (valor.length === 10) {
-        valor = valor.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
-    }
-
-    telefone.value = valor;
-    }
-    </script>
-</head>
-
-<body>
-    <h1>Leitores Cadastrados</h1>
+    <h1>Atualizar Dados</h1>
     <?php
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
@@ -338,49 +308,44 @@ document.addEventListener('DOMContentLoaded', function () {
         exit();
         #Conexão com o banco de dados.
     } else {
-        #Lista com todos os usuários.
-        $mostrarleitores = 'SELECT * FROM `clubelivro`';
-        $resultado = $conexao->query($mostrarleitores);
-        #Campo para busca de usuário.
-        echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>
-        <span id='txtHint'></span>
-        <script>
-        function showHint(str) {
-            if (str.length == 0) { 
-              document.getElementById('txtHin').innerHTML = '';
-              return;
-            }
-            const xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('txtHint').innerHTML = this.responseText;
-                }
-            };
-            xhttp.open('GET', 'clubePesquisar.php?nomePesquisado='+str, true);
-            xhttp.send();
-          }
-        </script>";
-        #Campo para busca de usuário.
-
-        #Hyperlink para cadastro de estudantes.
-        echo "<br><br><a href='clubeCadastrar.php' class='' style='color: black;'>Cadastrar Leitores</a><br>";
-        #Hyperlink para cadastro de estudantes.
-
-        while ($row = mysqli_fetch_array($resultado)) {
-            echo "<br>Nome: " . $row['nome'] . "<br>Turma: " . $row['turma'] ."<br>Telefone: (+55) " . $row['telefone']."<br>Livro Atual: ". $row['nomeLivro'] ."<br>Página Atual ". $row['atualPag'];
-            #Form para a função de editar informações de estudantess.
-            echo "<br><form method='post' action='clubeAtualizar.php'>
-                    <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
-                    <br><input type='submit' value='Editar'>
-                    </form>";
-            #Form para a função de editar informações de estudantess.
+        #Busca de informações de usuários através de seu ID.
+        $id = $conexao->real_escape_string($_POST['id']);
+        $infosDeAluno = 'SELECT * FROM `clubelivro` WHERE `id` = ' . $id . ';';
+        $resultado = $conexao->query($infosDeAluno);
+        #Busca de informações de usuários através de seu ID.
+        #Form com as informações do usuários, disponíveis para alteração ou não.
+        if ($resultado->num_rows != 0) {
+            $row = $resultado->fetch_array();
+            echo '<form method="post" action="clubeAtualizarBD.php">
+                            <label class="">Nome Completo:</label>
+                            <br><input type="text" id="nome" name="nome" value="' . $row['nome'] . '" required>
+                            <br><br><label class="">Turma:</label>
+                            <br><input type="text" id="turma" name="turma" value="' . $row['turma'] . '" required>
+                            <br><br><label class="">Telefone:</label>
+                            <br><input type="text" id="telefone" name="telefone" value="' . $row['telefone'] . '" placeholder="(xx) x xxxx-xxxx" required>
+                            <br><br><label class="">Nome do Livro:</label>
+                            <br><input type="text" id="nomeLivro" name="nomeLivro" value="' . $row['nomeLivro'] . '">
+                            <br><br><label class="">Página Atual:</label>
+                            <br><input type="text" id="atualPag" name="atualPag" value="'. $row['atualPag'] .'">
+                            <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
+                            <br><br><input type="submit" value="Salvar">
+                        </form>
+                        <br>';
+            #Submit para o processo de apagar usuário.
+            echo '<form method="post" action="clubeApagar.php" id="apagar" name="apagar">
+                        <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
+                        <input type="submit" value="Apagar">
+                    </form>';
+            #Submit para o processo de apagar usuário.
+            #Retornar a página anterior.
+            echo '<br><a href="clubeLivro.php" style="color: black;">Voltar</a>';
+            #Retornar a página anterior.
+            $conexao->close();
+            exit();
+            #Form com as informações do usuários, disponíveis para alteração ou não.
         }
-        #Lista com todos os usuários.
     }
     ?>
-    <!--Retornar a página anterior-->
-    <br><a href='index.php' style='color: black;'>Voltar</a>
-    <!--Retornar a página anterior-->
 </body>
 
 </html>

@@ -3,7 +3,7 @@ session_start();
 
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = 'root';
+$password = '';
 $database = 'biblioteca';
 
 date_default_timezone_set('America/Sao_Paulo');
