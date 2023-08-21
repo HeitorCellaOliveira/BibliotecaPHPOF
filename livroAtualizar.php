@@ -12,11 +12,11 @@
 <body>
     <h1>Editar livro</h1>
     <?php
+    include('protect.php');
     #Conexão com o banco de dados.
-    session_start();
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -78,12 +78,12 @@
             <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
             <br><input type="submit" value="Salvar">
         </form>';
-            #Submit para o processo de apagar usuário.
-            echo '<br><form method="post" action="apagarLivro.php" id="apagar" name="apagar">
+            #Submit para o processo de apagar livro.
+            echo '<br><form method="post" action="livroApagar.php" id="apagar" name="apagar">
                 <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
                 <input type="submit" value="Apagar">
             </form>';
-            #Submit para o processo de apagar usuário.
+            #Submit para o processo de apagar livro.
             #Retornar a página anterior.
             echo '<br><a href="livros.php">Voltar</a>';
             #Retornar a página anterior.

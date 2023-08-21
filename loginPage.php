@@ -3,7 +3,7 @@ session_start();
 
 $hostname = "127.0.0.1";
 $user = "root";
-$password = "root";
+$password = "";
 $database = "biblioteca";
 
 $mysqli = mysqli_connect($hostname, $user, $password, $database);
@@ -224,6 +224,26 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 
     }
 
+    .button {
+    font-size:20px;
+    font-family:'Bebas', serif;
+    outline:none;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    border-radius:40px;
+    background: #fff;
+    border: 4px solid green;
+    color:green;
+    letter-spacing:1px;
+    text-shadow:0;
+    font-size:12px;
+    height:bold;
+    position: relative;
+    top:100px;
+    left:0%;
+    text-decoration:bold;
+  }
   .naopossui{
     color:#000000;
     position:absolute;

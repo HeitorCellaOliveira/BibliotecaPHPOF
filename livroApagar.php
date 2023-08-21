@@ -1,7 +1,5 @@
-<!--Processo de apagar aluno-->
+<!--Processo de apagar livro-->
 <?php
-include('protect.php');
-
 #Conexão com o banco de dados.
 session_start();
 $hostname = '127.0.0.1';
@@ -14,12 +12,12 @@ if ($conexao->connect_errno) {
     exit();
     #Conexão com o banco de dados.
 } else {
-    #Processo de apagar aluno.
+    #Processo de apagar livro.
     $id = $conexao->real_escape_string($_POST['id']);
-    $apagar = 'DELETE FROM `clubelivro` WHERE `id` = "' . $id . '"';
+    $apagar = 'DELETE FROM `acervo` WHERE `id` = "' . $id . '"';
     $resultado = $conexao->query($apagar);
     $conexao->close();
-    header('Location: clubeLivro.php', true, 301);
-    #Processo de apagar aluno.
+    header('Location: livros.php', true, 301);
+    #Processo de apagar livro.
 }
 ?>

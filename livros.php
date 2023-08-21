@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Início | Mascarenhas </title>
+    <title>Livros | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -210,7 +210,6 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="statusAluno.php">Status do Aluno</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -277,15 +276,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
-</body>
-</html>
 
     <h1>Livros</h1>
     <?php
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -320,7 +317,8 @@ document.addEventListener('DOMContentLoaded', function () {
             echo "<br><table style='width: 20%;'>
                 <tr>
                     <td style='width: 40%;'>
-                        <class='imagemdolivro'img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
+                    <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
+
                     </td>
                     <td>
                         Nome: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>ISBN: " . $row['isbn'] . "<br>Rua: " . $row['rua'] . "<br>Estante: " . $row['estante'] . "<br>Prateleira: ".$row['prateleira']."<br>Gênero: " . $row['genero'] . "<br>Quantidade disponível: " . $row['qtdLivros'] .'

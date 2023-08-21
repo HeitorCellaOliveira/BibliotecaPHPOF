@@ -3,7 +3,7 @@
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 
 $usuario = 'root';
-$senha = 'root';
+$senha = '';
 $database = 'biblioteca';
 $hostname = 'localhost';
 

@@ -221,7 +221,6 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="statusAluno.php">Status do Aluno</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -330,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -365,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
         echo "<br><br><a href='estudantesCadastrar.php' class=''>Cadastrar estudantes</a><br>";
         #Hyperlink para cadastro de estudantes.
         while ($row = mysqli_fetch_array($resultado)) {
-            echo "<br>" . $row['nome'] . "<br>Endereço: " . $row['endereco'] ."<br>Telefone: (+55) " . $row['telefone'];
+            echo "<br>" . $row['nome'] . "<br>Nº da Matrícula: ".$row['nMatricula'] ."<br>Turma: " . $row['turma'] . "<br>Endereço: " . $row['endereco'] ."<br>Telefone: (+55) " . $row['telefone'];
             #Form para a função de editar informações de estudantess.
             echo "<form method='post' action='estudantesAtualizar.php'>
                     <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>

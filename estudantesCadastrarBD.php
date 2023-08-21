@@ -4,7 +4,7 @@
 session_start();
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = 'root';
+$password = '';
 $database = 'biblioteca';
 $conexao = new mysqli($hostname, $user, $password, $database);
 if ($conexao->connect_errno) {
@@ -18,8 +18,9 @@ if ($conexao->connect_errno) {
     $telefone = $conexao->real_escape_string($_POST['telefone']);
     $turma = $conexao->real_escape_string($_POST['turma']);
     $nMatricula = $conexao->real_escape_string($_POST['nMatricula']);
-    $cadastrarAluno = 'INSERT INTO `biblioteca`.`cadastroalunos`(`nome`, `endereco`, `telefone`, `turma`, `nMatricula`)
-            VALUES ("' . $nome . '", "' . $endereco . '", "' . $telefone . '", "' . $turma . '", "'. $nMatricula . '");';
+    $qtdEmprestimo = $conexao->real_escape_string($_POST['qtdEmprestimo']);
+    $cadastrarAluno = 'INSERT INTO `biblioteca`.`cadastroalunos`(`nome`, `endereco`, `telefone`, `turma`, `nMatricula`, `qtdEmprestimo`)
+            VALUES ("' . $nome . '", "' . $endereco . '", "' . $telefone . '", "' . $turma . '", "'. $nMatricula . '", "0");';
     $resultado = $conexao->query($cadastrarAluno);
     $conexao->close();
     header('Location: estudantes.php', true, 301);

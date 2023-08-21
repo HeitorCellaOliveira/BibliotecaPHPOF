@@ -297,6 +297,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <h1>Atualizar Dados</h1>
     <?php
+    include('protect.php');
+
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';

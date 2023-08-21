@@ -1,7 +1,8 @@
 <!--Pesquisa de usuário-->
 <?php
+include('protect.php');
+
 #Conexão com o banco de dados.
-session_start();
 $hostname = '127.0.0.1';
 $user = 'root';
 $password = '';
