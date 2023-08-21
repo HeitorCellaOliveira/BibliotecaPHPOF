@@ -207,7 +207,6 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     top: 290px; 
     left: 35px; 
     font-size: 24px;
-    color:;
     z-index: 1;
 
     }
@@ -269,7 +268,7 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     <nav class="navbar">
             <img src="Imagens/logo.png" class="logo">
             <a href="loginPage.php">
-            <i class="fa-solid fa-sun" style="color: " id="icon"> </i>
+            <i class="fa-solid fa-sun" id="icon"> </i>
             </a>
     </nav>
     <center>

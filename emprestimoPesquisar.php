@@ -4,7 +4,7 @@
 session_start();
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = '';
+$password = 'root';
 $database = 'biblioteca';
 $conexao = new mysqli($hostname, $user, $password, $database);
 if ($conexao->connect_errno) {
@@ -20,6 +20,7 @@ if ($conexao->connect_errno) {
     OR `aluno` 
     LIKE '%" . $emprestimo . "%';";
     $resultado = $conexao->query($pesquisa);
+    
     if ($resultado->num_rows != 0) {
         $row = $resultado->fetch_array();
         echo "<br><br><table style='width: 20%;'>

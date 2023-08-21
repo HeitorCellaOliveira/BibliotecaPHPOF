@@ -143,21 +143,32 @@
     .icon-menu.white {
         color: #fff;
     }
-
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Estilo para a linha cinza claro dentro da sidebar */
+    .sidebar .separator {
+        height: 2px;
+        width: 100%;
+        background-color: #e0e0e0;
+        margin: 20px 0;
+    }
+    .sidebar .separator2{
+        height: 2px;
+        width: 100%;
+        background-color: #e0e0e0;
+        margin: 20px 0;
+        position:relative;
+        top:0rem;
     }
 
-    .banner {
-        position: relative;
+    /* Estilo para a aba Meu Perfil */
+    .sidebar .profile-link {
+        margin: auto; 
+        padding: 15px;
+        background-color: #f0f0f0; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
     }
+
 
     footer {
         background-color: rgb(0, 0, 0);
@@ -188,31 +199,7 @@
         text-decoration: none;
     }
 
-    /* Estilo para a linha cinza claro dentro da sidebar */
-    .sidebar .separator {
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-    }
-    .sidebar .separator2{
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-        position:relative;
-        top:0rem;
-    }
 
-    /* Estilo para a aba Meu Perfil */
-    .sidebar .profile-link {
-        margin: auto; 
-        padding: 15px;
-        background-color: #f0f0f0; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-    }
     </style>
 </head>
 <body>

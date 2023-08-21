@@ -145,20 +145,8 @@
         color: #fff;
     }
 
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
 
-    .banner {
-        position: relative;
-    }
+
 
     footer {
         background-color: rgb(0, 0, 0);
@@ -297,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -332,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
             echo "<br><table style='width: 20%;'>
                 <tr>
                     <td style='width: 40%;'>
-                        <img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
+                        <class='imagemdolivro'img src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
                     </td>
                     <td>
                         Nome: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>ISBN: " . $row['isbn'] . "<br>Rua: " . $row['rua'] . "<br>Estante: " . $row['estante'] . "<br>Prateleira: ".$row['prateleira']."<br>Gênero: " . $row['genero'] . "<br>Quantidade disponível: " . $row['qtdLivros'] .'
