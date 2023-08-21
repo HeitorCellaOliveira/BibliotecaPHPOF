@@ -75,7 +75,7 @@ if ($conexao->connect_errno) {
                             $sql_update_quantity = "UPDATE acervo SET qtdLivros = qtdLivros + 1 WHERE id = '$livroID'";
                             if ($conexao->query($sql_update_quantity) === TRUE) {
                                 echo "Devolução realizada com sucesso! O valor da multa é de: R$" . number_format($multaPaga, 2, ',', '.');
-                               
+                                echo "<br><a href='emprestimo.php'>Voltar</a>";
                             } else {
                                 echo "Erro ao atualizar a quantidade disponível: " . $conexao->error;
                                 

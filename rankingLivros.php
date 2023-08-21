@@ -1,3 +1,5 @@
+<?php include('protect.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -221,7 +223,6 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="statusAluno.php">Status do Aluno</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -286,7 +287,58 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
 </script>
+<h1>Ranking dos Livros</h1>
+<?php 
+include('protect.php');
+
+$hostname = '127.0.0.1';
+$user = 'root';
+$password = '';
+$database = 'biblioteca';
+$conexao = new mysqli($hostname, $user, $password, $database);
+if ($conexao->connect_errno) {
+    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+    exit();
+    #Conexão com o banco de dados.
+} else {
+    #Lista com todos os livros.
+    $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
+    $resultado = $conexao->query($mostrarLivros);
+    #Campo para busca de livro.
+    echo "<br><input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título'>
+    <span id='txtHint'></span>
+    <script>
+    function showHint(str) {
+        if (str.length == 0) { 
+          document.getElementById('txtHin').innerHTML = '';
+          return;
+        }
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('txtHint').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado='+str, true);
+        xhttp.send();
+      }
+    </script><br>";
+    #Campo para busca de livro.
+    while ($row = mysqli_fetch_array($resultado)) {
+        echo "<br><table style='width: 20%;'>
+            <tr>
+                <td style='width: 40%;'>
+                <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
+
+                </td>
+                <td>
+                    Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] .'
+                </td>
+            </tr>
+        </table>';
+    }
+}
+?>
 </body>
 </html>

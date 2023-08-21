@@ -1,21 +1,3 @@
-<?php
-   #Conexão com o banco de dados.
-   $hostname = '127.0.0.1';
-   $user = 'root';
-   $password = 'root';
-   $database = 'biblioteca';
-   
-   // Inicializa a conexão com o banco de dados
-   $conexao = new mysqli($hostname, $user, $password, $database);
-   
-   // Verifica se ocorreu um erro na conexão
-   if ($conexao->connect_errno) {
-       echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-       exit();
-   }
-   
-   // Resto do seu código
-   ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -24,7 +6,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-      <title> Início | Mascarenhas </title>
+      <title>Catálogo | Mascarenhas </title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
       <style>
          @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -314,13 +296,11 @@
    </head>
    <body>
       <body style="background-color: #f0f0f0;">
-   </body>
    <nav class="navbar">
       <img src="Imagens/logo.png"class="logoo" >
       <a href="index.php">Início</a>
       <a href="catalogo.php">Acervo</a>
       <a href="clubeLivro.php">Clube do Livro</a>
-      <a href="statusAluno.php">Status do Aluno</a>
       <a href="rankingLivros.php">Ranking de livros</a>
       <div class="icon-menu white" id="icon-menu">
          <i class="fas fa-bars fa-2xl"></i>
@@ -375,9 +355,10 @@
    <div class="livro-lista">
       <div style="height: 160px;"></div>
       <?php
+
          $hostname = '127.0.0.1';
          $user = 'root';
-         $password = 'root';
+         $password = '';
          $database = 'biblioteca';
          $conexao = new mysqli($hostname, $user, $password, $database);
          

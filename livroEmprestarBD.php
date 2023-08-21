@@ -1,6 +1,4 @@
 <?php
-include('protect.php');
-
 $hostname = '127.0.0.1';
 $user = 'root';
 $password = '';
@@ -37,10 +35,11 @@ if ($conexao->connect_errno) {
             if ($conexao->query($sql_insert_emprestimo) === TRUE) {
                 // Atualiza a quantidade disponível de livros após o empréstimo
                 $sql_update_quantity = "UPDATE acervo SET qtdLivros = qtdLivros - 1 WHERE nome = '$livro'";
+                $sql_update_quantity = "UPDATE acervo SET qtdEmprestimo = qtdEmprestimo + 1 WHERE nome = '$livro'";
                 if ($conexao->query($sql_update_quantity) === TRUE) {
                     // Confirma a transação
                     $conexao->commit();
-                    echo "Livro emprestado com sucesso!";
+                    echo "<script>alert('Livro emprestado com sucesso! Data de Devolução: $dataDevolucao'); window.history.back();</script>";
                 } else {
                     // Desfaz a transação em caso de erro
                     $conexao->rollback();
