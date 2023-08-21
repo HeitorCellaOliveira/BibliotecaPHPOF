@@ -189,7 +189,6 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
         top: 210px; 
         left: 35px; 
         font-size: 24px;
-        color:;
         z-index: 1;
     }
 
@@ -210,7 +209,6 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     top: 290px; 
     left: 35px; 
     font-size: 24px;
-    color:;
     z-index: 1;
 
     }
@@ -226,26 +224,6 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
 
     }
 
-    .button {
-    font-size:20px;
-    font-family:'Bebas', serif;
-    outline:none;
-    height: 50px;
-    text-align: center;
-    width: 250px;
-    border-radius:40px;
-    background: #fff;
-    border: 4px solid $green;
-    color:$green;
-    letter-spacing:1px;
-    text-shadow:0;
-    font-size:12px;
-    weight:bold;
-    position: relative;
-    top:100px;
-    left:0%;
-    text-decoration:bold;
-  }
   .naopossui{
     color:#000000;
     position:absolute;
