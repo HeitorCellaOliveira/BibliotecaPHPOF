@@ -11,6 +11,7 @@
        exit();
    }
 
+   $livro = $conexao->real_escape_string($_POST['nome']);
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -323,13 +324,13 @@
    <div class="center-container">
    <div class="white-background">
    <center>
+
    <h1>Emprestar Livro</h1>
    </center>
    <!-- Formulário de empréstimo -->
    <form method="post" action="livroEmprestarBD.php" id="emprestar" name="emprestar">
-   <label for="livro">Livro selecionado:</label>
-   <input type="text" name="livroID" id="livroID" required>
-   <label for="aluno">Nº de Matrícula:</label>
+   <?php echo"<label for='livro'>Livro selecionado: ". $livro . "</label>" ?>
+   <br><label for="aluno">Nº de Matrícula:</label>
    <input type="text" id="estudanteID" name="estudanteID" required>
    <label for="dataEmprestimo">Data do Empréstimo:</label>
    <input type="date" id="dataEmprestimo" name="dataEmprestimo" required>
