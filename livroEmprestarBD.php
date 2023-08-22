@@ -39,7 +39,8 @@ if ($conexao->connect_errno) {
                 if ($conexao->query($sql_update_quantity) === TRUE) {
                     // Confirma a transação
                     $conexao->commit();
-                    echo "<script>alert('Livro emprestado com sucesso! Data de Devolução: $dataDevolucao'); window.history.back();</script>";
+                    echo "Livro emprestado com sucesso! Data de Devolução: $dataDevolucao";
+                    echo "<br><a href='catalogo.php'>Voltar</a>";
                 } else {
                     // Desfaz a transação em caso de erro
                     $conexao->rollback();
