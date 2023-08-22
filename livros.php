@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {

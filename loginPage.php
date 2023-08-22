@@ -3,7 +3,7 @@ session_start();
 
 $hostname = "127.0.0.1";
 $user = "root";
-$password = "";
+$password = "root";
 $database = "biblioteca";
 
 $mysqli = mysqli_connect($hostname, $user, $password, $database);
