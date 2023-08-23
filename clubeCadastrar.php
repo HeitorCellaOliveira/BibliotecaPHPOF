@@ -340,8 +340,8 @@
    <div class="center-container">
    <div class="white-background">
     <center>
-    <h1 style="font-family: 'Bebas Neue', sans-serif; font-size:40px;">Cadastro de Leitor</h1>
-    </center>
+    <h1 style="font-family: 'Bebas Neue', sans-serif; font-size:40px;">Cadastro do Leitor</h1>
+    
     <form method="post" action="clubeCadastrarBD.php" id="cadastro" name="cadastro">
         <br><label class="">Nome completo:</label>
         <br><input type="text" id="nome" name="nome" required>
@@ -353,7 +353,7 @@
         <br><input type="textx" id="nomeLivro" name="nomeLivro">
         <br><br><label class="">Página Atual: </label>
         <br><input type="number" id="atualPag" name="atualPag">
-        <center>
+        
         <br><br><input type="submit" value="Cadastrar">
         </center>
     </form>

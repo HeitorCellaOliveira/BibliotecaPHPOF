@@ -154,26 +154,46 @@
 
 .white-background {
     background-color: white;
-    padding: 20px;
     border-radius: 10px;
+    padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto; /* Center the content horizontally */
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 100px; /* Espaço superior para centralizar verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Alinha o texto no centro */
 }
-input[type="text"],
-               input[type="number"],
-               input[type="textx"],
-               input[type="date"] {
-               padding: 10px;
-               border: none;
-               border-radius: 10px;
-               background-color: #f0f0f0;
-               width: 100%;
-               margin: 5px -15px;
-               }
+.custom-search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: white;
+        overflow: hidden;
+        position: relative;
+        }
+
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 5px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        padding-right: 100px;
+        }
+
+
+
 
         footer {
         background-color: rgb(0, 0, 0);
@@ -251,11 +271,11 @@ input[type="text"],
     </div>
 </div>
 
-<img src="Imagens/ranking.png" alt="Ranking Logo" ">
+<img src="Imagens/ranking.png" alt="Ranking Logo" >
 <div class="content">
     <div class="center-container">
         <div class="white-background">
-<h1 style="font-family: 'Bebas Neue', sans-serif; font-size:40px;">Ranking dos Livros</h1>
+<h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Ranking dos Livros</h1>
 <?php 
 include('protect.php');
 
@@ -268,17 +288,21 @@ if ($conexao->connect_errno) {
     echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
     exit();
 } else {
-
     $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
     $resultado = $conexao->query($mostrarLivros);
+}
 
-    echo "<br><input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título'>
-    <span id='txtHint'></span>
-    <script>
+echo '<div class="custom-search-box">
+    <br><input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por título">
+</div>';
+?>
+
+
+<script>
     function showHint(str) {
         if (str.length == 0) { 
-          document.getElementById('txtHin').innerHTML = '';
-          return;
+            document.getElementById('txtHint').innerHTML = '';
+            return;
         }
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -286,24 +310,23 @@ if ($conexao->connect_errno) {
                 document.getElementById('txtHint').innerHTML = this.responseText;
             }
         };
-        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado='+str, true);
+        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado=' + str, true);
         xhttp.send();
-      }
-    </script><br>";
-
-    while ($row = mysqli_fetch_array($resultado)) {
-        echo "<br><table style='width: 20%;'>
-            <tr>
-                <td style='width: 40%;'>
-                <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
-
-                </td>
-                <td>
-                    Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] .'
-                </td>
-            </tr>
-        </table>';
     }
+</script>
+
+<?php
+while ($row = mysqli_fetch_array($resultado)) {
+    echo "<br><table style='width: 20%;'>
+        <tr>
+            <td style='width: 40%;'>
+            <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
+            </td>
+            <td>
+                Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] . '
+            </td>
+        </tr>
+    </table>';
 }
 ?>
 </div>

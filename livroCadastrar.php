@@ -197,7 +197,7 @@
                border-radius: 10px;
                background-color: #f0f0f0;
                width: 100%;
-               margin: 5px px;
+               margin: 5px -15px;
                }
                input[type="submit"] {
                padding: 10px 20px;

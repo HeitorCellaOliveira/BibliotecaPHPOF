@@ -249,9 +249,21 @@
         line-height: 40px;
         background-color: #fff;
         width: 70%;
+        padding-right: 100px;
         }
+        .submit {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #333;
+    color: white; /* Definindo a cor do texto para branco */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-
+.submit:hover {
+    background-color: #666;
+}
 
          ul {
                list-style: none;
@@ -329,7 +341,7 @@
                         echo '<span id="txtHint"></span>';
                         ?>
                         
-                        <br><br><a href='clubeCadastrar.php' class='' style='color: black;'>Cadastrar Leitores</a><br>
+                        <br><br><a href='clubeCadastrar.php' class='submit'>Cadastrar Leitores</a><br>
                         
                         <?php
                         while ($row = mysqli_fetch_array($resultado)) {
