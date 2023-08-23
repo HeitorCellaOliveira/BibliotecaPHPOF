@@ -3,7 +3,7 @@ include('protect.php');
 
 $servername = '127.0.0.1';
 $username = 'root';
-$senha = 'root';
+$senha = '';
 $dbname = 'biblioteca';
 
 $conexao = new mysqli($servername, $username, $senha, $dbname);

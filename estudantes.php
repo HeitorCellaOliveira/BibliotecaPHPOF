@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </script>";
         #Campo para busca de usuário.
         #Hyperlink para cadastro de estudantes.
-        echo "<br><br><a href='estudantesCadastrar.php' class=''>Cadastrar estudantes</a><br>";
+        echo "<br><br><a href='estudantesCadastrar.php' class='' style='color: black;'>Cadastrar estudantes</a><br>";
         #Hyperlink para cadastro de estudantes.
         while ($row = mysqli_fetch_array($resultado)) {
             echo "<br>" . $row['nome'] . "<br>Nº da Matrícula: ".$row['nMatricula'] ."<br>Turma: " . $row['turma'] . "<br>Endereço: " . $row['endereco'] ."<br>Telefone: (+55) " . $row['telefone'];

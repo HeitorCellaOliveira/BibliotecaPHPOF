@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Início | Mascarenhas </title>
+    <title> Turmas | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -289,16 +289,55 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
-</body>
-</html>
 
+<h1>Turmas Cadastradas</h1>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Turmas | Mascarenhas</title>
-</head>
-<body>
+<?php 
+    $hostname = '127.0.0.1';
+    $user = 'root';
+    $password = '';
+    $database = 'biblioteca';
+    $conexao = new mysqli($hostname, $user, $password, $database);
+
+if ($conexao->connect_errno) {
+    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+    exit();
+} else {
+    $mostrarTurmas = 'SELECT * FROM `cadastroturmas`';
+    $resultado = $conexao->query($mostrarTurmas);
     
+    echo "<br><input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>
+        <span id='txtHint'></span>
+        <script>
+        function showHint(str) {
+            if (str.length == 0) { 
+              document.getElementById('txtHin').innerHTML = '';
+              return;
+            }
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('txtHint').innerHTML = this.responseText;
+                }
+            };
+            xhttp.open('GET', 'turmasPesquisar.php?turmaPesquisada='+str, true);
+            xhttp.send();
+          }
+        </script>";
+
+        echo "<br><br><a href='turmasCadastrar.php' class='' style='color: black;'>Cadastrar Turmas</a>";
+
+    while ($row = mysqli_fetch_array($resultado)) {
+        echo "<br>" , $row['nome'] . "<br>Turno:" . $row['turno'] . "<br>Nº de Alunos (max): " . $row['num_alunos'];
+
+        echo "<form method='post' action='turmasAtualizar.php'>
+            <input type='hidden' value='". $row['id'] ."' id='id' name='id'>
+            <input type='submit' value='Editar'>
+            </form>";
+    }
+}
+?>
+
+<br><a href='index.php'>Voltar</a>
 </body>
 </html>

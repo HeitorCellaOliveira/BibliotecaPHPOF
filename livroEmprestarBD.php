@@ -35,12 +35,18 @@ if ($conexao->connect_errno) {
             if ($conexao->query($sql_insert_emprestimo) === TRUE) {
                 // Atualiza a quantidade disponível de livros após o empréstimo
                 $sql_update_quantity = "UPDATE acervo SET qtdLivros = qtdLivros - 1 WHERE nome = '$livro'";
-                $sql_update_quantity = "UPDATE acervo SET qtdEmprestimo = qtdEmprestimo + 1 WHERE nome = '$livro'";
                 if ($conexao->query($sql_update_quantity) === TRUE) {
-                    // Confirma a transação
-                    $conexao->commit();
-                    echo "Livro emprestado com sucesso! Data de Devolução: $dataDevolucao";
-                    echo "<br><a href='catalogo.php'>Voltar</a>";
+                    // Aumenta a quantidade de empréstimos realizados
+                    $sql_increase_emprestimos = "UPDATE acervo SET qtdEmprestimo = qtdEmprestimo + 1 WHERE nome = '$livro'";
+                    if ($conexao->query($sql_increase_emprestimos) === TRUE) {
+                        // Confirma a transação
+                        $conexao->commit();
+                        echo "Livro emprestado com sucesso! <br><br> Data de Devolução: $dataDevolucao";
+                    } else {
+                        // Desfaz a transação em caso de erro
+                        $conexao->rollback();
+                        echo "Erro ao aumentar a quantidade de empréstimos: " . $conexao->error;
+                    }
                 } else {
                     // Desfaz a transação em caso de erro
                     $conexao->rollback();

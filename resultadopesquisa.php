@@ -6,7 +6,7 @@ if (isset($_GET['q'])) {
     // Conexão com o banco de dados
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
 

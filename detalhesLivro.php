@@ -3,7 +3,7 @@
    #Conexão com o banco de dados.
    $hostname = '127.0.0.1';
    $user = 'root';
-   $password = 'root';
+   $password = '';
    $database = 'biblioteca';
    
    // Inicializa a conexão com o banco de dados
@@ -14,18 +14,14 @@
        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
        exit();
    }
-
-   $livro = ""; // Inicializa a variável para evitar o erro
-
-   if (isset($_POST['nome'])) {
-       $livro = $conexao->real_escape_string($_POST['nome']);
-   }
    
+   // Resto do seu código
    ?>
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Detalhes do Livro</title>
       <!DOCTYPE html>
       <html lang="en">
@@ -41,120 +37,148 @@
                @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
                @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
                * {
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-        text-transform: none;
-    }
-
-    .navbar {
-        text-align: center;
-        background-color: rgb(0, 0, 0);
-        height: 70px;
-        overflow-x: hidden;
-    }
-    .navbar a {
-        justify-content: center;
-        align-items: center;
-        left: -18rem;
-        position: relative;
-        top: 20px;
-        margin: 0 1rem;
-        font-size: 1.4rem;
-        color: #ffffff;
-        text-decoration: none;
-    }
-    .navbar .icon-menu {
-        font-size: 2rem;
-        color: #ffffff;
-        cursor: pointer;
-    }
-
-    .logoo {
-      left:1%;
-      position: absolute;
-      width:7%;
-      top:-5px;
-    }
-
-    .sidebar {
-        position: fixed;
-        right: -250px;
-        top: 0;
-        width: 250px;
-        height: 100%;
-        background-color: #f0f0f0;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-        transition: right 0.3s;
-        z-index: 1000;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .sidebar.active {
-        right: 0;
-    }
-
-    .sidebar a {
-        display: flex;
-        position: relative;
-        top:-18%;
-        align-items: center;
-        padding: 15px;
-        text-decoration: none;
-        color: #333;
-        transition: background-color 0.3s, color 0.3s; 
-        margin-bottom: -100px; /* Ajuste o valor conforme necessário */
-}
-    .sidebar-link2 {
-        top:-9rem;
-        align-items: center;
-        
-        text-decoration: none;
-        color: #333;
-        position: relative;
-        transition: background-color 0.3s, color 0.3s; 
-        margin-bottom: -80px; 
-}
-
-    .sidebar a i {
-        margin-right: 10px;
-    }
-
-    .sidebar a:hover {
-        background-color: #ddd;
-        color: #666; 
-    }
-
-
-    .logo-area {
-        font-family: 'Inter', sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        background-color: #f0f0f0;
-        margin-bottom: 20px;
-        position: relative;
-}
-
-    .logo-area p {
-        margin-top: 5px;
-        font-weight: bold;
-        font-size: 1.6em;
-    }
-
-    .logo-area img {
-        width: 10px; /* Ajuste o tamanho da imagem conforme necessário */
-        height: 10px; /* Ajuste o tamanho da imagem conforme necessário */
-        margin-bottom: 10px;
-    }
-
-    .sidebar a i {
-        margin-right: 10px;
-    }
+               margin: 0;
+               padding: 0;
+               text-decoration: none;
+               text-transform: none;
+               }
+               .navbar {
+               text-align: center;
+               background-color: rgb(0, 0, 0);
+               height: 70px;
+               overflow-x: hidden;
+               position: fixed; 
+               width: 100%; 
+               z-index: 100; 
+               transition: top 0.3s; 
+               top: 0; 
+               }
+               .navbar a {
+               justify-content: center;
+               align-items: center;
+               left: -18rem;
+               position: relative;
+               top: 20px;
+               margin: 0 1rem;
+               font-size: 1.4rem;
+               color: #ffffff;
+               text-decoration: none;
+               }
+               .navbar .icon-menu {
+               font-size: 2rem;
+               color: #ffffff;
+               cursor: pointer;
+               }
+               .logoo {
+               left:1%;
+               position: absolute;
+               width:7%;
+               top:-5px;
+               }
+               .sidebar {
+               position: fixed;
+               right: -250px;
+               top: 0;
+               width: 250px;
+               height: 100%;
+               background-color: #f0f0f0;
+               box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+               transition: right 0.3s;
+               z-index: 1000;
+               text-align: center;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+               overflow-y: hidden;
+               }
+               .sidebar.active {
+               right: 0;
+               }
+               .sidebar a {
+               display: flex;
+               position: relative;
+               top:-18%;
+               align-items: center;
+               padding: 15px;
+               text-decoration: none;
+               color: #333;
+               transition: background-color 0.3s, color 0.3s; 
+               margin-bottom: -100px; 
+               overflow-x: hidden;
+               }
+               .sidebar-link2 {
+               top:-9rem;
+               align-items: center;
+               text-decoration: none;
+               color: #333;
+               position: relative;
+               transition: background-color 0.3s, color 0.3s; 
+               margin-bottom: -80px; 
+               }
+               .sidebar a i {
+               margin-right: 10px;
+               }
+               .sidebar a:hover {
+               background-color: #ddd;
+               color: #666; 
+               }
+               .logo-area {
+               font-family: 'Inter', sans-serif;
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               padding: 20px 0;
+               background-color: #f0f0f0;
+               margin-bottom: 20px;
+               position: relative;
+               }
+               .logo-area p {
+               margin-top: 5px;
+               font-weight: bold;
+               font-size: 1.6em;
+               }
+               .logo-area img {
+               width: 10px; 
+               height: 10px; 
+               margin-bottom: 10px;
+               }
+               .sidebar a i {
+               margin-right: 10px;
+               }
+               .icon-menu {
+               position: fixed;
+               top: 20px;
+               right: 20px;
+               cursor: pointer;
+               color: #fff;
+               font-size: 2rem;
+               z-index: 1001;
+               }
+               .icon-menu.white {
+               color: #fff;
+               }
+               .sidebar .separator {
+               height: 2px;
+               width: 100%;
+               background-color: #e0e0e0;
+               margin: 20px 0;
+               }
+               .sidebar .separator2{
+               height: 2px;
+               width: 100%;
+               background-color: #e0e0e0;
+               margin: 20px 0;
+               position:relative;
+               top:0rem;
+               }
+               .sidebar .profile-link {
+               margin: auto; 
+               padding: 15px;
+               background-color: #f0f0f0; 
+               display: flex; 
+               align-items: center; 
+               justify-content: center; 
+               }
                .center-container {
                display: flex;
                justify-content: center;
@@ -182,25 +206,24 @@
                height: 450px;
                }
                .book-info {
-               margin-left: 25px;
-               margin-top: -10px; 
-
+               margin-left: 20px;
                }
                .book-info h1 {
                font-size: 40px; 
-               margin-bottom: 160px; 
-
+               margin-bottom: 5px; 
+               position: relative;
+               top: -110px;
                }
                .book-info p {
-               position:relative; 
+               position: relative;
                margin-bottom: 5px;
-               top:-100px;
+               top: -60px;
                }
                .btn-emprestar-purple {
                padding: 20px 40px;
                background-color: #3742fa;
                position:absolute;
-               margin-top: -50px;
+               margin-top: 50px;
                width: 150px;
                color: white;
                border: none;
@@ -210,7 +233,6 @@
                cursor: pointer;
                transition: background-color 0.3s, transform 0.3s;
                overflow: hidden; 
-               left:54%;
                }
                .btn-emprestar-purple:hover {
                background-color: #000000;
@@ -247,13 +269,13 @@
                padding: 25px;
                text-align: center;
                width: 100%;
-               margin-top: 0px;
+               margin-top: -40px;
                position: relative;
                overflow-x: hidden;
                }
             </style>
    </head>
-   <body style="overflow-x:hidden;">
+   <body>
    <nav class="navbar">
    <img src="Imagens/logo.png"class="logoo" >
    <a href="index.php">Início</a>
@@ -310,6 +332,7 @@
    <img src="Imagens/<?php echo $row['capaLivro']; ?>" alt="Book Cover">
    </div>
    <div class="book-info">
+    
    <h1><?php echo $row['nome']; ?></h1>
    <p><strong>Autor:</strong> <?php echo $row['autor']; ?></p>
    <p><strong>Editora:</strong> <?php echo $row['editora']; ?></p>
@@ -319,8 +342,11 @@
    <p><strong>Estante:</strong> <?php echo $row['estante']; ?></p>
    <p><strong>Prateleira:</strong> <?php echo $row['prateleira']; ?></p>
    <p><strong>Gênero:</strong> <?php echo $row['genero']; ?></p>
-   <a class="btn-emprestar btn-emprestar-purple" href="livroEmprestar.php?livro_id=<?php echo $row['id']; ?>">Emprestar</a>
-   </div>
+    <?php echo '<form method="post" action="livroEmprestar.php">';
+            echo '<input type="hidden" value="' . $row['nome'] . '" id="nome" name="nome">';
+            echo '<button class="btn-emprestar-purple" type="submit">Emprestar</button>';
+            echo '</form>'; ?>
+    </div>
    </div>
    </div>
    </div>

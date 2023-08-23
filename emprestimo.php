@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = 'root';
+    $password = '';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </td>
                     </tr>
                     <tr><td>
-                    <form method='post' action='emprestimoMarcar.php'>
+                    <br><form method='post' action='emprestimoMarcar.php'>
                     <input type='hidden' name='emprestimoID' value='" .$row['id']. "'>
                     <input type='submit' value='Apagar Registro'>
                 </form>
