@@ -295,6 +295,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 
+
+<div class="content">
+    <div class="center-container">
+        <div class="white-background">
+            <h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Atualizar Dados</h1>
     <h1>Atualizar Dados</h1>
     <?php
 

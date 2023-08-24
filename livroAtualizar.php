@@ -75,7 +75,9 @@
             <br><br><label class="">Quantidade:</label>
             <br><input type="text" id="qtdLivros" name="qtdLivros" value="' . $row['qtdLivros'] . '" required>
             <br><br><label class="">Antes de salvar, verifique se o gênero está correto!</label>
-            <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
+            <br><input type="hidden" id="id" name="id" value="'. $row['id'] .'">
+            <input type="submit" name="prolongar" value="Prolongar Data">
+            <br><input type="hidden" value="' . $row['id'] . '" id="id" name="id">
             <br><input type="submit" value="Salvar">
         </form>';
             #Submit para o processo de apagar livro.

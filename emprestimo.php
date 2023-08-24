@@ -1,4 +1,4 @@
-<?php include('protect.php') ?>
+<?php include('protect.php'); date_default_timezone_set('America/Sao_Paulo'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -223,7 +223,7 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="horaLeitura.php">Hora da Leitura</a>
+         <a href="horaLeitura.php">Hora da Leitura</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -349,7 +349,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     </td>
                     </tr>
                     <tr><td>
-                    <form method='post' action='emprestimoMarcar.php'>
+                    <br><form method='post' action='livroDevolucaoProlongar.php'>
+                    <input type='hidden' value='". $row['id'] ."' id='id' name='id'>
+                    <input type='submit' value='Prolongar Data'>
+                    </form>
+                    </tr></td>
+                    <tr><td>
+                    <br><form method='post' action='emprestimoMarcar.php'>
                     <input type='hidden' name='emprestimoID' value='" .$row['id']. "'>
                     <input type='submit' value='Apagar Registro'>
                 </form>

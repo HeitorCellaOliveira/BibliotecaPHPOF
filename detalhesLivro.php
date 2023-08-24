@@ -13,10 +13,9 @@
    if ($conexao->connect_errno) {
        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
        exit();
-   }
+   } // Inicializa a variável para evitar o erro
 
-   $livro = ""; // Inicializa a variável para evitar o erro
-
+   
    if (isset($_POST['nome'])) {
        $livro = $conexao->real_escape_string($_POST['nome']);
    }
@@ -310,58 +309,19 @@
    <img src="Imagens/<?php echo $row['capaLivro']; ?>" alt="Book Cover">
    </div>
    <div class="book-info">
-   <form method="post" action="livroEmprestar.php">
-        <h1><?php echo"<label for='livro
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        '"</h1>
-        <p><strong>Autor:</strong> <?php echo $row['autor']; ?></p>
-        <p><strong>Editora:</strong> <?php echo $row['editora']; ?></p>
-        <p><strong>Ano de Publicação:</strong> <?php echo $row['anoPublicado']; ?></p>
-        <p><strong>ISBN:</strong> <?php echo $row['isbn']; ?></p>
-        <p><strong>Rua:</strong> <?php echo $row['rua']; ?></p>
-        <p><strong>Estante:</strong> <?php echo $row['estante']; ?></p>
-        <p><strong>Prateleira:</strong> <?php echo $row['prateleira']; ?></p>
-        <p><strong>Gênero:</strong> <?php echo $row['genero']; ?></p>
-        <input type="hidden" name="livro_id" value="<?php echo $row['id']; ?>">
-        <button class="btn-emprestar btn-emprestar-purple" type="submit" name="emprestar">Emprestar</button>
-    </form>
+   <h1><?php echo $row['nome']; ?></h1>
+   <p><strong>Autor:</strong> <?php echo $row['autor']; ?></p>
+   <p><strong>Editora:</strong> <?php echo $row['editora']; ?></p>
+   <p><strong>Ano de Publicação:</strong> <?php echo $row['anoPublicado']; ?></p>
+   <p><strong>ISBN:</strong> <?php echo $row['isbn']; ?></p>
+   <p><strong>Rua:</strong> <?php echo $row['rua']; ?></p>
+   <p><strong>Estante:</strong> <?php echo $row['estante']; ?></p>
+   <p><strong>Prateleira:</strong> <?php echo $row['prateleira']; ?></p>
+   <p><strong>Gênero:</strong> <?php echo $row['genero']; ?></p>
+   <?php echo '<form method="post" action="livroEmprestar.php">';
+   echo '<input type="hidden" value="' . $row['nome'] . '" id="nome" name="nome">';
+   echo '<button class="btn-emprestar-purple" type="submit">Emprestar</button>';
+   echo '</form>'; ?>
    </div>
    </div>
    </div>

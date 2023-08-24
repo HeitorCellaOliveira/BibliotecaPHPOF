@@ -191,7 +191,8 @@
                input[type="text"],
                input[type="number"],
                input[type="textx"],
-               input[type="date"] {
+               input[type="date"] 
+               .text{
                padding: 10px;
                border: none;
                border-radius: 10px;
@@ -317,7 +318,7 @@
    <div class="white-background">
     <!--Forms para cadastro-->
     <center>
-    <h1  style="font-family: 'Bebas Neue', sans-serif; font-size:40px;">Cadastro de livro</h1>
+    <h1  style="font-family: 'Bebas Neue', sans-serif; font-size:40px;">Cadastro dos livros</h1>
     <form method="post" action="livroCadastrarBD.php" id="cadastro" name="cadastro" enctype="multipart/form-data">
         <label class="">Título e subtítulo: </label>
         <br><input type="text" id="nome" name="nome" required>
@@ -337,7 +338,10 @@
         <br><input type="text" id="estante" name="estante" required>
         <br><br><label class="">Prateleira:</label>
         <br><input type="text" id="prateleira" name="prateleira" required>
-        <br><br><label class="">Gênero:</label>
+        <br><br><label class="">Quantidade:</label>
+        <br><input type="text" id="qtdLivros" name="qtdLivros" required>
+
+        <br><br><label class="text">Gênero:</label>
         <!--Todas as opções de gênero literário-->
         <br><select id="genero" name="genero">
             <option value="Fantasia">Fantasia</option>
@@ -357,11 +361,10 @@
             <option value="Poesia">Poesia</option>
             <option value="Educação">Educação</option>
         </select>
-        <!--Todas as opções de gênero literário-->
-        <br><br><label class="">Quantidade:</label>
-        <br><input type="text" id="qtdLivros" name="qtdLivros" required>
         <br><br><label class="">Capa:</label>
         <br><input type="file" name="capaLivro" accept="image/*">
+    
+       
         <br><br><input type="submit" value="Cadastrar">
     </form>
             </center>

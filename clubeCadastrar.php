@@ -226,8 +226,8 @@
                border: none;
                border-radius: 10px;
                background-color: #f0f0f0;
-               width: 100%;
-               margin: 5px 0;
+               width: 95%;
+               margin: 2px -15px;
                }
                input[type="submit"] {
                padding: 10px 20px;
@@ -304,7 +304,7 @@
    <a href="index.php">Início</a>
    <a href="catalogo.php">Acervo</a>
    <a href="clubeLivro.php">Clube do Livro</a>
-   <a href="horaLeitura.php">Hora da Leitura</a>
+    <a href="horaLeitura.php">Hora da Leitura</a>
    <a href="rankingLivros.php">Ranking de livros</a>
    <div class="icon-menu white" id="icon-menu">
    <i class="fas fa-bars fa-2xl"></i>

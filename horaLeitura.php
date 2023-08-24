@@ -12,7 +12,7 @@
        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
        exit();
    }
-    
+   
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +23,8 @@
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
       <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
       <title> Início | Mascarenhas </title>
@@ -31,91 +33,121 @@
          @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
          * {
-         margin: 0;
-         padding: 0;
-         text-decoration: none;
-         text-transform: none;
-         }
-         .navbar {
-         text-align: center;
-         background-color: rgb(0, 0, 0);
-         height: 70px;
-         overflow-x: hidden;
-         position: fixed;
-         width: 100%;
-         z-index: 100;
-         transition: top 0.3s;
-         top: 0;
-         }
-         .navbar a {
-         justify-content: center;
-         align-items: center;
-         left: -18rem;
-         position: relative;
-         top: 20px;
-         margin: 0 1rem;
-         font-size: 1.4rem;
-         color: #ffffff;
-         text-decoration: none;
-         }
-         .navbar .icon-menu {
-         font-size: 2rem;
-         color: #ffffff;
-         cursor: pointer;
-         }
-         .logoo {
-         left:1%;
-         position: absolute;
-         width:7%;
-         top:-5px;
-         }
-         .sidebar {
-         position: fixed;
-         right: -250px;
-         top: 0;
-         width: 250px;
-         height: 100%;
-         background-color: #f0f0f0;
-         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-         transition: right 0.3s;
-         z-index: 1000;
-         text-align: center;
-         display: flex;
-         flex-direction: column;
-         justify-content: space-between;
-         overflow-y: hidden;
-         }
-         .sidebar.active {
-         right: 0;
-         }
-         .sidebar a {
-         display: flex;
-         position: relative;
-         top: -18%;
-         align-items: center;
-         padding: 15px;
-         text-decoration: none;
-         color: #333;
-         transition: background-color 0.3s, color 0.3s; 
-         margin-bottom: -100px; 
-         overflow-x: hidden;
-         }
-         .sidebar-link2 {
-         top: -9rem;
-         align-items: center;
-         text-decoration: none;
-         color: #333;
-         position: relative;
-         transition: background-color 0.3s, color 0.3s; 
-         margin-bottom: -80px; 
-         }
-         .sidebar a i {
-         margin-right: 10px;
-         }
-         .sidebar a:hover {
-         background-color: #ddd;
-         color: #666; 
-         }
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        text-transform: none;
+        overflow-x:hidden;
+    }
+
+    .navbar {
+        text-align: center;
+        background-color: rgb(0, 0, 0);
+        height: 70px;
+        overflow-x: hidden;
+    }
+    .navbar a {
+        justify-content: center;
+        align-items: center;
+        left: -18rem;
+        position: relative;
+        top: 20px;
+        margin: 0 1rem;
+        font-size: 1.4rem;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .navbar .icon-menu {
+        font-size: 2rem;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .logoo {
+      left:1%;
+      position: absolute;
+      width:7%;
+      top:-5px;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #f0f0f0;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s;
+        z-index: 1000;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .sidebar.active {
+        right: 0;
+    }
+
+    .sidebar a {
+        display: flex;
+        position: relative;
+        top:-18%;
+        align-items: center;
+        padding: 15px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s, color 0.3s; 
+        margin-bottom: -100px; /* Ajuste o valor conforme necessário */
+}
+    .sidebar-link2 {
+        top:-9rem;
+        align-items: center;
+        
+        text-decoration: none;
+        color: #333;
+        position: relative;
+        transition: background-color 0.3s, color 0.3s; 
+        margin-bottom: -80px; 
+}
+
+    .sidebar a i {
+        margin-right: 10px;
+    }
+
+    .sidebar a:hover {
+        background-color: #ddd;
+        color: #666; 
+    }
+
+
+    .logo-area {
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        background-color: #f0f0f0;
+        margin-bottom: 20px;
+        position: relative;
+}
+
+    .logo-area p {
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 1.6em;
+    }
+
+    .logo-area img {
+        width: 10px; /* Ajuste o tamanho da imagem conforme necessário */
+        height: 10px; /* Ajuste o tamanho da imagem conforme necessário */
+        margin-bottom: 10px;
+    }
+
+    .sidebar a i {
+        margin-right: 10px;
+    }
          .logo-area {
          font-family: 'Inter', sans-serif;
          display: flex;
@@ -170,15 +202,113 @@
          align-items: center; 
          justify-content: center; 
          }
-         footer {
-         background-color: #000000;
-         color: #fff;
-         padding: 25px;
-         text-align: center;
-         width: 100%;
-         position: absolute;
-         bottom: 0;
-         }
+         .conteudo-centralizado {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        }
+
+        .balao-branco {
+        background-color: white;
+        border-radius: 10px;
+        padding: 80px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /
+        }
+        .custom-search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: white;
+        overflow: hidden;
+        position: relative;
+        }
+
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 5px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        padding-right: 100px;
+        }
+        .submit {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #333;
+    color: white; /* Definindo a cor do texto para branco */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.submit:hover {
+    background-color: #666;
+}
+
+         ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+               }
+               li {
+               display: inline-block;
+               margin: 0 10px;
+               }
+               a {
+               color: #fff;
+               text-decoration: none;
+               }
+               footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+}
+
       </style>
    </head>
    <body style="background-color: #f0f0f0;">
@@ -218,18 +348,46 @@
             </a>
          </div>
       </div>
-      <footer>
-         <p>&copy; 2023 - Todos os direitos reservados</p>
-         <br>
-         <nav>
-            <ul>
-               <li><a href="#">Termos de uso</a></li>
-               <li><a href="#">Política de privacidade</a></li>
-               <li><a href="#">Sobre nós</a></li>
-               <li><a href="#">Contato</a></li>
-            </ul>
-         </nav>
-      </footer>
+      <img src="Imagens/clube.png" alt="Clube Logo">
+                <div class="conteudo-centralizado">
+                <div class="balao-branco">
+    <h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Leitores Cadastrados</h1>
+    
+    <?php
+    $mostrarleitores = 'SELECT * FROM `horaleitura`';
+    $resultado = $conexao->query($mostrarleitores);
+    
+    echo '<div class="custom-search-box">';
+    echo '<input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por nome">';
+    echo '</div>';
+    
+    echo '<table>';
+    echo '<tr><th>Nome</th><th>Turma</th><th>Telefone</th><th>Livro Atual</th><th>Página Atual</th><th>Editar</th></tr>';
+    
+    while ($row = mysqli_fetch_array($resultado)) {
+        echo "<tr>";
+        echo "<td>" . $row['nome'] . "</td>";
+        echo "<td>" . $row['turma'] . "</td>";
+        echo "<td>(+55) " . $row['telefone'] . "</td>";
+        echo "<td>" . $row['nomeLivro'] . "</td>";
+        echo "<td>" . $row['atualPag'] . "</td>";
+        echo "<td><form method='post' action='horaLeituraAtualizar.php'>
+            <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
+            <input type='submit' class='submit' value='Editar'>
+            
+            </form></td>";
+        echo "</tr>";
+    }
+    
+    echo '</table>';
+    
+    ?>
+    <a href='horaLeituraCadastrar.php' class='submit' style='margin-top: 60px;'>Cadastrar Leitores</a>
+</div>
+                        
+                    </div>
+                </div>
+
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
       <script>
@@ -265,7 +423,35 @@
                  });
              });
          });
+         function showHint(str) {
+                        if (str.length == 0) { 
+                            document.getElementById('txtHint').innerHTML = '';
+                            return;
+                        }
+                        const xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                document.getElementById('txtHint').innerHTML = this.responseText;
+                            }
+                        };
+                        xhttp.open('GET', 'horaLeituraPesquisar.php?nomePesquisado=' + str, true);
+                        xhttp.send();
+                    }
       </script>
+                 <footer>
+                    <p>&copy; 2023 - Todos os direitos reservados</p>
+                    <br>
+                    <nav>
+                        <ul>
+                            <li><a href="#">Termos de uso</a></li>
+                            <li><a href="#">Política de privacidade</a></li>
+                            <li><a href="#">Sobre nós</a></li>
+                            <li><a href="#">Contato</a></li>
+                        </ul>
+                    </nav>
+                </footer>
+            </body>
+            </html>
    </body>
    <html>
       <head>
@@ -289,53 +475,4 @@
             }
          </script>
       </head>
-      <body>
-         <img src="Imagens/clube.png" alt="Clube Logo">
-         <h1>Leitores Cadastrados</h1>
-         <?php
-            $hostname = '127.0.0.1';
-            $user = 'root';
-            $password = 'root';
-            $database = 'biblioteca';
-            $conexao = new mysqli($hostname, $user, $password, $database);
-            
-            if ($conexao->connect_errno) {
-                echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-                exit();
-            } else {
-                $mostrarleitores = 'SELECT * FROM `horaleitura`';
-                $resultado = $conexao->query($mostrarleitores);
-                
-                echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>
-                <span id='txtHint'></span>
-                <script>
-                    function showHint(str) {
-                        if (str.length == 0) { 
-                            document.getElementById('txtHin').innerHTML = '';
-                            return;
-                        }
-                        const xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                document.getElementById('txtHint').innerHTML = this.responseText;
-                            }
-                        };
-                        xhttp.open('GET', 'horaLeituraPesquisar.php?nomePesquisado='+str, true);
-                        xhttp.send();
-                    }
-                </script>";
-                
-                echo "<br><br><a href='horaLeituraCadastrar.php' class='' style='color: black;'>Cadastrar Leitores</a><br>";
-                
-                while ($row = mysqli_fetch_array($resultado)) {
-                    echo "<br>Nome: " . $row['nome'] . "<br>Turma: " . $row['turma'] . "<br>Telefone: (+55) " . $row['telefone']."<br>Livro Atual: ". $row['nomeLivro'] ."<br>Página Atual ". $row['atualPag'];
-                    echo "<br><form method='post' action='horaLeituraAtualizar.php'>
-                            <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
-                            <br><input type='submit' value='Editar'>
-                            </form>";
-                }
-            }
-            ?>
-            <br><a href="index.php" style="color: black;">Voltar</a>
-      </body>
-   </html>
+    

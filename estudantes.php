@@ -7,7 +7,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
+    <title> Estudantes | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script>
+    function formatarTelefone() {
+    var telefone = document.getElementById('telefone');
+    var valor = telefone.value;
+
+    // Remove todos os caracteres não numéricos
+    valor = valor.replace(/\D/g, '');
+
+    // Verifica se o número possui 11 dígitos (com DDD)
+    if (valor.length === 11) {
+        valor = valor.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
+    }
+    // Verifica se o número possui 10 dígitos (sem DDD)
+    else if (valor.length === 10) {
+        valor = valor.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
+    }
+
+    telefone.value = valor;
+    }
+    </script>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -220,7 +242,7 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="horaLeitura.php">Hora da Leitura</a>
+         <a href="horaLeitura.php">Hora da Leitura</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -287,44 +309,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
-</body>
-</html>
 
-
-<!--Página de visualização de estudantess-->
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html lang="pt-BR">
-<html>
-
-<head>
-    <title>Estudantes | Mascarenhas</title>
-    <link rel="stylesheet" href="">
-
-    <script>
-    function formatarTelefone() {
-    var telefone = document.getElementById('telefone');
-    var valor = telefone.value;
-
-    // Remove todos os caracteres não numéricos
-    valor = valor.replace(/\D/g, '');
-
-    // Verifica se o número possui 11 dígitos (com DDD)
-    if (valor.length === 11) {
-        valor = valor.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
-    }
-    // Verifica se o número possui 10 dígitos (sem DDD)
-    else if (valor.length === 10) {
-        valor = valor.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
-    }
-
-    telefone.value = valor;
-    }
-    </script>
-</head>
-
-<body>
-    <h1>Estudantes</h1>
+<h1>Estudantes</h1>
     <?php
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
@@ -346,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <script>
         function showHint(str) {
             if (str.length == 0) { 
-              document.getElementById('txtHin').innerHTML = '';
+              document.getElementById('txtHint').innerHTML = '';
               return;
             }
             const xhttp = new XMLHttpRequest();
@@ -361,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </script>";
         #Campo para busca de usuário.
         #Hyperlink para cadastro de estudantes.
-        echo "<br><br><a href='estudantesCadastrar.php' class=''>Cadastrar estudantes</a><br>";
+        echo "<br><br><a href='estudantesCadastrar.php' class='' style='color: black;'>Cadastrar estudantes</a><br>";
         #Hyperlink para cadastro de estudantes.
         while ($row = mysqli_fetch_array($resultado)) {
             echo "<br>" . $row['nome'] . "<br>Nº da Matrícula: ".$row['nMatricula'] ."<br>Turma: " . $row['turma'] . "<br>Endereço: " . $row['endereco'] ."<br>Telefone: (+55) " . $row['telefone'];
@@ -376,8 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     ?>
     <!--Retornar a página anterior-->
-    <br><a href='index.php'>Voltar</a>
+    <br><a href='index.php' style='color: black;'>Voltar</a>
     <!--Retornar a página anterior-->
 </body>
-
 </html>

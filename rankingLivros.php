@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Início | Mascarenhas </title>
+    <title> inicio | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -155,7 +155,7 @@
 .white-background {
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 80px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     max-width: 800px;
     width: 100%;
@@ -191,6 +191,26 @@
         width: 70%;
         padding-right: 100px;
         }
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 
 
@@ -234,6 +254,7 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
+        <a href="horaLeitura.php">Hora da Leitura</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -275,62 +296,42 @@
 <div class="content">
     <div class="center-container">
         <div class="white-background">
-<h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Ranking dos Livros</h1>
-<?php 
-include('protect.php');
+            <h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Ranking dos Livros</h1>
+    
+            <?php
+            include('protect.php');
 
-$hostname = '127.0.0.1';
-$user = 'root';
-$password = 'root';
-$database = 'biblioteca';
-$conexao = new mysqli($hostname, $user, $password, $database);
-if ($conexao->connect_errno) {
-    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-    exit();
-} else {
-    $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
-    $resultado = $conexao->query($mostrarLivros);
-}
+            $hostname = '127.0.0.1';
+            $user = 'root';
+            $password = 'root';
+            $database = 'biblioteca';
+            $conexao = new mysqli($hostname, $user, $password, $database);
+            if ($conexao->connect_errno) {
+                echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+                exit();
+            } else {
+                $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
+                $resultado = $conexao->query($mostrarLivros);
 
-echo '<div class="custom-search-box">
-    <br><input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por título">
-</div>';
-?>
+                echo '<table>';
+                echo '<tr><th>Título</th><th>Autor</th><th>Editora</th><th>Ano Publicado</th><th>Gênero</th><th>Quantidade de Empréstimos</th></tr>';
 
+                while ($row = mysqli_fetch_array($resultado)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['nome'] . "</td>";
+                    echo "<td>" . $row['autor'] . "</td>";
+                    echo "<td>" . $row['editora'] . "</td>";
+                    echo "<td>" . $row['anoPublicado'] . "</td>";
+                    echo "<td>" . $row['genero'] . "</td>";
+                    echo "<td>" . $row['qtdEmprestimo'] . "</td>";
+                    echo "</tr>";
+                }
 
-<script>
-    function showHint(str) {
-        if (str.length == 0) { 
-            document.getElementById('txtHint').innerHTML = '';
-            return;
-        }
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById('txtHint').innerHTML = this.responseText;
+                echo '</table>';
             }
-        };
-        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado=' + str, true);
-        xhttp.send();
-    }
-</script>
-
-<?php
-while ($row = mysqli_fetch_array($resultado)) {
-    echo "<br><table style='width: 20%;'>
-        <tr>
-            <td style='width: 40%;'>
-            <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
-            </td>
-            <td>
-                Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] . '
-            </td>
-        </tr>
-    </table>';
-}
-?>
-</div>
-</div>
+            ?>
+        </div>
+    </div>
 </div>
 <footer>
     <p>&copy; 2023 - Todos os direitos reservados </p>

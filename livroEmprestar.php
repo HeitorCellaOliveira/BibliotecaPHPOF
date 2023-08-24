@@ -309,13 +309,14 @@
    </center>
    <!-- Formulário de empréstimo -->
    <form method="post" action="livroEmprestarBD.php" id="emprestar" name="emprestar">
-   <?php echo"<label for='livro'>Livro selecionado: ". $livro . "</label>" ?>
-   <br><label for="aluno">Nº de Matrícula:</label>
-   <input type="text" id="estudanteID" name="estudanteID" required>
-   <label for="dataEmprestimo">Data do Empréstimo:</label>
-   <input type="date" id="dataEmprestimo" name="dataEmprestimo" required>
-   <input type="submit" value="Emprestar">
-   </form>
+    <?php echo "<label for='livro'>Livro selecionado: " . $livro . "</label>" ?>
+    <input type="hidden" name="livroID" value="<?php echo $livro; ?>"> <!-- Adicione este campo oculto -->
+    <br><label for="aluno">Nº de Matrícula:</label>
+    <input type="text" id="estudanteID" name="estudanteID" required>
+    <label for="dataEmprestimo">Data do Empréstimo:</label>
+    <input type="date" id="dataEmprestimo" name="dataEmprestimo">
+    <input type="submit" value="Emprestar">
+</form>
    <br><a href='catalogo.php'>Voltar</a>
    </div>
    <footer>
