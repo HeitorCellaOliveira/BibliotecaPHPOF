@@ -1,4 +1,4 @@
-<?php include('protect.php'); ?>
+<?php include('protect.php')?>
 
 <!--Página de cadastro de aluno-->
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 <html lang="pt-BR">
 
 <head>
-    <title>Cadastro Alunos | Mascarenhas</title>
+    <title>Cadastro Leitores | Mascarenhas</title>
     <link rel="stylesheet" href="">
 
     <meta charset="UTF-8">
@@ -129,7 +129,6 @@
     }
     </script>
 </head>
-
 <body>
 <nav class="navbar">
         <img src="Imagens/logo.png" class="logo">
@@ -173,24 +172,23 @@
     });
     </script>
     <!--Forms para cadastro-->
-    <h1>Cadastro de aluno</h1>
-    <form method="post" action="estudantesCadastrarBD.php" id="cadastro" name="cadastro">
-        <label class="">Nome completo:</label>
+    <h1>Cadastro de Leitor</h1>
+    <form method="post" action="horaLeituraCadastrarBD.php" id="cadastro" name="cadastro">
+        <br><label class="">Nome completo:</label>
         <br><input type="text" id="nome" name="nome" required>
-        <br><br><label class="">Endereço:</label>
-        <br><input type="text" id="endereco" name="endereco" required>
-        <br><br><label class="">Telefone:</label>
-        <br><input onkeyup="formatarTelefone()" type="text" id="telefone" name="telefone" required>
         <br><br><label class="">Turma:</label>
         <br><input type="text" id="turma" name="turma" required>
-        <br><br><label class="">Nº da Matrícula</label>
-        <br><input type="text" id="nMatricula" name="nMatricula" required>
+        <br><br><label class="">Telefone:</label>
+        <br><input onkeyup="formatarTelefone()" type="text" id="telefone" name="telefone" required>
+        <br><br><label class="">Nome do Livro: </label>
+        <br><input type="textx" id="nomeLivro" name="nomeLivro">
+        <br><br><label class="">Página Atual: </label>
+        <br><input type="number" id="atualPag" name="atualPag">
         <br><br><input type="submit" value="Cadastrar">
     </form>
     <!--Forms para cadastro-->
     <!--Retornar a página anterior-->
-    <br><a href='estudantes.php'>Voltar</a>
+    <br><a href='horaLeitura.php'>Voltar</a>
     <!--Retornar a página anterior-->
 </body>
-
 </html>

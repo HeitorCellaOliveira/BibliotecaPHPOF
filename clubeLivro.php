@@ -187,6 +187,7 @@
          <a href="index.php">Início</a>
          <a href="catalogo.php">Acervo</a>
          <a href="clubeLivro.php">Clube do Livro</a>
+         <a href="horaLeitura.php">Hora da Leitura</a>
          <a href="rankingLivros.php">Ranking de livros</a>
          <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>

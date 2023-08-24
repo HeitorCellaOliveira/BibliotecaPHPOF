@@ -35,8 +35,6 @@
             echo '<form method="post" action="turmasAtualizarBD.php" id="cadastro" name="cadastro">
                             <label class="">Nº da Turma:</label>
                             <br><input type="text" id="nome" name="nome" value="' . $row['nome'] . '" required>
-                            <br><br><label class="">Turma:</label>
-                            <br><input type="text" id="turma" name="turma" value="' . $row['turma'] . '" required>
                             <br><br><label class="">turno:</label>
                             <br><input type="text" id="turno" name="turno" value="' . $row['turno'] . '" required>
                             <br><br><label class="">Quantidade de Alunos: </label>

@@ -1,15 +1,17 @@
-<?php include('protect.php'); ?>
-
+<!--Página de de editar as informações de alunos-->
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+<html lang="pt-BR">
+<html>
+
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Início | Mascarenhas </title>
+    <title> Atualizar | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -216,7 +218,9 @@
         justify-content: center; 
     }
     </style>
+    
 </head>
+
 <body>
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
@@ -288,58 +292,61 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
 </script>
-<h1>Ranking dos Livros</h1>
-<?php 
-include('protect.php');
 
-$hostname = '127.0.0.1';
-$user = 'root';
-$password = '';
-$database = 'biblioteca';
-$conexao = new mysqli($hostname, $user, $password, $database);
-if ($conexao->connect_errno) {
-    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-    exit();
+    <h1>Atualizar Dados</h1>
+    <?php
+
     #Conexão com o banco de dados.
-} else {
-    #Lista com todos os livros.
-    $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
-    $resultado = $conexao->query($mostrarLivros);
-    #Campo para busca de livro.
-    echo "<br><input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título'>
-    <span id='txtHint'></span>
-    <script>
-    function showHint(str) {
-        if (str.length == 0) { 
-          document.getElementById('txtHin').innerHTML = '';
-          return;
+    $hostname = '127.0.0.1';
+    $user = 'root';
+    $password = '';
+    $database = 'biblioteca';
+    $conexao = new mysqli($hostname, $user, $password, $database);
+    if ($conexao->connect_errno) {
+        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+        exit();
+        #Conexão com o banco de dados.
+    } else {
+        #Busca de informações de usuários através de seu ID.
+        $id = $conexao->real_escape_string($_POST['id']);
+        $infosDeAluno = 'SELECT * FROM `horaleitura` WHERE `id` = ' . $id . ';';
+        $resultado = $conexao->query($infosDeAluno);
+        #Busca de informações de usuários através de seu ID.
+        #Form com as informações do usuários, disponíveis para alteração ou não.
+        if ($resultado->num_rows != 0) {
+            $row = $resultado->fetch_array();
+            echo '<form method="post" action="horaLeituraAtualizarBD.php">
+                            <label class="">Nome Completo:</label>
+                            <br><input type="text" id="nome" name="nome" value="' . $row['nome'] . '" required>
+                            <br><br><label class="">Turma:</label>
+                            <br><input type="text" id="turma" name="turma" value="' . $row['turma'] . '" required>
+                            <br><br><label class="">Telefone:</label>
+                            <br><input type="text" id="telefone" name="telefone" value="' . $row['telefone'] . '" placeholder="(xx) x xxxx-xxxx" required>
+                            <br><br><label class="">Nome do Livro:</label>
+                            <br><input type="text" id="nomeLivro" name="nomeLivro" value="' . $row['nomeLivro'] . '">
+                            <br><br><label class="">Página Atual:</label>
+                            <br><input type="text" id="atualPag" name="atualPag" value="'. $row['atualPag'] .'">
+                            <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
+                            <br><br><input type="submit" value="Salvar">
+                        </form>
+                        <br>';
+            #Submit para o processo de apagar usuário.
+            echo '<form method="post" action="horaLeituraApagar.php" id="apagar" name="apagar">
+                        <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
+                        <input type="submit" value="Apagar">
+                    </form>';
+            #Submit para o processo de apagar usuário.
+            #Retornar a página anterior.
+            echo '<br><a href="horaLeitura.php" style="color: black;">Voltar</a>';
+            #Retornar a página anterior.
+            $conexao->close();
+            exit();
+            #Form com as informações do usuários, disponíveis para alteração ou não.
         }
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById('txtHint').innerHTML = this.responseText;
-            }
-        };
-        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado='+str, true);
-        xhttp.send();
-      }
-    </script><br>";
-    #Campo para busca de livro.
-    while ($row = mysqli_fetch_array($resultado)) {
-        echo "<br><table style='width: 20%;'>
-            <tr>
-                <td style='width: 40%;'>
-                <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
-
-                </td>
-                <td>
-                    Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] .'
-                </td>
-            </tr>
-        </table>';
     }
-}
-?>
+    ?>
 </body>
+
 </html>
