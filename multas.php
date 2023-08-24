@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <?php
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = 'root';
+$password = '';
 $database = 'biblioteca';
 
 $conexao = new mysqli($hostname, $user, $password, $database);
@@ -300,7 +300,10 @@ if ($conexao->connect_errno) {
     echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
     exit();
 } else {
-    $sql_multas = "SELECT emprestimoID, dataDevolucao, multaPaga FROM devolucoes";
+    $sql_multas = "SELECT d.emprestimoID, d.dataDevolucao, d.multaPaga, e.estudanteID 
+                   FROM devolucoes d
+                   INNER JOIN emprestimos e ON d.emprestimoID = e.id";
+    
     $result_multas = $conexao->query($sql_multas);
 
     if ($result_multas === false) {
@@ -311,18 +314,34 @@ if ($conexao->connect_errno) {
             echo "Data de Devolução: " . $row_multa['dataDevolucao'] . "<br>";
             echo "Multa (R$): " . number_format($row_multa['multaPaga'], 2, ',', '.') . "<br>";
             
+            // Consulta para buscar o nome e número de matrícula do estudante associado ao empréstimo
+            $sql_estudante = "SELECT nome, nMatricula FROM cadastroalunos WHERE id = ?";
+            $stmt = $conexao->prepare($sql_estudante);
+            $stmt->bind_param("i", $row_multa['estudanteID']);
+            $stmt->execute();
+            $result_estudante = $stmt->get_result();
+            
+            if ($result_estudante->num_rows > 0) {
+                $estudante = $result_estudante->fetch_assoc();
+                echo "Nome do Estudante: " . $estudante['nome'] . "<br>";
+                echo "Número de Matrícula: " . $estudante['nMatricula'] . "<br>";
+            } else {
+                echo "Estudante não encontrado.";
+            }
+            
             if ($row_multa['multaPaga'] > 0) {
-                echo "<button onclick='apagarMulta(" . $row_multa['emprestimoID'] . ")'>Apagar Multa</button>";
+                echo "<button onclick='apagarMulta(" . $row_multa['emprestimoID'] . ")'>Multa Paga</button>";
                 echo "<br><br><a href='index.php'>Voltar</a>";
             } else {
                 echo "Multa paga.";
             }
             
-            echo "<hr>"; // Adiciona uma linha horizontal para separar as multas
+            echo "<br><hr>"; // Adiciona uma linha horizontal para separar as multas
         }
     }
 }
 ?>
+
 
 <script>
 function apagarMulta(emprestimoID) {
