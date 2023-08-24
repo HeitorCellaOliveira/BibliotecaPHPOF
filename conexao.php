@@ -2,7 +2,7 @@
 include('protect.php');
 
 $usuario = 'root';
-$senha = '';
+$senha = 'root';
 $database = 'biblioteca';
 $host = 'localhost';
 

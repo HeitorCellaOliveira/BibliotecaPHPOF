@@ -5,7 +5,7 @@ include('protect.php');
 #Conexão com o banco de dados.
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = '';
+$password = 'root';
 $database = 'biblioteca';
 $conexao = new mysqli($hostname, $user, $password, $database);
 if ($conexao->connect_errno) {
@@ -23,7 +23,7 @@ if ($conexao->connect_errno) {
     $salvarEdicoes = 'UPDATE `biblioteca`.`cadastroturmas`
                 SET `nome` = "' . $nome . '",
                 `turno` = "' . $turno . '",
-                `num_alunos` = "' . $num_alunos . '",
+                `num_alunos` = "' . $num_alunos . '"
                 WHERE `id`="' . $id . '";';
     $resultado = $conexao->query($salvarEdicoes);
     $conexao->close();

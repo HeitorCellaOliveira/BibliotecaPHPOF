@@ -11,149 +11,137 @@
       <style>
          @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
          @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
+
          * {
-         margin: 0;
-         padding: 0;
-         text-decoration: none;
-         text-transform: none;
-         }
-         .navbar {
-         text-align: center;
-         background-color: rgb(0, 0, 0);
-         height: 70px;
-         overflow-x: hidden;
-         position: fixed; 
-         width: 100%; 
-         z-index: 100; 
-         transition: top 0.3s; 
-         top: 0; 
-         }
-         .navbar a {
-         justify-content: center;
-         align-items: center;
-         left: -18rem;
-         position: relative;
-         top: 20px;
-         margin: 0 1rem;
-         font-size: 1.4rem;
-         color: #ffffff;
-         text-decoration: none;
-         }
-         .navbar .icon-menu {
-         font-size: 2rem;
-         color: #ffffff;
-         cursor: pointer;
-         }
-         .logoo {
-         left:1%;
-         position: absolute;
-         width:7%;
-         top:-5px;
-         }
-         .sidebar {
-         position: fixed;
-         right: -250px;
-         top: 0;
-         width: 250px;
-         height: 100%;
-         background-color: #f0f0f0;
-         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-         transition: right 0.3s;
-         z-index: 1000;
-         text-align: center;
-         display: flex;
-         flex-direction: column;
-         justify-content: space-between;
-         overflow-y: hidden;
-         }
-         .sidebar.active {
-         right: 0;
-         }
-         .sidebar a {
-         display: flex;
-         position: relative;
-         top:-18%;
-         align-items: center;
-         padding: 15px;
-         text-decoration: none;
-         color: #333;
-         transition: background-color 0.3s, color 0.3s; 
-         margin-bottom: -100px; 
-         }
-         .sidebar-link2 {
-         top:-9rem;
-         align-items: center;
-         text-decoration: none;
-         color: #333;
-         position: relative;
-         transition: background-color 0.3s, color 0.3s; 
-         margin-bottom: -80px; 
-         }
-         .sidebar a i {
-         margin-right: 10px;
-         }
-         .sidebar a:hover {
-         background-color: #ddd;
-         color: #666; 
-         }
-         .logo-area {
-         font-family: 'Inter', sans-serif;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         padding: 20px 0;
-         background-color: #f0f0f0;
-         margin-bottom: 20px;
-         position: relative;
-         }
-         .logo-area p {
-         margin-top: 5px;
-         font-weight: bold;
-         font-size: 1.6em;
-         }
-         .logo-area img {
-         width: 10px; 
-         height: 10px; 
-         margin-bottom: 10px;
-         }
-         .sidebar a i {
-         margin-right: 10px;
-         }
-         .icon-menu {
-         position: fixed;
-         top: 20px;
-         right: 20px;
-         cursor: pointer;
-         color: #fff;
-         font-size: 2rem;
-         z-index: 1001;
-         }
-         .icon-menu.white {
-         color: #fff;
-         }
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        text-transform: none;
+    }
+
+    .navbar {
+        text-align: center;
+        background-color: rgb(0, 0, 0);
+        height: 70px;
+        overflow-x: hidden;
+    }
+    .navbar a {
+        justify-content: center;
+        align-items: center;
+        left: -18rem;
+        position: relative;
+        top: 20px;
+        margin: 0 1rem;
+        font-size: 1.4rem;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .navbar .icon-menu {
+        font-size: 2rem;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .logoo {
+      left:1%;
+      position: absolute;
+      width:7%;
+      top:-5px;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: -250px;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #f0f0f0;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s;
+        z-index: 1000;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .sidebar.active {
+        right: 0;
+    }
+
+    .sidebar a {
+        display: flex;
+        position: relative;
+        top:-18%;
+        align-items: center;
+        padding: 15px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s, color 0.3s; 
+        margin-bottom: -100px; /* Ajuste o valor conforme necessário */
+}
+    .sidebar-link2 {
+        top:-9rem;
+        align-items: center;
         
-         .sidebar .separator {
-         height: 2px;
-         width: 100%;
-         background-color: #e0e0e0;
-         margin: 20px 0;
-         }
-         .sidebar .separator2{
-         height: 2px;
-         width: 100%;
-         background-color: #e0e0e0;
-         margin: 20px 0;
-         position:relative;
-         top:0rem;
-         }
-         .sidebar .profile-link {
-         margin: auto; 
-         padding: 15px;
-         background-color: #f0f0f0; 
-         display: flex; 
-         align-items: center; 
-         justify-content: center; 
-         }
+        text-decoration: none;
+        color: #333;
+        position: relative;
+        transition: background-color 0.3s, color 0.3s; 
+        margin-bottom: -80px; 
+}
+
+    .sidebar a i {
+        margin-right: 10px;
+    }
+
+    .sidebar a:hover {
+        background-color: #ddd;
+        color: #666; 
+    }
+
+
+    .logo-area {
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        background-color: #f0f0f0;
+        margin-bottom: 20px;
+        position: relative;
+}
+
+    .logo-area p {
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 1.6em;
+    }
+
+    .logo-area img {
+        width: 10px; /* Ajuste o tamanho da imagem conforme necessário */
+        height: 10px; /* Ajuste o tamanho da imagem conforme necessário */
+        margin-bottom: 10px;
+    }
+
+    .sidebar a i {
+        margin-right: 10px;
+    }
+
+    .icon-menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 2rem;
+        z-index: 1001;
+    }
+
+    .icon-menu.white {
+        color: #fff;
+    }
+
          .custom-search-box {
          display: flex;
          align-items: center;
@@ -295,7 +283,7 @@
       </style>
    </head>
    <body>
-      <body style="background-color: #f0f0f0;">
+      <body style="background-color: #f0f0f0; overflow-x:hidden;">
    <nav class="navbar">
       <img src="Imagens/logo.png"class="logoo" >
       <a href="index.php">Início</a>
@@ -335,10 +323,10 @@
    </div>
    <div class="carousel">
       <div><img src="Imagens/leialivros.png" alt="Imagem 1"></div>
-      <div><img src="Imagens/leialivros.png" alt="Imagem 2"></div>
-      <div><img src="Imagens/leialivros.png" alt="Imagem 3"></div>
-      <div><img src="Imagens/leialivros.png" alt="Imagem 4"></div>
-      <div><img src="Imagens/leialivros.png" alt="Imagem 5"></div>
+      <div><img src="Imagens/2.png" alt="Imagem 2"></div>
+      <div><img src="Imagens/3.png" alt="Imagem 3"></div>
+      <div><img src="Imagens/4.png" alt="Imagem 4"></div>
+      <div><img src="Imagens/5.png" alt="Imagem 5"></div>
    </div>
    <div class="search-box">
       <!-- Barra de Pesquisa -->
@@ -359,7 +347,7 @@
 
          $hostname = '127.0.0.1';
          $user = 'root';
-         $password = '';
+         $password = 'root';
          $database = 'biblioteca';
          $conexao = new mysqli($hostname, $user, $password, $database);
          

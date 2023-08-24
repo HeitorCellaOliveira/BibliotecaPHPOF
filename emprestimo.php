@@ -223,7 +223,7 @@
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-         <a href="horaLeitura.php">Hora da Leitura</a>
+        <a href="horaLeitura.php">Hora da Leitura</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </td>
                     </tr>
                     <tr><td>
-                    <br><form method='post' action='emprestimoMarcar.php'>
+                    <form method='post' action='emprestimoMarcar.php'>
                     <input type='hidden' name='emprestimoID' value='" .$row['id']. "'>
                     <input type='submit' value='Apagar Registro'>
                 </form>

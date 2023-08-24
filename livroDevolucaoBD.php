@@ -1,7 +1,7 @@
 <?php
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = '';
+$password = 'root';
 $database = 'biblioteca';
 
 date_default_timezone_set('America/Sao_Paulo');

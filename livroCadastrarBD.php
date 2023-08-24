@@ -3,7 +3,7 @@ session_start();
 
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = '';
+$password = 'root';
 $database = 'biblioteca';
 
 date_default_timezone_set('America/Sao_Paulo');
@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prateleira = $conexao->real_escape_string($_POST['prateleira']);
     $genero = $conexao->real_escape_string($_POST['genero']);
     $qtdLivros = intval($_POST['qtdLivros']); // Ensure integer value
+    $qtdEmprestimo = $conexao->real_escape_string($_POST['qtdEmprestimo']);
 
     // Handle file upload
     if (isset($_FILES['capaLivro']) && $_FILES['capaLivro']['error'] === UPLOAD_ERR_OK) {
@@ -43,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert data into the database
-    $cadastrarLivro = 'INSERT INTO `acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `rua`, `estante`, `prateleira`, `genero`, `qtdLivros`, `capaLivro`)
+    $cadastrarLivro = 'INSERT INTO `acervo`(`nome`, `autor`, `editora`, `anoPublicado`, `nPags`, `isbn`, `rua`, `estante`, `prateleira`, `genero`, `qtdLivros`, `capaLivro`, `qtdEmprestimo`)
             VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", 
             ' . $anoPublicado . ', ' . $nPags . ', "' . $isbn . '", "' . $rua . '", 
             "' . $estante . '", "' . $prateleira . '", "' . $genero . '", 
-            "' . $qtdLivros . '", "' . $arquivo . '");';
+            "' . $qtdLivros . '", "' . $arquivo . '", "0");';
     
     if ($conexao->query($cadastrarLivro)) {
         // Successful insertion

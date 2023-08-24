@@ -3,7 +3,7 @@ session_start();
 
 $hostname = "127.0.0.1";
 $user = "root";
-$password = "";
+$password = "root";
 $database = "biblioteca";
 
 $mysqli = mysqli_connect($hostname, $user, $password, $database);
@@ -233,8 +233,8 @@ if (isset($_POST['nomeUsuario']) && isset($_POST['senha'])) {
     width: 250px;
     border-radius:40px;
     background: #fff;
-    border: 4px solid green;
-    color:green;
+    border: 2px solid black;
+    color:black;
     letter-spacing:1px;
     text-shadow:0;
     font-size:12px;

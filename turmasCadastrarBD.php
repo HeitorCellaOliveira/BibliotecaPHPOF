@@ -4,7 +4,7 @@
 session_start();
 $hostname = '127.0.0.1';
 $user = 'root';
-$password = '';
+$password = 'root';
 $database = 'biblioteca';
 $conexao = new mysqli($hostname, $user, $password, $database);
 if ($conexao->connect_errno) {
@@ -16,8 +16,8 @@ if ($conexao->connect_errno) {
     $nome = $conexao->real_escape_string($_POST['nome']);
     $turno = $conexao->real_escape_string($_POST['turno']);
     $num_alunos = $conexao->real_escape_string($_POST['num_alunos']);
-    $cadastrarTurma = 'INSERT INTO `biblioteca`.`cadastroturmas`(`nome`, `turno`, `num_alunos`, )
-            VALUES ("' . $nome . '", "' . $turno . '", "' . $num_alunos . '",);';
+    $cadastrarTurma = 'INSERT INTO `biblioteca`.`cadastroturmas`(`nome`, `turno`, `num_alunos`)
+            VALUES ("' . $nome . '", "' . $turno . '", "' . $num_alunos . '");';
     $resultado = $conexao->query($cadastrarTurma);
     $conexao->close();
     header('Location: turmas.php', true, 301);

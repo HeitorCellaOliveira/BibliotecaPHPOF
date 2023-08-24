@@ -3,7 +3,7 @@
 
    $hostname = '127.0.0.1';
    $user = 'root';
-   $password = '';
+   $password = 'root';
    $database = 'biblioteca';
    
    $conexao = new mysqli($hostname, $user, $password, $database);
@@ -12,7 +12,7 @@
        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
        exit();
    }
-   
+    
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -295,7 +295,7 @@
          <?php
             $hostname = '127.0.0.1';
             $user = 'root';
-            $password = '';
+            $password = 'root';
             $database = 'biblioteca';
             $conexao = new mysqli($hostname, $user, $password, $database);
             

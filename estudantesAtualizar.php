@@ -12,11 +12,11 @@
 <body>
     <h1>Atualizar Dados</h1>
     <?php
-    include('protect.php');
     #Conexão com o banco de dados.
+    session_start();
     $hostname = '127.0.0.1';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $database = 'biblioteca';
     $conexao = new mysqli($hostname, $user, $password, $database);
     if ($conexao->connect_errno) {

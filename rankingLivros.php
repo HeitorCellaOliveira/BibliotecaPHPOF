@@ -21,6 +21,7 @@
         padding: 0;
         text-decoration: none;
         text-transform: none;
+        
     }
 
     .navbar {
@@ -146,32 +147,67 @@
         color: #fff;
     }
 
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+    .content {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
 
-    .banner {
+.white-background {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 100px; /* Espaço superior para centralizar verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Alinha o texto no centro */
+}
+.custom-search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: white;
+        overflow: hidden;
         position: relative;
-    }
+        }
 
-    footer {
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 5px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        padding-right: 100px;
+        }
+
+
+
+
+        footer {
         background-color: rgb(0, 0, 0);
         background-color: #000000;
         color: #fff;
         padding: 25px;
         text-align: center;
-        top: 827px;
+        top: 500px;
         width: 100%;
-        position: fixed; 
+        position: relative; 
         bottom: 0; 
         left: 0; 
+        margin-bottom:-160px;
+        overflow-x:hidden;
     }
 
     ul {
@@ -189,41 +225,15 @@
         color: #fff;
         text-decoration: none;
     }
-
-    /* Estilo para a linha cinza claro dentro da sidebar */
-    .sidebar .separator {
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-    }
-    .sidebar .separator2{
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-        position:relative;
-        top:0rem;
-    }
-
-    /* Estilo para a aba Meu Perfil */
-    .sidebar .profile-link {
-        margin: auto; 
-        padding: 15px;
-        background-color: #f0f0f0; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-    }
     </style>
 </head>
-<body>
+<body style="background-color:#f0f0f0; overflow-x:hidden;">
+
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
         <a href="index.php">Início</a>
         <a href="catalogo.php">Acervo</a>
         <a href="clubeLivro.php">Clube do Livro</a>
-        <a href="horaLeitura.php">Hora da Leitura</a>
         <a href="rankingLivros.php">Ranking de livros</a>
         <div class="icon-menu white" id="icon-menu">
             <i class="fas fa-bars fa-2xl"></i>
@@ -242,8 +252,7 @@
     <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
     <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
     <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
-    <div class="separator2"></div>
-    
+    <div class="separator2"></div> 
 
     <div class="sidebar-link2">
             <a href="#">
@@ -260,6 +269,68 @@
             
         </div>
     </div>
+</div>
+
+<img src="Imagens/ranking.png" alt="Ranking Logo" >
+<div class="content">
+    <div class="center-container">
+        <div class="white-background">
+<h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Ranking dos Livros</h1>
+<?php 
+include('protect.php');
+
+$hostname = '127.0.0.1';
+$user = 'root';
+$password = 'root';
+$database = 'biblioteca';
+$conexao = new mysqli($hostname, $user, $password, $database);
+if ($conexao->connect_errno) {
+    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+    exit();
+} else {
+    $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
+    $resultado = $conexao->query($mostrarLivros);
+}
+
+echo '<div class="custom-search-box">
+    <br><input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por título">
+</div>';
+?>
+
+
+<script>
+    function showHint(str) {
+        if (str.length == 0) { 
+            document.getElementById('txtHint').innerHTML = '';
+            return;
+        }
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('txtHint').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado=' + str, true);
+        xhttp.send();
+    }
+</script>
+
+<?php
+while ($row = mysqli_fetch_array($resultado)) {
+    echo "<br><table style='width: 20%;'>
+        <tr>
+            <td style='width: 40%;'>
+            <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
+            </td>
+            <td>
+                Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] . '
+            </td>
+        </tr>
+    </table>';
+}
+?>
+</div>
+</div>
 </div>
 <footer>
     <p>&copy; 2023 - Todos os direitos reservados </p>
@@ -289,57 +360,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
-<h1>Ranking dos Livros</h1>
-<?php 
-include('protect.php');
 
-$hostname = '127.0.0.1';
-$user = 'root';
-$password = '';
-$database = 'biblioteca';
-$conexao = new mysqli($hostname, $user, $password, $database);
-if ($conexao->connect_errno) {
-    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-    exit();
-    #Conexão com o banco de dados.
-} else {
-    #Lista com todos os livros.
-    $mostrarLivros = 'SELECT * FROM `acervo` ORDER BY qtdEmprestimo DESC';
-    $resultado = $conexao->query($mostrarLivros);
-    #Campo para busca de livro.
-    echo "<br><input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título'>
-    <span id='txtHint'></span>
-    <script>
-    function showHint(str) {
-        if (str.length == 0) { 
-          document.getElementById('txtHin').innerHTML = '';
-          return;
-        }
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById('txtHint').innerHTML = this.responseText;
-            }
-        };
-        xhttp.open('GET', 'rankingPesquisar.php?nomePesquisado='+str, true);
-        xhttp.send();
-      }
-    </script><br>";
-    #Campo para busca de livro.
-    while ($row = mysqli_fetch_array($resultado)) {
-        echo "<br><table style='width: 20%;'>
-            <tr>
-                <td style='width: 40%;'>
-                <img class='imagemdolivro' src='Imagens/" . $row['capaLivro'] . "' style='width: 100%'>  
-
-                </td>
-                <td>
-                    Título: " . $row['nome'] . "<br>Autor: " . $row['autor'] . "<br>Editora: " . $row['editora'] . "<br>Ano Publicado: " . $row['anoPublicado'] . "<br>Gênero: " . $row['genero'] . "<br>Quantidade de Empréstimos: " . $row['qtdEmprestimo'] .'
-                </td>
-            </tr>
-        </table>';
-    }
-}
-?>
 </body>
 </html>
