@@ -210,6 +210,26 @@
                overflow: hidden; 
                left:54%;
                }
+               .btn-emprestar-purple2 {
+               padding: 20px 40px;
+               background-color: #3742fa;
+               position:absolute;
+               margin-top: -50px;
+               width: 150px;
+               color: white;
+               border: none;
+               border-radius: 5px;
+               font-size: 16px;
+               text-align: center;
+               cursor: pointer;
+               transition: background-color 0.3s, transform 0.3s;
+               overflow: hidden; 
+               left:63%;
+               }
+               .btn-emprestar-purple2:hover {
+               background-color: #000000;
+               overflow: hidden; 
+               }
                .btn-emprestar-purple:hover {
                background-color: #000000;
                overflow: hidden; 
@@ -270,17 +290,12 @@
    </div>
    <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
    <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-   <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
+   
    <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
    <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
    <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
    <div class="separator2"></div>
-   <div class="sidebar-link2">
-   <a href="#">
-   <i class="fas fa-user" style="margin-right: 5px;"></i>
-   ㅤMeu Perfil
-   </a>
-   </div>
+   
    <div class="sidebar-link2">
    <a href="logout.php">
    <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>
@@ -302,6 +317,13 @@
               $mostrarLivro = "SELECT * FROM `acervo` WHERE id = $livro_id";
               $resultado = $conexao->query($mostrarLivro);
               if ($row = mysqli_fetch_array($resultado)) {
+            } else {
+                echo "Livro não encontrado.";
+            }
+            }
+            } else {
+            echo "ID do livro não especificado.";
+            }
       ?>
    <div class="center-container">
    <div class="book-details">
@@ -318,22 +340,28 @@
    <p><strong>Estante:</strong> <?php echo $row['estante']; ?></p>
    <p><strong>Prateleira:</strong> <?php echo $row['prateleira']; ?></p>
    <p><strong>Gênero:</strong> <?php echo $row['genero']; ?></p>
-   <?php echo '<form method="post" action="livroEmprestar.php">';
-   echo '<input type="hidden" value="' . $row['nome'] . '" id="nome" name="nome">';
-   echo '<button class="btn-emprestar-purple" type="submit">Emprestar</button>';
-   echo '</form>'; ?>
+   <?php 
+  echo "<form method='post' action='livroEmprestar.php'>";
+  echo "<input type='hidden' value='" . $row['nome'] . "' id='nome' name='nome'>";
+  echo "<button class='btn-emprestar-purple' type='submit'>Emprestar</button>";
+  echo "</form>";
+              
+  echo "<form method='post' action='livroAtualizar.php'>";
+  echo "<input type='hidden' value='" . $row['id'] . "' id='id' name='id'>";
+  echo "<button class='btn-emprestar-purple2' type='submit'>Editar</button>";
+  echo "</form>";
+              
+  echo "</td>
+      </tr>
+  </table>";
+
+   ?>
    </div>
    </div>
    </div>
    </div>
    <?php
-      } else {
-          echo "Livro não encontrado.";
-      }
-      }
-      } else {
-      echo "ID do livro não especificado.";
-      }
+
       ?>
    </div>
    <footer>
@@ -386,7 +414,9 @@
       
       
    </script>
+   </div>
+   </div>
+   </div>
    </body>
    </html>
-   </body>
-</html>
+ 

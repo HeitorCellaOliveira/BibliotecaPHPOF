@@ -34,7 +34,7 @@ if ($conexao->connect_errno) {
                 WHERE `id`="' . $id . '";';
     $resultado = $conexao->query($salvarEdicoes);
     $conexao->close();
-    header('Location: livros.php', true, 301);
+    header('Location: catalogo.php', true, 301);
     #Alteração das informações modificadas.
 }
 ?>

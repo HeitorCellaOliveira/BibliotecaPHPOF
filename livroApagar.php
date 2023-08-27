@@ -17,7 +17,7 @@ if ($conexao->connect_errno) {
     $apagar = 'DELETE FROM `acervo` WHERE `id` = "' . $id . '"';
     $resultado = $conexao->query($apagar);
     $conexao->close();
-    header('Location: livros.php', true, 301);
+    header('Location: catalogo.php', true, 301);
     #Processo de apagar livro.
 }
 ?>

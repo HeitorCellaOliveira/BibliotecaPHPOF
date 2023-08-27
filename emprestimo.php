@@ -16,18 +16,21 @@
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
 
 
+
     * {
         margin: 0;
         padding: 0;
         text-decoration: none;
         text-transform: none;
+        
+        
     }
 
     .navbar {
         text-align: center;
         background-color: rgb(0, 0, 0);
         height: 70px;
-        overflow-x: hidden;
+        
     }
     .navbar a {
         justify-content: center;
@@ -67,6 +70,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        overflow-Y: hidden;
     }
 
     .sidebar.active {
@@ -146,32 +150,123 @@
         color: #fff;
     }
 
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
 
-    .banner {
+    .white-background {
+    background-color: white;
+    border-radius: 10px;
+    padding: 80px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 100px; /* Espaço superior para centralizar verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Alinha o texto no centro */
+}
+.custom-search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: white;
+        overflow: hidden;
         position: relative;
+        }
+
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 5px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        padding-right: 100px;
+        }
+        .student-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 30px;
+    width: 100%;
+
+    
+}
+
+.student-details {
+    flex-grow: 1;
+
+}
+
+.student-name {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 35px;
+}
+.student-subtitle {
+    font-size: 20px;
+    font-weight: normal;
+    color: #888;
+    text-align: left;
+}
+
+
+.student-info {
+    font-size: 20px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+.student-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.student-actions form {
+    margin: 5px 0;
+}
+
+
+
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
     }
 
-    footer {
+    input[type="submit"]:hover {
+        background-color: #666;
+    }
+
+
+
+footer {
         background-color: rgb(0, 0, 0);
         background-color: #000000;
         color: #fff;
-        padding: 25px;
+        padding: 29px;
         text-align: center;
-        top: 827px;
         width: 100%;
-        position: fixed; 
+        position: relative; 
         bottom: 0; 
-        left: 0; 
+        margin-bottom:-200px;
+        top:200px;
     }
 
     ul {
@@ -190,34 +285,11 @@
         text-decoration: none;
     }
 
-    /* Estilo para a linha cinza claro dentro da sidebar */
-    .sidebar .separator {
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-    }
-    .sidebar .separator2{
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-        position:relative;
-        top:0rem;
-    }
 
-    /* Estilo para a aba Meu Perfil */
-    .sidebar .profile-link {
-        margin: auto; 
-        padding: 15px;
-        background-color: #f0f0f0; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-    }
+ 
     </style>
 </head>
-<body>
+<body style="background:#f0f0f0; overflow-x:hidden";>
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
         <a href="index.php">Início</a>
@@ -230,70 +302,32 @@
         </div>
     </nav>
 
-<div class="sidebar" id="sidebar">
-    <div class="logo-area">
-        <p>SHELF</p>
-        <div class="separator"></div> 
-    </div>
-  
-    <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
-    <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-    <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
-    <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
-    <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
-    <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
-    <div class="separator2"></div>
-    
+    <div class="sidebar" id="sidebar">
+         <div class="logo-area">
+            <p>SHELF</p>
+            <div class="separator"></div>
+         </div>
+         <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
+         <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
+         
+         <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
+         <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
+         <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
+         <div class="separator2"></div>
 
-    <div class="sidebar-link2">
-            <a href="#">
-                <i class="fas fa-user" style="margin-right: 5px;"></i>
-                ㅤMeu Perfil
-            </a>
-        </div>
-        
-        <div class="sidebar-link2">
+         <div class="sidebar-link2">
             <a href="logout.php">
-                <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>
-                ㅤSair da Conta
+            <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>
+            ㅤSair da Conta
             </a>
-            
-        </div>
-    </div>
-</div>
-<footer>
-    <p>&copy; 2023 - Todos os direitos reservados </p>
-    <br>
-    <nav>
-        <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</footer>
+         </div>
+      </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const iconMenu = document.querySelector('#icon-menu');
-    const sidebar = document.querySelector('#sidebar');
 
-    iconMenu.addEventListener('click', function () {
-        sidebar.classList.toggle('active');
-        if (sidebar.classList.contains('active')) {
-            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
-        } else {
-            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
-        }
-    });
-});
-
-</script>
-</body>
-</html>
-
-    <h1>Empréstimos</h1>
+<div class="content">
+    <div class="center-container">
+        <div class="white-background">
+    <h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Empréstimos</h1>
     <?php
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
@@ -312,9 +346,12 @@ document.addEventListener('DOMContentLoaded', function () {
         JOIN acervo ON emprestimos.livroID = acervo.id';
         $resultado = $conexao->query($mostrarEmprestimos);
         #Campo para busca de empréstimos.
-        echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por título ou aluno'>
+        echo "<div class='custom-search-box'>
+        <input type='text' class='custom-search-txt' onkeyup='showHint(this.value)' placeholder='Pesquise por título ou aluno'>
         <span id='txtHint'></span>
-        <script>
+      </div>
+      
+      <script>
         function showHint(str) {
             if (str.length == 0) { 
               document.getElementById('txtHin').innerHTML = '';
@@ -328,47 +365,85 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             xhttp.open('GET', 'emprestimoPesquisar.php?emprestimoPesquisado='+str, true);
             xhttp.send();
-          }
-        </script><br>";
-        #Campo para busca de empréstimo.
-        while ($row = mysqli_fetch_array($resultado)) {
-            echo "<br><table style='width: 20%;'>
-                    <tr><td>
-                        Aluno: " . $row['alunoNome'] . " (Matrícula: " . $row['alunoMatricula'] . ")<br>
-                        Livro: " . $row['livroNome'] . " (ISBN: " . $row['livroISBN'] . ")<br>
-                        Data emprestado: " . date('d-m-Y', strtotime($row['dataEmprestimo'])) . "<br>
-                        Data de entrega: " . date('d-m-Y', strtotime($row['dataDevolucao'])) . "
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <form method='post' action='livroDevolucao.php'>
-                        <input type='hidden' value='". $row['id'] . "' id='id' name='id'>
-                        <input type='submit' value='Devolver'>
-                        </form>
-                    </td>
-                    </tr>
-                    <tr><td>
-                    <br><form method='post' action='livroDevolucaoProlongar.php'>
-                    <input type='hidden' value='". $row['id'] ."' id='id' name='id'>
-                    <input type='submit' value='Prolongar Data'>
-                    </form>
-                    </tr></td>
-                    <tr><td>
-                    <br><form method='post' action='emprestimoMarcar.php'>
-                    <input type='hidden' name='emprestimoID' value='" .$row['id']. "'>
-                    <input type='submit' value='Apagar Registro'>
-                </form>
-                        </td></tr>
-                </table>";
-            
         }
-        #Lista com todos os empréstimos.
-    }
+      </script><br>";
+
+        #Campo para busca de empréstimo.
+        
+        
+        while ($row = mysqli_fetch_array($resultado)) {
+            echo "<div class='student-box'>";
+            
+            // Details column            echo "<p class='student-name'>" . $row['alunoNome'] . " (N° de Matrícula: " . $row['alunoMatricula'] . ")</p>";
+            echo "<div class='student-details'>";
+            echo "<p class='student-name'>" . $row['alunoNome'] . " </p>";
+            echo "<p class='student-subtitle'>(N° de Matrícula: " . $row['alunoMatricula'] . ")</p>";
+            echo "<br>";
+            echo "<p class='student-info'>Livro: " . $row['livroNome'] . " (ISBN: " . $row['livroISBN'] . ")</p>";
+            echo "<p class='student-info'>Data de empréstimo: " . date('d-m-Y', strtotime($row['dataEmprestimo'])) . "</p>";
+            echo "<p class='student-info'>Data de entrega: " . date('d-m-Y', strtotime($row['dataDevolucao'])) . "</p>";
+            echo "</div>";
+            
+            // Actions column
+            echo "<div class='student-actions'>";
+            echo "<form method='post' action='livroDevolucao.php'>";
+            echo "<input type='hidden' value='". $row['id'] . "' id='id' name='id'>";
+            echo "<input type='submit' value='Devolver'>";
+            echo "</form>";
+        
+            echo "<form method='post' action='livroDevolucaoProlongar.php'>";
+            echo "<input type='hidden' value='". $row['id'] ."' id='id' name='id'>";
+            echo "<input type='submit' value='Prolongar Data'>";
+            echo "</form>";
+        
+            echo "<form method='post' action='emprestimoMarcar.php'>";
+            echo "<input type='hidden' name='emprestimoID' value='" .$row['id']. "'>";
+            echo "<input type='submit' value='Apagar Registro'>";
+            echo "</form>";
+            echo "</div>";
+            
+            echo "</div>"; // Closing student-box
+        }
+        
+        echo "</table>";
+        
+        
+    }        
     ?>
-    <!--Retornar a página anterior-->
-    <br><a href='index.php'>Voltar</a>
-    <!--Retornar a página anterior-->
+            </div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const iconMenu = document.querySelector('#icon-menu');
+    const sidebar = document.querySelector('#sidebar');
+
+    iconMenu.addEventListener('click', function () {
+        sidebar.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
+        } else {
+            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
+        }
+    });
+});
+
+</script>
+<footer>
+    <p>&copy; 2023 - Todos os direitos reservados </p>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
+
 </body>
 
 </html>

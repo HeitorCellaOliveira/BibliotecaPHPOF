@@ -1,18 +1,37 @@
-<!--Página de de editar as informações de alunos-->
-<!DOCTYPE html>
-<meta charset="utf-8">
-<html lang="pt-BR">
-<html>
 
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap" rel="stylesheet">
-    <title> Atualizar | Mascarenhas </title>
+    <title> Estudantes | Mascarenhas </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script>
+    function formatarTelefone() {
+    var telefone = document.getElementById('telefone');
+    var valor = telefone.value;
+
+    // Remove todos os caracteres não numéricos
+    valor = valor.replace(/\D/g, '');
+
+    // Verifica se o número possui 11 dígitos (com DDD)
+    if (valor.length === 11) {
+        valor = valor.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
+    }
+    // Verifica se o número possui 10 dígitos (sem DDD)
+    else if (valor.length === 10) {
+        valor = valor.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
+    }
+
+    telefone.value = valor;
+    }
+    </script>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=El+Messiri:wght@700&family=Inter&family=Philosopher:ital@1&family=Playfair+Display:wght@600&family=Ysabeau+Infant:ital,wght@1,500&display=swap');
@@ -147,81 +166,102 @@
     .icon-menu.white {
         color: #fff;
     }
+ .center-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               min-height: 100vh; 
+               padding: 100px 20px; 
+               background-color: #f0f0f0;
+               box-sizing: border-box; 
+               min-height: 80vh;
+               width: 100%;
+               }
+    .white-background {
+    background-color: white;
+    border-radius: 10px;
+    padding: 60px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 0px; /* Espaço superior para centralizar verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Alinha o texto no centro */
+}
+               input[type="submit"] {
+               padding: 10px 20px;
+               border: none;
+               border-radius: 10px;
+               background-color: #333;
+               color: #fff;
+               cursor: pointer;
+               transition: background-color 0.3s;
+               }
+               input[type="submit"]:hover {
+               background-color: #666;
+               }
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 5px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        padding-right: 100px;
+        }
+               input[type="text"],
+               input[type="number"],
+               input[type="textx"],
+               input[type="date"] 
+               .text{
+               padding: 20px;
+               border: none;
+               border-radius: 10px;
+               background-color: #f0f0f0;
+               width: 100%;
+               margin: 10px -15px;
+               text-align: center;
+               font-size: 15px;
+               
+               }
 
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
 
-    .banner {
-        position: relative;
-    }
 
-    footer {
-        background-color: rgb(0, 0, 0);
-        background-color: #000000;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-        top: 827px;
-        width: 100%;
-        position: fixed; 
-        bottom: 0; 
-        left: 0; 
-    }
 
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    /* Estilo para a linha cinza claro dentro da sidebar */
-    .sidebar .separator {
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-    }
-    .sidebar .separator2{
-        height: 2px;
-        width: 100%;
-        background-color: #e0e0e0;
-        margin: 20px 0;
-        position:relative;
-        top:0rem;
-    }
-
-    /* Estilo para a aba Meu Perfil */
-    .sidebar .profile-link {
-        margin: auto; 
-        padding: 15px;
-        background-color: #f0f0f0; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-    }
-    </style>
-    
+ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+               }
+               li {
+               display: inline-block;
+               margin: 0 10px;
+               }
+               a {
+               color: #fff;
+               text-decoration: none;
+               }
+               footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 29px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            overflow-x: hidden;
+}
+ </style>
 </head>
-
-<body>
+<body style="background-color:#f0f0f0; overflow-x:hidden;">
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
         <a href="index.php">Início</a>
@@ -242,19 +282,12 @@
   
     <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
     <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-    <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
+    
     <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
     <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
     <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
     <div class="separator2"></div>
     
-
-    <div class="sidebar-link2">
-            <a href="#">
-                <i class="fas fa-user" style="margin-right: 5px;"></i>
-                ㅤMeu Perfil
-            </a>
-        </div>
         
         <div class="sidebar-link2">
             <a href="logout.php">
@@ -265,39 +298,11 @@
         </div>
     </div>
 </div>
-<footer>
-    <p>&copy; 2023 - Todos os direitos reservados </p>
-    <br>
-    <nav>
-        <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const iconMenu = document.querySelector('#icon-menu');
-    const sidebar = document.querySelector('#sidebar');
-
-    iconMenu.addEventListener('click', function () {
-        sidebar.classList.toggle('active');
-        if (sidebar.classList.contains('active')) {
-            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
-        } else {
-            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
-        }
-    });
-});
-
-</script>
-
-    <h1>Atualizar Dados</h1>
+<div class="center-container">
+        <div class="white-background">
+ <h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Atualizar Dados</h1>
+<br><br>
     <?php
-    include('protect.php');
 
     #Conexão com o banco de dados.
     $hostname = '127.0.0.1';
@@ -338,16 +343,48 @@ document.addEventListener('DOMContentLoaded', function () {
                         <input type="hidden" value="' . $row['id'] . '" id="id" name="id">
                         <input type="submit" value="Apagar">
                     </form>';
-            #Submit para o processo de apagar usuário.
-            #Retornar a página anterior.
-            echo '<br><a href="clubeLivro.php" style="color: black;">Voltar</a>';
-            #Retornar a página anterior.
-            $conexao->close();
-            exit();
-            #Form com as informações do usuários, disponíveis para alteração ou não.
+       
         }
     }
     ?>
-</body>
+</div>
+</div>
+<footer>
+    <p>&copy; 2023 - Todos os direitos reservados </p>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
+        
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const iconMenu = document.querySelector('#icon-menu');
+    const sidebar = document.querySelector('#sidebar');
 
+    iconMenu.addEventListener('click', function () {
+        sidebar.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
+        } else {
+            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
+        }
+    });
+});
+
+</script>
+</body>
 </html>
+
+
+
+
+
+
+
+

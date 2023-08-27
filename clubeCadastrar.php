@@ -317,17 +317,12 @@
    </div>
    <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
    <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-   <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
+   
    <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
    <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
    <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
    <div class="separator2"></div>
-   <div class="sidebar-link2">
-   <a href="#">
-   <i class="fas fa-user" style="margin-right: 5px;"></i>
-   ㅤMeu Perfil
-   </a>
-   </div>
+   
    <div class="sidebar-link2">
    <a href="logout.php">
    <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>

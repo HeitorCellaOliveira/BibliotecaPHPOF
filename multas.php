@@ -143,50 +143,68 @@
     .icon-menu.white {
         color: #fff;
     }
+    
+    .center-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               min-height: 100vh; 
+               padding: 100px 20px; 
+               background-color: #f0f0f0;
+               box-sizing: border-box; 
+               min-height: 80vh;
+               width: 100%;
+               }
+    .white-background {
+    background-color: white;
+    border-radius: 10px;
+    padding: 80px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 100px; /* Espaço superior para centralizar verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Alinha o texto no centro */
+}
+.multa-box {
+    border: 1px solid black;
+    width: 400px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
 
-    .banner {
-        position: relative;
-    }
-
-    footer {
-        background-color: rgb(0, 0, 0);
-        background-color: #000000;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-        top: 827px;
-        width: 100%;
-        position: fixed; 
-        bottom: 0; 
-        left: 0; 
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
+ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+               }
+               li {
+               display: inline-block;
+               margin: 0 10px;
+               }
+               a {
+               color: #fff;
+               text-decoration: none;
+               }
+               footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            overflow-x: hidden;
+}
 
     /* Estilo para a linha cinza claro dentro da sidebar */
     .sidebar .separator {
@@ -215,7 +233,7 @@
     }
     </style>
 </head>
-<body>
+<body style="background-color:#f0f0f0; overflow-x:hidden;">
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
         <a href="index.php">Início</a>
@@ -236,19 +254,14 @@
   
     <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
     <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-    <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
+    
     <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
     <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
-    <a href="multas.php"><i class="fas fa-money-bill"></i>Multas</a>
+    <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
     <div class="separator2"></div>
     
 
-    <div class="sidebar-link2">
-            <a href="#">
-                <i class="fas fa-user" style="margin-right: 5px;"></i>
-                ㅤMeu Perfil
-            </a>
-        </div>
+
         
         <div class="sidebar-link2">
             <a href="logout.php">
@@ -259,36 +272,11 @@
         </div>
     </div>
 </div>
-<footer>
-    <p>&copy; 2023 - Todos os direitos reservados </p>
-    <br>
-    <nav>
-        <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const iconMenu = document.querySelector('#icon-menu');
-    const sidebar = document.querySelector('#sidebar');
-
-    iconMenu.addEventListener('click', function () {
-        sidebar.classList.toggle('active');
-        if (sidebar.classList.contains('active')) {
-            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
-        } else {
-            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
-        }
-    });
-});
-</script>
-<h1>Multas</h1>
-
+<div class="center-container">
+        <div class="white-background">
+    <h1 style="font-family: 'Bebas Neue', sans-serif; justify-content:center; align-items:center; font-size:50px;">Multas</h1>
+<br><br>
 <?php
 $hostname = '127.0.0.1';
 $user = 'root';
@@ -310,9 +298,12 @@ if ($conexao->connect_errno) {
         echo "Erro na consulta SQL das multas: " . $conexao->error;
     } else {
         while ($row_multa = $result_multas->fetch_assoc()) {
+            echo "<div class='multa-box'>";
+            echo "<div class='multa-info'>";
             echo "Empréstimo ID: " . $row_multa['emprestimoID'] . "<br>";
             echo "Data de Devolução: " . $row_multa['dataDevolucao'] . "<br>";
             echo "Multa (R$): " . number_format($row_multa['multaPaga'], 2, ',', '.') . "<br>";
+            echo "</div>";
             
             // Consulta para buscar o nome e número de matrícula do estudante associado ao empréstimo
             $sql_estudante = "SELECT nome, nMatricula FROM cadastroalunos WHERE id = ?";
@@ -323,32 +314,66 @@ if ($conexao->connect_errno) {
             
             if ($result_estudante->num_rows > 0) {
                 $estudante = $result_estudante->fetch_assoc();
+                echo "<div class='estudante-info'>";
                 echo "Nome do Estudante: " . $estudante['nome'] . "<br>";
                 echo "Número de Matrícula: " . $estudante['nMatricula'] . "<br>";
+                echo "</div>";
             } else {
                 echo "Estudante não encontrado.";
             }
             
             if ($row_multa['multaPaga'] > 0) {
-                echo "<button onclick='apagarMulta(" . $row_multa['emprestimoID'] . ")'>Multa Paga</button>";
-                echo "<br><br><a href='index.php'>Voltar</a>";
+                echo "<button class='multa-button' onclick='apagarMulta(" . $row_multa['emprestimoID'] . ")'>Multa Paga</button>";
             } else {
                 echo "Multa paga.";
             }
             
-            echo "<br><hr>"; // Adiciona uma linha horizontal para separar as multas
+            echo "</div><hr>"; // Close the div and add a horizontal line
         }
     }
 }
+
+
 ?>
 
 
+</div>
+        </div>
 <script>
 function apagarMulta(emprestimoID) {
     if (confirm("Tem certeza de que deseja apagar esta multa?")) {
         window.location.href = "multasApagar.php?emprestimoID=" + emprestimoID;
     }
 }
+</script>
+<footer>
+    <p>&copy; 2023 - Todos os direitos reservados </p>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
+        
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const iconMenu = document.querySelector('#icon-menu');
+    const sidebar = document.querySelector('#sidebar');
+
+    iconMenu.addEventListener('click', function () {
+        sidebar.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            iconMenu.style.right = '270px'; // Ajuste o valor conforme necessário
+        } else {
+            iconMenu.style.right = '20px'; // Ajuste o valor conforme necessário
+        }
+    });
+});
+
 </script>
 </body>
 </html>

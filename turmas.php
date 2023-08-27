@@ -140,25 +140,98 @@
         font-size: 2rem;
         z-index: 1001;
     }
-
-    .icon-menu.white {
-        color: #fff;
-    }
-
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .banner {
+    .custom-search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: white;
+        overflow: hidden;
         position: relative;
+        }
+
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 5px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        padding-right: 100px;
+        }
+
+    .center-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               min-height: 100vh; 
+               padding: 100px 20px; 
+               
+               box-sizing: border-box; 
+               min-height: 80vh;
+               width: 100%;
+               }
+               .white-background {
+               background-color: white;
+               padding: 20px;
+               border-radius: 10px;
+               box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+               margin-top: 20px;
+               width: 80%; 
+               max-width: 600px; 
+               }
+               input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
     }
+
+    input[type="submit"]:hover {
+        background-color: #666;
+    }
+.cad{
+    padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+}
+.cad:hover{
+    background-color: #666;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
     footer {
         background-color: rgb(0, 0, 0);
@@ -216,7 +289,7 @@
     }
     </style>
 </head>
-<body>
+<body style=background-color:#f0f0f0;>
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
         <a href="index.php">Início</a>
@@ -237,19 +310,13 @@
   
     <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
     <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-    <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
     <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
     <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
     <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
     <div class="separator2"></div>
     
 
-    <div class="sidebar-link2">
-            <a href="#">
-                <i class="fas fa-user" style="margin-right: 5px;"></i>
-                ㅤMeu Perfil
-            </a>
-        </div>
+
         
         <div class="sidebar-link2">
             <a href="logout.php">
@@ -260,19 +327,74 @@
         </div>
     </div>
 </div>
-<footer>
-    <p>&copy; 2023 - Todos os direitos reservados </p>
-    <br>
-    <nav>
-        <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</footer>
 
+
+
+<div class="center-container">
+   <div class="white-background">
+    <!--Forms para cadastro-->
+    <center>
+    <h1  style="font-family: 'Bebas Neue', sans-serif; font-size:40px;">Turmas</h1>
+<?php 
+    $hostname = '127.0.0.1';
+    $user = 'root';
+    $password = 'root';
+    $database = 'biblioteca';
+    $conexao = new mysqli($hostname, $user, $password, $database);
+
+if ($conexao->connect_errno) {
+    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+    exit();
+} else {
+    $mostrarTurmas = 'SELECT * FROM `cadastroturmas`';
+    $resultado = $conexao->query($mostrarTurmas);
+    echo "<div class='custom-search-box'>";
+    echo "<br><input type='text' class='custom-search-txt' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>";
+    echo "<span id='txtHint'></span>";
+    echo "</div>";
+    
+    echo "<script>
+    function showHint(str) {
+        if (str.length == 0) { 
+            document.getElementById('txtHint').innerHTML = '';
+            return;
+        }
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('txtHint').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open('GET', 'turmasPesquisar.php?turmaPesquisada=' + str, true);
+        xhttp.send();
+    }
+    </script>";
+    
+    echo "<br><br><a href='turmasCadastrar.php' class='cad''>Cadastrar Turmas</a>";
+    echo "<br>";
+    echo "<br>";
+    
+    echo '<table>';
+    echo '<tr><th>Nome</th><th>Turno</th><th>Nº de Alunos (max)</th><th>Editar</th></tr>';
+    
+    while ($row = mysqli_fetch_array($resultado)) {
+        echo '<tr>';
+        echo '<td>' . $row['nome'] . '</td>';
+        echo '<td>' . $row['turno'] . '</td>';
+        echo '<td>' . $row['num_alunos'] . '</td>';
+        echo '<td>';
+        echo "<form method='post' action='turmasAtualizar.php'>
+                <input type='hidden' value='". $row['id'] ."' id='id' name='id'>
+                <input type='submit' value='Editar'>
+              </form>";
+        echo '</td>';
+        echo '</tr>';
+    }
+    
+    echo '</table>';
+    
+}    
+?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const iconMenu = document.querySelector('#icon-menu');
@@ -289,55 +411,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
+<footer>
+    <p>&copy; 2023 - Todos os direitos reservados </p>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
 
-<h1>Turmas Cadastradas</h1>
-
-<?php 
-    $hostname = '127.0.0.1';
-    $user = 'root';
-    $password = 'root';
-    $database = 'biblioteca';
-    $conexao = new mysqli($hostname, $user, $password, $database);
-
-if ($conexao->connect_errno) {
-    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-    exit();
-} else {
-    $mostrarTurmas = 'SELECT * FROM `cadastroturmas`';
-    $resultado = $conexao->query($mostrarTurmas);
-    
-    echo "<br><input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>
-        <span id='txtHint'></span>
-        <script>
-        function showHint(str) {
-            if (str.length == 0) { 
-              document.getElementById('txtHint').innerHTML = '';
-              return;
-            }
-            const xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('txtHint').innerHTML = this.responseText;
-                }
-            };
-            xhttp.open('GET', 'turmasPesquisar.php?turmaPesquisada='+str, true);
-            xhttp.send();
-          }
-        </script>";
-
-        echo "<br><br><a href='turmasCadastrar.php' class='' style='color: black;'>Cadastrar Turmas</a>";
-
-    while ($row = mysqli_fetch_array($resultado)) {
-        echo "<br>" , $row['nome'] . "<br>Turno:" . $row['turno'] . "<br>Nº de Alunos (max): " . $row['num_alunos'];
-
-        echo "<form method='post' action='turmasAtualizar.php'>
-            <input type='hidden' value='". $row['id'] ."' id='id' name='id'>
-            <input type='submit' value='Editar'>
-            </form>";
-    }
-}
-?>
-
-<br><br><a href='index.php' style="color: black;">Voltar</a>
 </body>
 </html>

@@ -165,50 +165,148 @@
         color: #fff;
     }
 
-    .welcome {
-        font-family: 'Philosopher', sans-serif;
-        position: absolute;
-        top: 150px;
-        left: 25%;
-        transform: translateX(-50%);
-        font-size: 5em;
-        z-index: 2;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+    .center-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               min-height: 100vh; 
+               padding: 100px 20px; 
+              
+               box-sizing: border-box; 
+               min-height: 80vh;
+               width: 100%;
+               }
+               #emprestar {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               margin-top: 20px;
+               }
+               input[type="text"],
+               input[type="number"],
+               input[type="textx"],
+               input[type="date"] 
+               .text{
+               padding: 10px;
+               border: none;
+               border-radius: 10px;
+               text-align: center;
+               width: 100%;
+               margin: 5px -15px;
+               }
+               input[type="submit"] {
+               padding: 10px 20px;
+               border: none;
+               border-radius: 10px;
+               background-color: #333;
+               color: #fff;
+               cursor: pointer;
+               transition: background-color 0.3s;
+               }
+               input[type="submit"]:hover {
+               background-color: #666;
+               }
+    
+     
+               .white-background {
+               background-color: white;
+               padding: 150px;
+               border-radius: 10px;
+               box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+               margin-top: 10px;
+               width: 80%; 
+               max-width: 600px; 
+               }
 
-    .banner {
+               .white-background h1 {
+               font-size: 24px;
+               margin-bottom: 10px;
+               }
+               .white-background a {
+               text-decoration: none;
+               color: #333;
+               font-weight: bold;
+               font-size: 16px;
+               }
+               .custom-search-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        height: 40px;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: white;
+        right: 10px;
+        overflow: hidden;
+        padding: -200px;
         position: relative;
-    }
+        }
 
-    footer {
-        background-color: rgb(0, 0, 0);
-        background-color: #000000;
-        color: #fff;
-        padding: 25px;
-        text-align: center;
-        top: 827px;
-        width: 100%;
-        position: fixed; 
-        bottom: 0; 
-        left: 0; 
-    }
+        .custom-search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        padding: 10px;
+        color: black;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #fff;
+        width: 70%;
+        }
 
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+        table {
+        position: relative;
+        right: 150px;
+    width: 150%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+}
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
+th, td {
+    padding: 20px;
+    width: 500px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
 
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
+th {
+    background-color: #f0f0f0;
+}
 
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+               }
+               li {
+               display: inline-block;
+               margin: 0 10px;
+               }
+               a {
+               color: #fff;
+               text-decoration: none;
+               }
+               footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            overflow-x: hidden;
+}
     /* Estilo para a linha cinza claro dentro da sidebar */
     .sidebar .separator {
         height: 2px;
@@ -236,7 +334,7 @@
     }
     </style>
 </head>
-<body>
+<body style="background:#f0f0f0; overflow-x: hidden;">
 <nav class="navbar">
         <img src="Imagens/logo.png"class="logoo" >
         <a href="index.php">Início</a>
@@ -257,19 +355,14 @@
   
     <a href="emprestimo.php"><i class="fas fa-book"></i>ㅤRelatórios</a>
     <a href="livroCadastrar.php"><i class="fas fa-plus-circle"></i>ㅤLivros Novos</a>
-    <a href="livros.php"><i class="fas fa-book-open"></i>ㅤLivros</a>
+    
     <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
     <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
     <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
     <div class="separator2"></div>
     
 
-    <div class="sidebar-link2">
-            <a href="#">
-                <i class="fas fa-user" style="margin-right: 5px;"></i>
-                ㅤMeu Perfil
-            </a>
-        </div>
+
         
         <div class="sidebar-link2">
             <a href="logout.php">
@@ -280,20 +373,83 @@
         </div>
     </div>
 </div>
-<footer>
-    <p>&copy; 2023 - Todos os direitos reservados </p>
-    <br>
-    <nav>
-        <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</footer>
 
-<script>
+<div class="center-container">
+   <div class="white-background">
+    <!--Forms para cadastro-->
+    <center>
+    <h1 style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; margin-top: -100px;">Estudantes</h1>
+
+    <?php
+$hostname = '127.0.0.1';
+$user = 'root';
+$password = 'root';
+$database = 'biblioteca';
+
+$conexao = new mysqli($hostname, $user, $password, $database);
+if ($conexao->connect_errno) {
+    echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
+    exit();
+} else {
+    $mostrarestudantes = 'SELECT * FROM `cadastroalunos`';
+    $resultado = $conexao->query($mostrarestudantes);
+
+    echo '<div class="custom-search-box">';
+    echo '<input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por nome">';
+    echo '</div>';
+    echo '<span id="txtHint"></span>';
+    echo '<script>
+function showHint(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "estudantesPesquisar.php?nomePesquisado=" + str, true);
+    xhttp.send();
+}
+</script>';
+}
+        #Campo para busca de usuário.
+        #Hyperlink para cadastro de estudantes.
+        
+        #Hyperlink para cadastro de estudantes.
+        echo '<br>';
+        echo '<br>';
+
+        echo '<table>';
+echo '<tr><th>Nome</th><th>Nº da Matrícula</th><th>Turma</th><th>Endereço</th><th>Telefone</th><th>Editar</th></tr>';
+
+while ($row = mysqli_fetch_array($resultado)) {
+    echo "<tr>";
+    echo "<td>" . $row['nome'] . "</td>";
+    echo "<td>" . $row['nMatricula'] . "</td>";
+    echo "<td>" . $row['turma'] . "</td>";
+    echo "<td>" . $row['endereco'] . "</td>";
+    echo "<td> " . $row['telefone'] . "</td>";
+    echo "<td><form method='post' action='estudantesAtualizar.php'>
+            <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
+            <input type='submit' value='Editar'>
+          </form></td>";
+    echo "</tr>";
+}
+
+echo '</table>';
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo "<form method='post' action='estudantesCadastrar.php'>
+        <input type='submit' value='Cadastrar estudantes'>
+      </form>";
+?>
+
+    <script>
 document.addEventListener('DOMContentLoaded', function () {
     const iconMenu = document.querySelector('#icon-menu');
     const sidebar = document.querySelector('#sidebar');
@@ -309,60 +465,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 </script>
+</div>
+</div>
 
-<h1>Estudantes</h1>
-    <?php
-    #Conexão com o banco de dados.
-    $hostname = '127.0.0.1';
-    $user = 'root';
-    $password = 'root';
-    $database = 'biblioteca';
-    $conexao = new mysqli($hostname, $user, $password, $database);
-    if ($conexao->connect_errno) {
-        echo 'Failed to connect to MySQL: ' . $conexao->connect_error;
-        exit();
-        #Conexão com o banco de dados.
-    } else {
-        #Lista com todos os usuários.
-        $mostrarestudantes = 'SELECT * FROM `cadastroalunos`';
-        $resultado = $conexao->query($mostrarestudantes);
-        #Campo para busca de usuário.
-        echo "<input type='text' id='pesquisa' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>
-        <span id='txtHint'></span>
-        <script>
-        function showHint(str) {
-            if (str.length == 0) { 
-              document.getElementById('txtHint').innerHTML = '';
-              return;
-            }
-            const xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('txtHint').innerHTML = this.responseText;
-                }
-            };
-            xhttp.open('GET', 'estudantesPesquisar.php?nomePesquisado='+str, true);
-            xhttp.send();
-          }
-        </script>";
-        #Campo para busca de usuário.
-        #Hyperlink para cadastro de estudantes.
-        echo "<br><br><a href='estudantesCadastrar.php' class='' style='color: black;'>Cadastrar estudantes</a><br>";
-        #Hyperlink para cadastro de estudantes.
-        while ($row = mysqli_fetch_array($resultado)) {
-            echo "<br>" . $row['nome'] . "<br>Nº da Matrícula: ".$row['nMatricula'] ."<br>Turma: " . $row['turma'] . "<br>Endereço: " . $row['endereco'] ."<br>Telefone: (+55) " . $row['telefone'];
-            #Form para a função de editar informações de estudantess.
-            echo "<form method='post' action='estudantesAtualizar.php'>
-                    <input type='hidden' value='" . $row['id'] . "' id='id' name='id'>
-                    <input type='submit' value='Editar'>
-                    </form>";
-            #Form para a função de editar informações de estudantess.
-        }
-        #Lista com todos os usuários.
-    }
-    ?>
-    <!--Retornar a página anterior-->
-    <br><a href='index.php' style='color: black;'>Voltar</a>
-    <!--Retornar a página anterior-->
+<footer>
+    <p>&copy; 2023 - Todos os direitos reservados </p>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+</footer>
 </body>
 </html>
