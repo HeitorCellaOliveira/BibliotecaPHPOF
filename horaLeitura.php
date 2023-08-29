@@ -342,6 +342,24 @@ ul {
     echo '<input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por nome">';
     echo '</div>';
 
+    echo '<span id="txtHint"></span>';
+    echo '<script>
+    function showHint(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "estudantesPesquisar.php?nomePesquisado=" + str, true);
+    xhttp.send();
+}
+</script>';
+
     echo "<form method='post' action='horaLeituraCadastrar.php'>
     <input type='submit' value='Cadastrar Leitores' class='submit' style='margin-top: 60px;'>
   </form>";

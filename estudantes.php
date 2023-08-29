@@ -306,6 +306,7 @@ ul {
             position: relative;
             bottom: 0;
             overflow-x: hidden;
+            margin-top:18px;
 }
     /* Estilo para a linha cinza claro dentro da sidebar */
     .sidebar .separator {

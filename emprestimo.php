@@ -266,7 +266,8 @@ footer {
         position: relative; 
         bottom: 0; 
         margin-bottom:-200px;
-        top:200px;
+
+        top:360px;
     }
 
     ul {
@@ -392,7 +393,7 @@ footer {
             echo "</form>";
         
             echo "<form method='post' action='livroDevolucaoProlongar.php'>";
-            echo "<input type='hidden' value='". $row['id'] ."' id='id' name='id'>";
+            echo "<input type='hidden' name='emprestimoID' value='". $row['id'] ."'>";
             echo "<input type='submit' value='Prolongar Data'>";
             echo "</form>";
         

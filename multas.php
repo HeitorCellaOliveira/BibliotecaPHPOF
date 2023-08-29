@@ -204,6 +204,7 @@ ul {
             position: relative;
             bottom: 0;
             overflow-x: hidden;
+            margin-top:20px;
 }
 
     /* Estilo para a linha cinza claro dentro da sidebar */

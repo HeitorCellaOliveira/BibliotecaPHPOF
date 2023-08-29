@@ -181,10 +181,10 @@
         <br><input type="text" id="endereco" name="endereco" required>
         <br><br><label class="">Telefone:</label>
         <br><input onkeyup="formatarTelefone()" type="text" id="telefone" name="telefone" required>
-        <br><br><label class="">Turma:</label>
-        <br><input type="text" id="turma" name="turma" required>
         <br><br><label class="">Nº da Matrícula</label>
         <br><input type="text" id="nMatricula" name="nMatricula" required>
+        <br><br><select id="turma" name="turma">
+            <option value="<?php $_GET[''] ?>"
         <br><br><input type="submit" value="Cadastrar">
     </form>
     <!--Forms para cadastro-->

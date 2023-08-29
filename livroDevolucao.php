@@ -254,6 +254,7 @@ ul {
             color: #fff;
             padding: 29px;
             text-align: center;
+            margin-top:11px;
             width: 100%;
             position: relative;
             bottom: 0;

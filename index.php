@@ -165,12 +165,13 @@ $result = $conexao->query($sql);
     .welcome {
         font-family: 'Philosopher', sans-serif;
         position: absolute;
-        top: 150px;
-        left: 25%;
+        top: 180px;
+        left: 15%;
         transform: translateX(-50%);
         font-size: 5em;
         z-index: 2;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        color:white;
     }
 
     .banner {

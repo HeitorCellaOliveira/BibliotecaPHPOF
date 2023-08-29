@@ -348,31 +348,31 @@ if ($conexao->connect_errno) {
 } else {
     $mostrarTurmas = 'SELECT * FROM `cadastroturmas`';
     $resultado = $conexao->query($mostrarTurmas);
-    echo "<div class='custom-search-box'>";
-    echo "<br><input type='text' class='custom-search-txt' onkeyup='showHint(this.value)' placeholder='Pesquise por nome'>";
-    echo "<span id='txtHint'></span>";
-    echo "</div>";
-    
-    echo "<script>
+    echo '<div class="custom-search-box">';
+    echo '<input type="text" id="pesquisa" class="custom-search-txt" onkeyup="showHint(this.value)" placeholder="Pesquise por nome">';
+    echo '</div>';
+
+    echo '<span id="txtHint"></span>';
+    echo '<script>
     function showHint(str) {
-        if (str.length == 0) { 
-            document.getElementById('txtHint').innerHTML = '';
-            return;
-        }
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById('txtHint').innerHTML = this.responseText;
-            }
-        };
-        xhttp.open('GET', 'turmasPesquisar.php?turmaPesquisada=' + str, true);
-        xhttp.send();
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
     }
-    </script>";
-    
-    echo "<br><br><a href='turmasCadastrar.php' class='cad''>Cadastrar Turmas</a>";
-    echo "<br>";
-    echo "<br>";
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "turmasPesquisar.php?turmaPesquisada=" + str, true);
+    xhttp.send();
+}
+</script>';
+
+    echo "<form method='post' action='turmasCadastrar.php'>
+    <input type='submit' value='Cadastrar Turmas' class='submit' style='margin-top: 60px;'>
+  </form>";
     
     echo '<table>';
     echo '<tr><th>Nome</th><th>Turno</th><th>Nº de Alunos (max)</th><th>Editar</th></tr>';
