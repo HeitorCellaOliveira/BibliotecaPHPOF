@@ -48,7 +48,7 @@
 
     body {
             margin: 0;
-            
+            overflow-y: hidden;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -281,8 +281,9 @@ ul {
             width: 100%;
             position: relative;
             margin-bottom:-160px;
-            top: 106px;
+            top: 140px;
             overflow-x: hidden;
+            
 
 }
  </style>
@@ -311,7 +312,7 @@ ul {
     
     <a href="estudantes.php"><i class="fas fa-user-graduate"></i>ㅤEstudantes</a>
     <a href="turmas.php"><i class="fas fa-users"></i>ㅤTurmas</a>
-    <a href="multas.php"><i class="fas fa-money-bill"></i>Multas</a>
+    <a href="multas.php"><i class="fas fa-money-bill"></i>ㅤMultas</a>
     <div class="separator2"></div>
     
 

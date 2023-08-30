@@ -200,6 +200,25 @@
     input[type="submit"]:hover {
         background-color: #666;
     }
+    .turma-button {
+    background-color: #3742fa;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+}
+.turma-button:hover {
+    background-color: #FFFFFF;
+    color: black;
+}
+
 .cad{
     padding: 10px 20px;
         border: none;
@@ -371,7 +390,7 @@ if ($conexao->connect_errno) {
 </script>';
 
     echo "<form method='post' action='turmasCadastrar.php'>
-    <input type='submit' value='Cadastrar Turmas' class='submit' style='margin-top: 60px;'>
+    <input type='submit' value='Cadastrar Turmas' class='submit' style='margin-top: 20px;'><br><br>
   </form>";
     
     echo '<table>';
@@ -379,7 +398,9 @@ if ($conexao->connect_errno) {
     
     while ($row = mysqli_fetch_array($resultado)) {
         echo '<tr>';
-        echo '<td><a href="turmasDetalhes.php?id=' . $row['id'] . '" style="color: black;">' . $row['nome'] . '</a></td>';
+        echo '<td><form method="get" action="turmasDetalhes.php" style="display: inline;">';
+        echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
+        echo '<button class="turma-button" type="submit">' . $row['nome'] . '</button></form></td>';
         echo '<td>' . $row['turno'] . '</td>';
         echo '<td>' . $row['num_alunos'] . '</td>';
         echo '<td>';
@@ -390,10 +411,7 @@ if ($conexao->connect_errno) {
         echo '</td>';
         echo '</tr>';
     }
-    
-    echo '</table>';
-    
-}    
+}
 ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
