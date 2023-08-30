@@ -183,8 +183,30 @@
         <br><input onkeyup="formatarTelefone()" type="text" id="telefone" name="telefone" required>
         <br><br><label class="">Nº da Matrícula</label>
         <br><input type="text" id="nMatricula" name="nMatricula" required>
-        <br><br><select id="turma" name="turma">
-            <option value="<?php $_GET[''] ?>"
+        <br><br><label for='turma'>Turma:</label>
+        <br><select id='turma' name='turma'>
+            <?php 
+                $hostname='127.0.0.1';
+                $user ='root';
+                $password ='root';
+                $database ='biblioteca';
+
+                $conexao = new mysqli($hostname, $user, $password, $database);
+                if ($conexao ->connect_errno) {
+                    echo "Failed to connect to MySQL: " . $conexao->connect_error;
+                    exit();
+                }
+
+                $consultaTurmas = 'SELECT id, nome FROM cadastroturmas';
+                $resultadoTurmas = $conexao->query($consultaTurmas);
+
+                while ($row = $resultadoTurmas->fetch_assoc()) {
+                    echo '<option value="'. $row['id'] .'">'. $row['nome'] .'</option>';
+                }
+
+                $conexao->close();
+            ?>
+        </select>
         <br><br><input type="submit" value="Cadastrar">
     </form>
     <!--Forms para cadastro-->

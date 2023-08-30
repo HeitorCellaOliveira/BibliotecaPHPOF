@@ -379,7 +379,7 @@ if ($conexao->connect_errno) {
     
     while ($row = mysqli_fetch_array($resultado)) {
         echo '<tr>';
-        echo '<td>' . $row['nome'] . '</td>';
+        echo '<td><a href="turmasDetalhes.php?id=' . $row['id'] . '" style="color: black;">' . $row['nome'] . '</a></td>';
         echo '<td>' . $row['turno'] . '</td>';
         echo '<td>' . $row['num_alunos'] . '</td>';
         echo '<td>';
