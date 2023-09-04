@@ -238,6 +238,26 @@ if(isset($_POST['nome']) || isset($_POST['senha']) || isset($_POST['telefone']))
     margin-bottom: 20px;
     padding-left: 45px;
     }
+    .button {
+    font-size:20px;
+    font-family:'Bebas', serif;
+    outline:none;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid black;
+    color: black;
+    letter-spacing:1px;
+    text-shadow:0;
+    font-size:12px;
+    height:bold;
+    position: relative;
+    top:130px;
+    left:0%;
+    text-decoration:bold;
+  }
 
     #user3{
     position: absolute;
