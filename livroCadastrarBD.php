@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             VALUES ("' . $nome . '", "' . $autor . '", "' . $editora . '", 
             ' . $anoPublicado . ', ' . $nPags . ', "' . $isbn . '", "' . $rua . '", 
             "' . $estante . '", "' . $prateleira . '", "' . $genero . '", 
-            "' . $qtdLivros . '", "' . $arquivo . '", "0");';
+            "' . $qtdLivros . '", "' . $arquivo . '", "'0'");';
     
     if ($conexao->query($cadastrarLivro)) {
         // Successful insertion
