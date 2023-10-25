@@ -334,7 +334,7 @@ if ($conexao->connect_errno) {
             $conexao->begin_transaction();
 
             // Insere o empréstimo na tabela de empréstimos
-            $sql_insert_emprestimo = "INSERT INTO emprestimos (livroID, estudanteID, dataEmprestimo, dataDevolucao) 
+            $sql_insert_emprestimo = "INSERT INTO emprestimos (livroID, estudanteID, dataEmprestimo, dataDevolucao, qtdEmprestimo) 
                 VALUES ((SELECT id FROM acervo WHERE nome = '$livro'), (SELECT id FROM cadastroalunos WHERE nMatricula = '$aluno'), '$dataEmprestimo', '$dataDevolucao')";
 
             if ($conexao->query($sql_insert_emprestimo) === TRUE) {
